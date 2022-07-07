@@ -1,4 +1,5 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-batch-login',
@@ -11,7 +12,7 @@ export class BatchLoginComponent implements OnInit, DoCheck {
   username: string = '';
   password: string = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +20,8 @@ export class BatchLoginComponent implements OnInit, DoCheck {
   ngDoCheck() {
     if(this.username !== '' && this.password !== ''){
       this.formLoginValid = false;
+    }else{
+      this.formLoginValid = true;
     }
   }
 
@@ -27,6 +30,6 @@ export class BatchLoginComponent implements OnInit, DoCheck {
   }
 
   submit(){
-
+    this.router.navigate(['/myBatch']);
   }
 }

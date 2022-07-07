@@ -1,1 +1,33 @@
-<p>batch-header works!</p>
+<div class="batch-header">
+    <div class="batch-title">
+        <div class="feature-container">
+            <div class="service-feature">
+                <button class="btn btn-light">
+                    <h4 class="fit-title -batch">MyBatch!</h4>
+                </button>
+            </div>
+            <div class="notes-feature">
+                <button class="btn btn-light">
+                    <h4 class="fit-title ">Notes</h4>
+                </button>
+            </div>
+        </div>
+        <div class="logout-feature">
+            <button class="btn btn-light">
+                <h4 class="fit-title logout-btn">Logout</h4>
+            </button>
+        </div>
+    </div>
+
+    <div class="batch-subtitle">
+        <div class="display-name">
+            Transfer, Jasper!
+        </div>
+
+        <div class="display-time">
+            {{date |date: 'd MMM YYYY HH:mm:ss a'}}
+        </div>
+    </div>
+</div>
+
+<!--<batch-service></batch-service>-->

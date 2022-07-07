@@ -1,0 +1,49 @@
+.batch-header{
+  margin: 20px 40px;
+}
+
+.batch-title{
+  display: flex;
+  justify-content: space-between;
+}
+
+.fit-title{
+  font-size: 45px;
+}
+
+.-batch{
+  font-style: italic;
+  color: #0064b6;
+}
+
+.feature-container{
+  display: flex;
+}
+
+.btn-light{
+  background-color: transparent;
+  border: none;
+  box-shadow: transparent;
+}
+
+.btn-light:focus{
+  color: #0064b6;
+}
+
+.logout-btn{
+  font-size: 35px;
+  color: red;
+}
+
+.batch-subtitle{
+  display: flex;
+  margin: 15px 20px;
+  justify-content: space-between;
+}
+
+.display-name{
+  font-size: 35px;
+}
+.display-time{
+  font-size: 20px;
+}
