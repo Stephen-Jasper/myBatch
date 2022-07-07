@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BatchLoginComponent } from './batch-login/batch-login.component';
 import {FormsModule} from "@angular/forms";
+import { BatchHeaderComponent } from './batch-header/batch-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BatchLoginComponent
+    BatchLoginComponent,
+    BatchHeaderComponent
   ],
     imports: [
         BrowserModule,

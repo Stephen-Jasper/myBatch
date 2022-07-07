@@ -82,3 +82,17 @@
     top: 57%;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .login-title{
+    font-size: 100px;
+  }
+
+  .login-subtitle{
+    font-size: 25px;
+  }
+
+  .login-box {
+    top: 40%;
+  }
+}
