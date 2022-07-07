@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {interval} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-batch-header',
@@ -9,13 +10,17 @@ import {interval} from "rxjs";
 export class BatchHeaderComponent implements OnInit {
   date: Date | undefined;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     const source = interval(1000);
     source.subscribe((res) => {
       this.date = new Date();
     });
+  }
+
+  logout(){
+    this.router.navigate(['/login']);
   }
 
 }
