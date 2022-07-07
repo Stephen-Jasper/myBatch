@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 export class BatchLoginComponent implements OnInit, DoCheck {
 
   formLoginValid: boolean = true;
+  errorAuth: boolean = false;
   username: string = '';
   password: string = '';
 
@@ -30,6 +31,10 @@ export class BatchLoginComponent implements OnInit, DoCheck {
   }
 
   submit(){
-    this.router.navigate(['/myBatch']);
+    if(this.username !== 'jasper'){
+      this.errorAuth = true;
+    }else{
+      this.router.navigate(['/myBatch']);
+    }
   }
 }
