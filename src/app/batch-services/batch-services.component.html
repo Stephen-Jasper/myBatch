@@ -1,0 +1,21 @@
+<div class="service-container">
+    <p class="page-title">My Services</p>
+
+    <div class="service-data">
+        <div class="service-list">
+            <div class="service-add">
+                <p style="align-self: center">Batch inquiry</p>
+                <p class="create-service">+</p>
+            </div>
+
+            <div class="line"></div>
+            <ul *ngFor="let emp of data">
+                <a href="{{emp.link}}" target="_blank"><li>{{emp.name}}</li></a>  <!-- href ke routing id-->
+            </ul>
+        </div>
+        <div class="service-hit">
+<!--            COMPONENT TO HIT SERVICES-->
+                <app-batch-hit></app-batch-hit>
+        </div>
+    </div>
+</div>

@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { BatchLoginComponent } from './batch-login/batch-login.component';
 import {FormsModule} from "@angular/forms";
 import { BatchHeaderComponent } from './batch-header/batch-header.component';
+import { BatchServicesComponent } from './batch-services/batch-services.component';
+import { BatchHitComponent } from './batch-services/batch-hit/batch-hit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BatchLoginComponent,
-    BatchHeaderComponent
+    BatchHeaderComponent,
+    BatchServicesComponent,
+    BatchHitComponent
   ],
     imports: [
         BrowserModule,

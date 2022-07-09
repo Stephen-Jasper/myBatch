@@ -1,0 +1,43 @@
+.service-container{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.page-title{
+  font-size: 50px;
+  border-bottom: 2px solid #212529;
+}
+
+.service-data{
+  display: flex;
+}
+
+.service-list{
+  font-size: 20px;
+  min-width: 300px;
+
+  .service-add{
+    display: flex;
+  }
+
+  .create-service{
+    margin-left: 85px;
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  p{
+    margin-bottom: 0;
+  }
+
+  .line{
+    border-bottom: 1px solid #212529;
+    width: 210px;
+    margin-bottom: 10px;
+  }
+}
+
+.service-hit{
+  font-size: 25px;
+  min-width: 850px;
+}
