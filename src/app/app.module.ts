@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import { BatchHeaderComponent } from './batch-header/batch-header.component';
 import { BatchServicesComponent } from './batch-services/batch-services.component';
 import { BatchHitComponent } from './batch-services/batch-hit/batch-hit.component';
+import { BatchDetailComponent } from './batch-services/batch-detail/batch-detail.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BatchHitComponent } from './batch-services/batch-hit/batch-hit.componen
     BatchLoginComponent,
     BatchHeaderComponent,
     BatchServicesComponent,
-    BatchHitComponent
+    BatchHitComponent,
+    BatchDetailComponent
   ],
     imports: [
         BrowserModule,
