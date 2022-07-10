@@ -9,9 +9,11 @@
             </div>
 
             <div class="line"></div>
-            <ul *ngFor="let emp of data">
-                <a href="{{emp.link}}" target="_blank"><li>{{emp.name}}</li></a>  <!-- href ke routing id-->
-            </ul>
+            <div class="service-loop">
+                <ul *ngFor="let emp of data">
+                    <a href="{{emp.link}}" target="_blank"><li>{{emp.name}}</li></a>  <!-- href ke routing id-->
+                </ul>
+            </div>
         </div>
         <div class="service-hit">
 <!--            COMPONENT TO HIT SERVICES-->

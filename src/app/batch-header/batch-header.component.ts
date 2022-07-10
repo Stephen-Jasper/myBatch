@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 })
 export class BatchHeaderComponent implements OnInit {
   date: Date | undefined;
+  loadingDate: boolean = true;
 
   constructor(private router: Router) { }
 
@@ -16,6 +17,7 @@ export class BatchHeaderComponent implements OnInit {
     const source = interval(1000);
     source.subscribe((res) => {
       this.date = new Date();
+      this.loadingDate = false;
     });
   }
 

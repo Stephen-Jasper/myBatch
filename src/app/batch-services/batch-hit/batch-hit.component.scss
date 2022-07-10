@@ -1,0 +1,30 @@
+.card{
+  min-width: 100%;
+  min-height: 100%;
+  border: none;
+}
+
+.batch-item{
+  width: 30%;
+  border: 1px solid #212529;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card-body{
+  align-self: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.batch-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card-img-top{
+  width: 90%;
+  align-self: center;
+}
