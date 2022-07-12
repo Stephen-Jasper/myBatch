@@ -1,41 +1,23 @@
-<p>Response</p>
-<div class="card">
-    <div class="batch-list">
-        <div class="batch-item"> <!-- LOOP DATA HERE -->
-            <img src="https://karir.bca.co.id/public/assets/img/logo-color.svg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">GET</h5>
-                <p class="card-text">Payroll Inquiry</p>
-                <button class="btn btn-primary">HIT</button>
-            </div>
+<div class="batch-hit-container">
+    <div class="batch-response">
+        <p>Response</p>
+        <div class="response-detail">
+            {{response}}
         </div>
+    </div>
 
-        <div class="batch-item"> <!-- LOOP DATA HERE -->
-            <img src="https://karir.bca.co.id/public/assets/img/logo-color.svg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">GET</h5>
-                <p class="card-text">Payroll Inquiry</p>
-                <button class="btn btn-primary">HIT</button>
+    <div class="card">
+        <div class="batch-list">
+
+            <div *ngFor="let batch of batchData" class="batch-item"> <!-- LOOP DATA HERE -->
+                <img src="https://karir.bca.co.id/public/assets/img/logo-color.svg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{batch.req}}</h5>
+                    <p class="card-text">{{batch.name}}</p>
+                    <button (click)="getResponse(batch.name)" class="btn btn-primary">HIT!</button>
+                </div>
             </div>
-        </div>
 
-        <div class="batch-item"> <!-- LOOP DATA HERE -->
-            <img src="https://karir.bca.co.id/public/assets/img/logo-color.svg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">GET</h5>
-                <p class="card-text">Payroll Inquiry</p>
-                <button class="btn btn-primary">HIT</button>
-            </div>
         </div>
-
-        <div class="batch-item"> <!-- LOOP DATA HERE -->
-            <img src="https://karir.bca.co.id/public/assets/img/logo-color.svg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">GET</h5>
-                <p class="card-text">Payroll Inquiry</p>
-                <button class="btn btn-primary">HIT</button>
-            </div>
-        </div>
-
     </div>
 </div>

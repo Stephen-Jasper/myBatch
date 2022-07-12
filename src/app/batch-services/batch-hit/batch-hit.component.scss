@@ -1,3 +1,10 @@
+.response-detail{
+  border: 2px solid #212529;
+  border-radius: 5px;
+  padding: 50px 15px 15px 15px;
+  margin-bottom: 30px;
+}
+
 .card{
   max-width: 100%;
   min-height: 100%;
@@ -7,22 +14,16 @@
 .batch-list{
   display: flex;
   flex-wrap: wrap;
-  //width: 100%;
   justify-content: space-between;
-  //background-color: red;
 }
 
 .batch-item{
   width: 20%;
-  border: 1px solid #212529;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
 .card-body{
-  align-self: center;
-  align-content: center;
-  align-items: center;
   text-align: center;
 }
 
@@ -31,6 +32,10 @@
   width: 70%;
   margin-top: 10px;
   margin-left: 15%;
+}
+
+.btn{
+  padding: 5px 30px;
 }
 
 .btn-primary:focus{

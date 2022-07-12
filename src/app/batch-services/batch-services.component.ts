@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-batch-services',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BatchServicesComponent implements OnInit {
 
+  // @Input()
   constructor() { }
 
   ngOnInit(): void {
@@ -14,14 +15,17 @@ export class BatchServicesComponent implements OnInit {
 
   data = [
     {
+      req: 'GET',
       name: 'Payroll Inquiry ',
       link: 'https://www.instagram.com'
     },
     {
+      req: 'GET',
       name: 'Transfer Inquiry',
       link: 'https://www.facebook.com'
     },
     {
+      req: 'GET',
       name: 'VA Inquiry',
       link: 'https://www.youtube.com'
     }
