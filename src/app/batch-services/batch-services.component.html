@@ -5,12 +5,12 @@
         <div class="service-list">
             <div class="service-add">
                 <p style="align-self: center">Batch inquiry</p>
-                <p class="create-service">+</p>
+                <mat-icon (click)="addBatch()" class="create-service">add</mat-icon>
             </div>
 
             <div class="line"></div>
             <div class="service-loop">
-                <ul *ngFor="let emp of data">
+                <ul *ngFor="let emp of dataResponse">
                     <div class="batch-component">
                         <a href="{{emp.link}}" target="_blank"><li>{{emp.name}}</li></a>  <!-- href ke routing id-->
                         <mat-icon (click)="delete()" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
@@ -21,7 +21,7 @@
         </div>
         <div class="service-hit">
 <!--            COMPONENT TO HIT SERVICES-->
-                <app-batch-hit></app-batch-hit>
+                <app-batch-hit [dataResponseCard]="dataResponse"></app-batch-hit>
         </div>
     </div>
 </div>

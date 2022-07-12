@@ -9,10 +9,10 @@
     <div class="card">
         <div class="batch-list">
 
-            <div *ngFor="let batch of batchData" class="batch-item"> <!-- LOOP DATA HERE -->
-                <img src="https://karir.bca.co.id/public/assets/img/logo-color.svg" class="card-img-top" alt="...">
+            <div *ngFor="let batch of dataResponseCard" class="batch-item"> <!-- LOOP DATA HERE -->
+                <img (click)="toDetail()" src="https://karir.bca.co.id/public/assets/img/logo-color.svg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{batch.req}}</h5>
+                    <h5 class="card-title"><b>{{batch.req_method}}</b></h5>
                     <p class="card-text">{{batch.name}}</p>
                     <button (click)="getResponse(batch.name)" class="btn btn-primary">HIT!</button>
                 </div>

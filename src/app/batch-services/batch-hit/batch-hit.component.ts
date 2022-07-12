@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {BatchResponse} from "../../batch-dto/batch-response";
 
 @Component({
   selector: 'app-batch-hit',
@@ -7,34 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BatchHitComponent implements OnInit {
 
-  response:string = 'Get response by click "Hit!"';
+  @Input()
+  dataResponseCard: BatchResponse[];
 
-  batchData = [
-    {
-      req: 'GET',
-      name: 'Payroll Inquiry '
-    },
-    {
-      req: 'GET',
-      name: 'Transfer Inquiry'
-    },
-    {
-      req: 'GET',
-      name: 'VA Inquiry'
-    },
-    {
-      req: 'GET',
-      name: 'DOM Inquiry'
-    },
-    {
-      req: 'GET',
-      name: 'Transfer BCA Inquiry'
-    },
-    {
-      req: 'GET',
-      name: 'Bulk Transfer Inquiry'
-    }
-  ]
+  response:string = 'Get response by click "Hit!"';
 
   constructor() { }
 
@@ -47,6 +24,10 @@ export class BatchHitComponent implements OnInit {
     }else{
       this.response = 'true';
     }
+  }
+
+  toDetail(){
+    alert('To Detail');
   }
 
 }
