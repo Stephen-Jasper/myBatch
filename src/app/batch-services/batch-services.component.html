@@ -13,7 +13,7 @@
                 <ul *ngFor="let emp of dataResponse">
                     <div class="batch-component">
                         <a href="{{emp.link}}" target="_blank"><li>{{emp.name}}</li></a>  <!-- href ke routing id-->
-                        <mat-icon (click)="delete()" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                        <mat-icon (click)="activePopUp()" data-toggle="modal" data-target="#exampleModalCenter" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
                         <mat-icon (click)="edit()" aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
                     </div>
                 </ul>
@@ -24,4 +24,21 @@
                 <app-batch-hit [dataResponseCard]="dataResponse"></app-batch-hit>
         </div>
     </div>
+
+
+    <!-- Modal -->
+    <div *ngIf="showPopup" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Sure want to delete?
+                </div>
+                <div class="modal-footer">
+                    <button (click)="cancelDel()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button (click)="delete()" type="button" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

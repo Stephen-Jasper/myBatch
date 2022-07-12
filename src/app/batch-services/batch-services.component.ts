@@ -8,6 +8,7 @@ import {BatchResponse} from "../batch-dto/batch-response";
 })
 export class BatchServicesComponent implements OnInit {
 
+  showPopup:boolean = false;
   dataResponse: BatchResponse[];
   data = [];
   constructor() { }
@@ -51,8 +52,17 @@ export class BatchServicesComponent implements OnInit {
     alert('Add Batch');
   }
 
+  activePopUp(){
+    this.showPopup = true;
+  }
+
   delete(){
-    alert('Delete batch');
+    alert('Batch deleted!');
+    window.location.reload();
+  }
+
+  cancelDel(){
+    this.showPopup =false;
   }
 
   edit(){
