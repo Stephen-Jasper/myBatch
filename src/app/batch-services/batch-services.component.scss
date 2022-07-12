@@ -12,9 +12,25 @@
   display: flex;
 }
 
+.batch-component{
+  display: flex;
+  mat-icon{
+    align-self: center;
+  }
+}
+
+.batch-component{
+  mat-icon:hover{
+    color: #0064b6;
+  }
+  li{
+    word-break: break-word;
+  }
+}
+
 .service-list{
   font-size: 20px;
-  min-width: 300px;
+  width: 23%; // sblmnya min-width: 300px
 
   .service-add{
     display: flex;
@@ -39,7 +55,9 @@
 
 .service-hit{
   font-size: 25px;
-  min-width: 850px;
+  width: 100%;
+  //min-width: 850px;
+  //background-color: red;
 }
 
 .service-loop{
@@ -53,3 +71,10 @@
     }
   }
 }
+
+//@media screen and (max-width: 1020px) {
+//  .service-hit{
+//    width: 80%;
+//    background-color: red;
+//  }
+//}

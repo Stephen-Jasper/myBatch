@@ -11,7 +11,11 @@
             <div class="line"></div>
             <div class="service-loop">
                 <ul *ngFor="let emp of data">
-                    <a href="{{emp.link}}" target="_blank"><li>{{emp.name}}</li></a>  <!-- href ke routing id-->
+                    <div class="batch-component">
+                        <a href="{{emp.link}}" target="_blank"><li>{{emp.name}}</li></a>  <!-- href ke routing id-->
+                        <mat-icon (click)="delete()" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                        <mat-icon (click)="edit()" aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+                    </div>
                 </ul>
             </div>
         </div>

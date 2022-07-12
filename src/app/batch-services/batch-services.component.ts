@@ -14,7 +14,7 @@ export class BatchServicesComponent implements OnInit {
 
   data = [
     {
-      name: 'Payroll Inquiry',
+      name: 'Payroll Inquiry ',
       link: 'https://www.instagram.com'
     },
     {
@@ -26,5 +26,13 @@ export class BatchServicesComponent implements OnInit {
       link: 'https://www.youtube.com'
     }
   ]
+
+  delete(){
+    console.log('Delete batch');
+  }
+
+  edit(){
+    console.log('Edit batch');
+  }
 
 }

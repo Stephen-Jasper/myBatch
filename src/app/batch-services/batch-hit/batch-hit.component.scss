@@ -1,11 +1,19 @@
 .card{
-  min-width: 100%;
+  max-width: 100%;
   min-height: 100%;
   border: none;
 }
 
+.batch-list{
+  display: flex;
+  flex-wrap: wrap;
+  //width: 100%;
+  justify-content: space-between;
+  //background-color: red;
+}
+
 .batch-item{
-  width: 30%;
+  width: 20%;
   border: 1px solid #212529;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -18,13 +26,25 @@
   text-align: center;
 }
 
-.batch-list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
 
 .card-img-top{
-  width: 90%;
-  align-self: center;
+  width: 70%;
+  margin-top: 10px;
+  margin-left: 15%;
+}
+
+.btn-primary:focus{
+  background-color: green;
+}
+
+@media screen and (max-width: 1088px) {
+  .batch-item{
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .batch-item{
+    width: 70%;
+  }
 }

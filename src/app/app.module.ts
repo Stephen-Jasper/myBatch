@@ -9,6 +9,8 @@ import { BatchHeaderComponent } from './batch-header/batch-header.component';
 import { BatchServicesComponent } from './batch-services/batch-services.component';
 import { BatchHitComponent } from './batch-services/batch-hit/batch-hit.component';
 import { BatchDetailComponent } from './batch-services/batch-detail/batch-detail.component';
+import {MatIconModule} from "@angular/material/icon";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { BatchDetailComponent } from './batch-services/batch-detail/batch-detail
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        MatIconModule,
+        BrowserAnimationsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
