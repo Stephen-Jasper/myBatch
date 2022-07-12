@@ -30,7 +30,8 @@
 
 .service-list{
   font-size: 20px;
-  width: 23%; // sblmnya min-width: 300px
+  //width: 23%; // sblmnya min-width: 300px
+  min-width: 300px; // 300 soalnya di laptop rumah baru rapih
 
   .service-add{
     display: flex;
