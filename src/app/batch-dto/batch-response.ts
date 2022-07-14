@@ -2,6 +2,10 @@ export interface BatchResponse{
     req_method?:string;
     name?:string;
     link?:string;
-    message?: String,
-    status?: String
+}
+
+export interface DogData{
+    balikan?:boolean;
+    message?:string;
+    status?:string;
 }

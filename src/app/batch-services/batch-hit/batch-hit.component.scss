@@ -3,6 +3,7 @@
   border-radius: 5px;
   padding: 50px 15px 15px 15px;
   margin-bottom: 30px;
+  height: 160px;
 }
 
 .card{
@@ -27,7 +28,6 @@
   text-align: center;
 }
 
-
 .card-img-top{
   width: 70%;
   margin-top: 10px;
@@ -40,6 +40,30 @@
 
 .btn-primary:focus{
   background-color: green;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #0064b6;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin-left: 5%;
+  margin-top: 2%;
+  z-index: -1;
+  position: absolute;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @media screen and (max-width: 1088px) {

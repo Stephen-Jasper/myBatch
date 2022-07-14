@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BatchLoginComponent } from './batch-login/batch-login.component';
@@ -27,7 +27,8 @@ import { BatchServicesService } from "./batch-services/batch-services.service";
         AppRoutingModule,
         FormsModule,
         MatIconModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        HttpClientModule
     ],
   providers: [BatchServicesService],
   bootstrap: [AppComponent]

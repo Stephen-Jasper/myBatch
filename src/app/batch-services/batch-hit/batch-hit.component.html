@@ -2,11 +2,18 @@
     <div class="batch-response">
         <p>Response</p>
         <div class="response-detail">
-            {{response}}
+            <div *ngIf="loadingHit" class="loader"></div>
+
+            {{response}} <br>
+            <div class="items" *ngFor="let emp of APIdata">
+                {{emp.message}} {{emp.status}}
+<!--                {{emp.balikan}}-->
+            </div>
         </div>
     </div>
 
     <div class="card">
+            <button (click)="hit()">HIT service</button>
         <div class="batch-list">
 
             <div *ngFor="let batch of dataResponseCard" class="batch-item"> <!-- LOOP DATA HERE -->
@@ -17,12 +24,7 @@
                     <button (click)="getResponse(batch.name)" class="btn btn-primary">HIT!</button>
                 </div>
             </div>
-
-            <button (click)="hit()">HIT service</button>
-<!--            <ul class="items" *ngFor="let emp of APIdata">-->
-<!--                <li style="list-style-type: none;">{{emp.message}} {{emp.status}}</li>-->
-<!--            </ul>-->
-
         </div>
+
     </div>
 </div>

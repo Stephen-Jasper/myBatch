@@ -12,6 +12,8 @@ export class BatchHitComponent implements OnInit {
   @Input()
   dataResponseCard: BatchResponse[];
 
+  loadingHit:boolean = false;
+
   public APIdata = [];
   response:string = 'Get response by click "Hit!"';
 
@@ -21,8 +23,14 @@ export class BatchHitComponent implements OnInit {
   }
 
   hit(){
-    // this._batchData.getServiceData()
-    //     .subscribe(data => this.APIdata.push(data));
+    this.loadingHit = true;
+    console.log('awal: ' + this.loadingHit);
+    this.APIdata = [];
+    this._batchData.getServiceData()
+        .subscribe(data => {
+          this.APIdata.push(data)
+          this.loadingHit = false;
+        });
   }
 
   getResponse(name: string){
