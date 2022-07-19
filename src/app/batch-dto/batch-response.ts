@@ -1,11 +1,14 @@
 export interface BatchResponse{
-    req_method?:string;
-    name?:string;
-    link?:string;
+    id?: string;
+    req_method?: string;
+    name?: string;
+    mainUrl?: string;
+    env?: string;
+    img?: string;
 }
 
 export interface DogData{
-    balikan?:boolean;
-    message?:string;
-    status?:string;
+    balikan?: boolean;
+    message?: string;
+    status?: string;
 }

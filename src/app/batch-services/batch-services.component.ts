@@ -16,34 +16,52 @@ export class BatchServicesComponent implements OnInit {
   ngOnInit(): void {
     this.dataResponse = [
       {
+        id: '1',
         req_method: 'GET',
+        env: 'DEV',
         name: 'Payroll Inquiry ',
-        link: 'https://www.instagram.com'
+        mainUrl: 'https://www.instagram.com',
+        img: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
       },
       {
+        id: '2',
         req_method: 'GET',
+        env: 'UAT',
         name: 'Transfer Inquiry',
-        link: 'https://www.facebook.com'
+        mainUrl: 'https://www.facebook.com',
+        img: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
       },
       {
+        id: '3',
         req_method: 'GET',
+        env: 'DEV',
         name: 'VA Inquiry',
-        link: 'https://www.youtube.com'
+        mainUrl: 'https://www.youtube.com',
+        img: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
       },
       {
+        id: '4',
         req_method: 'GET',
+        env: 'UAT',
         name: 'Trf DOM Inquiry',
-        link: 'https://www.youtube.com'
+        mainUrl: 'https://www.youtube.com',
+        img: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
       },
       {
+        id: '5',
         req_method: 'GET',
+        env: 'DEV',
         name: 'Trf BCA Inquiry',
-        link: 'https://www.youtube.com'
+        mainUrl: 'https://www.youtube.com',
+        img: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
       },
       {
-        req_method: 'POST',
+        id: '6',
+        req_method: 'UAT',
+        env: 'DEV',
         name: 'Bulk trf Inquiry',
-        link: 'https://www.youtube.com'
+        mainUrl: 'https://www.youtube.com',
+        img: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
       }
     ]
   }

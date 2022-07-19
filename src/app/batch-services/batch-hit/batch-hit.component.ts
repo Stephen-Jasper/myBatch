@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BatchResponse} from "../../batch-dto/batch-response";
 import {BatchServicesService} from "../batch-services.service";
+import {$0} from "@angular/compiler/src/chars";
 
 @Component({
   selector: 'app-batch-hit',
@@ -12,6 +13,11 @@ export class BatchHitComponent implements OnInit {
   @Input()
   dataResponseCard: BatchResponse[];
 
+  lastHit: string = '';
+  selectedCat: string;
+  result = [];
+  // result: string = '';
+  searchedBatch: string;
   loadingHit:boolean = false;
 
   public APIdata = [];
@@ -24,7 +30,6 @@ export class BatchHitComponent implements OnInit {
 
   hit(){
     this.loadingHit = true;
-    console.log('awal: ' + this.loadingHit);
     this.APIdata = [];
     this._batchData.getServiceData()
         .subscribe(data => {
@@ -33,12 +38,25 @@ export class BatchHitComponent implements OnInit {
         });
   }
 
+  findData(str: string){
+    console.log('kepanggil : ' + str);
+    // this.result = this.dataResponseCard.find(x=>x.name == str).name;
+    // this.dataResponseCard = this.dataResponseCard.filter(function (data) {
+    //   data.name === str;
+    //   console.log(data.name);
+    // })
+    return this.dataResponseCard.filter((data) => {
+      return data.name === str;
+    })
+  }
+
   getResponse(name: string){
     if(name === 'VA Inquiry'){
       this.response = 'false';
     }else{
       this.response = 'true';
     }
+    this.lastHit = name + ' : ';
   }
 
   toDetail(){
