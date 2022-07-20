@@ -5,13 +5,18 @@
                 <p>Response {{result}}</p>
             </div>
 
+            <button (click)="hit()">HIT service</button>
+
+<!--            SEARCH FIELD-->
             <div class="batch-search">
 <!--                (ngModelChange)="findData($event)"-->
                 <input type="text"
+                       class="input-search"
                        [(ngModel)]="searchedBatch"
-                        placeholder="Search Service">
+                       placeholder="Search Service"
+                       (keyup)="filterIt($event)">
 
-                <button (click)="findData(searchedBatch)">
+                <button class="btn-search">
                     <mat-icon class="search-logo">search</mat-icon>
                 </button>
             </div>
@@ -21,7 +26,9 @@
         <div class="response-detail">
             <div *ngIf="loadingHit" class="loader"></div>
 
-            {{lastHit}} {{response}} <br>
+<!--            {{lastHit}} {{response}} -->
+            {{vaResponse}}
+            <br>
             <div class="items" *ngFor="let emp of APIdata">
                 {{emp.message}} {{emp.status}}
             </div>
@@ -29,24 +36,30 @@
     </div>
 
     <div class="card">
-<!--        FILTER-->
+<!--        FILTER FIELD-->
         <div class="batch-filter">
             <div style="display: flex">
-<!--                <mat-form-field appearance="fill">-->
-<!--                    <mat-label>Select an option</mat-label>-->
-<!--                    <mat-select [(value)]="selectedCat">-->
-<!--                        <mat-option value="DEV">DEV</mat-option>-->
-<!--                        <mat-option value="UAT">UAT</mat-option>-->
-<!--                    </mat-select>-->
-<!--                </mat-form-field>-->
+                <input type="text"
+                       class="input-filter"
+                       [(ngModel)]="searchedBatch"
+                       placeholder="Search by Category">
 
-                <button>
+                <button class="btn-filter">
                     <mat-icon>filter_list</mat-icon>
                 </button>
             </div>
         </div>
-            <button (click)="hit()">HIT service</button>
+
         <div class="batch-list">
+
+            <div class="batch-item"> <!-- LOOP DATA HERE -->
+                <img (click)="toDetail()" src="https://karir.bca.co.id/public/assets/img/logo-color.svg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><b>GET - DEV</b></h5>
+                    <p class="card-text">Hit beneran (VA)</p>
+                    <button (click)="RealResponse()" class="btn btn-primary">HIT!</button>
+                </div>
+            </div>
 
             <div *ngFor="let batch of dataResponseCard" class="batch-item"> <!-- LOOP DATA HERE -->
                 <img (click)="toDetail()" src="{{batch.img}}" class="card-img-top" alt="...">

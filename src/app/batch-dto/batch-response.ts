@@ -7,6 +7,10 @@ export interface BatchResponse{
     img?: string;
 }
 
+export interface mockResp{
+    balikan?: boolean;
+}
+
 export interface DogData{
     balikan?: boolean;
     message?: string;

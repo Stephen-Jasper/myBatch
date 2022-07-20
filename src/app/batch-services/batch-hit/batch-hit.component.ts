@@ -14,6 +14,7 @@ export class BatchHitComponent implements OnInit {
   dataResponseCard: BatchResponse[];
 
   lastHit: string = '';
+  vaResponse: boolean;
   selectedCat: string;
   result = [];
   // result: string = '';
@@ -26,6 +27,20 @@ export class BatchHitComponent implements OnInit {
   constructor(private _batchData: BatchServicesService) { }
 
   ngOnInit(): void {
+  }
+
+  RealResponse(){
+    // this._batchData.hitVABatch().subscribe(resp => {
+    //   if(resp){
+    //     this.vaResponse = resp;
+    //   }else{
+    //   }
+    // });
+  }
+
+  filterIt($event){
+    const value = $event.target.value;
+    this.dataResponseCard = this.dataResponseCard.filter(value);
   }
 
   hit(){
