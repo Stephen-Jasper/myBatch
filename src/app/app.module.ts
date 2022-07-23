@@ -12,6 +12,7 @@ import { BatchDetailComponent } from './batch-detail/batch-detail.component';
 import { MatIconModule } from "@angular/material/icon";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BatchServicesService } from "./batch-services/batch-services.service";
+import { BatchInputComponent } from './batch-services/batch-input/batch-input.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BatchServicesService } from "./batch-services/batch-services.service";
     BatchHeaderComponent,
     BatchServicesComponent,
     BatchHitComponent,
-    BatchDetailComponent
+    BatchDetailComponent,
+    BatchInputComponent
   ],
     imports: [
         BrowserModule,
