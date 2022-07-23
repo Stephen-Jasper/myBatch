@@ -1,20 +1,49 @@
 <form>
     <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <label for="BatchLogo">Batch logo (Optional)</label>
+        <input type="file" class="form-control-file" id="BatchLogo">
     </div>
+
     <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+        <label for="BatchName">Batch Name</label>
+        <input type="text" class="form-control" id="BatchName">
+    </div>
+
+    <div class="form-group">
+        <label for="BatchEnv">Environtment</label>
+        <select class="form-control" id="BatchEnv">
+            <option value="DEV">DEV</option>
+            <option value="UAT">UAT</option>
         </select>
     </div>
+
+    <div class="form-group batch-split">
+        <div class="batch-req">
+            <label for="ReqMethod">Req Method</label>
+            <select class="form-control" id="ReqMethod">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+            </select>
+        </div>
+
+        <div class="batch-fitur">
+            <label for="BatchFiture">Feature Name</label>
+            <input type="text" class="form-control" id="BatchFiture" placeholder="ex: Payroll">
+        </div>
+    </div>
+
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="mainUrl">Main Url</label>
+        <input type="text" class="form-control" id="mainUrl">
+    </div>
+
+    <div class="form-group">
+        <label for="endPoint">End Point</label>
+        <input type="text" class="form-control" id="endPoint" placeholder="/va-inquiry">
+    </div>
+
+    <div class="form-group">
+        <label for="BatchDesc">Description (Optional)</label>
+        <textarea class="form-control" id="BatchDesc" rows="3"></textarea>
     </div>
 </form>

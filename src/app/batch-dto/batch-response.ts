@@ -1,6 +1,6 @@
 export interface BatchData{
     batchId?: string;
-    categoryId?: string;
+    categoryId?: string; // Fiture name
     batchName?: string;
     description?: string;
     requestMethod?: string;
