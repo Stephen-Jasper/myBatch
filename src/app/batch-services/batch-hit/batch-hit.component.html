@@ -66,10 +66,26 @@
                 <div class="card-body">
                     <h5 class="card-title"><b>{{batch.requestMethod}} - {{batch.environtment}}</b></h5>
                     <p class="card-text">{{batch.batchName}}</p>
-                    <button (click)="getResponse(batch.batchName)" class="btn btn-primary">HIT!</button>
+                    <button (click)="selectBatchHit(batch.batchName)" class="btn btn-primary"
+                            data-toggle="modal" data-target="#popUpbatch">HIT!</button>
                 </div>
             </div>
         </div>
 
+    </div>
+
+    <!-- Pop up hit batch -->
+    <div *ngIf="popUpHit" class="modal fade" id="popUpbatch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Sure want to Hit {{selectedBatch}} ?
+                </div>
+                <div class="modal-footer">
+                    <button (click)="cancelHit()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button (click)="getResponse(selectedBatch)" type="button" class="btn btn-primary" data-dismiss="modal">Hit!</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

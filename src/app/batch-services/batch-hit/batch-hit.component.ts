@@ -15,12 +15,11 @@ export class BatchHitComponent implements OnInit {
   dataResponseCard: BatchData[];
 
   lastHit: string = '';
-  vaResponse: boolean;
-  selectedCat: string;
   result = [];
-  // result: string = '';
   searchedBatch: string;
+  selectedBatch: string;
   loadingHit:boolean = false;
+  popUpHit:boolean = false;
 
   public APIdata = [];
   response:string = 'Get response by click "Hit!"';
@@ -61,6 +60,11 @@ export class BatchHitComponent implements OnInit {
     })
   }
 
+  selectBatchHit(batchName: string){
+    this.selectedBatch = batchName;
+    this.popUpHit = true;
+  }
+
   getResponse(name: string){
     if(name === 'VA Inquiry'){
       this.response = 'false';
@@ -68,10 +72,16 @@ export class BatchHitComponent implements OnInit {
       this.response = 'true';
     }
     this.lastHit = name + ' : ';
+    this.popUpHit = false;
+    window.scroll(0,0);
   }
 
   toDetail(){
     this.router.navigate(['/data-detail'])
+  }
+
+  cancelHit(){
+    this.popUpHit = false;
   }
 
 }
