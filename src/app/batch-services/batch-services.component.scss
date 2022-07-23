@@ -14,6 +14,7 @@
 
 .batch-component{
   display: flex;
+  justify-content: space-between;
   mat-icon{
     align-self: center;
   }
@@ -30,7 +31,6 @@
 
 .service-list{
   font-size: 20px;
-  //width: 23%; // sblmnya min-width: 300px
   min-width: 300px; // 300 soalnya di laptop rumah baru rapih
 
   .service-add{
@@ -56,13 +56,13 @@
 .service-hit{
   font-size: 25px;
   width: 100%;
-  //min-width: 850px;
-  //background-color: red;
 }
 
 .service-loop{
+  width: 85%;
   ul{
     list-style-type: none;
+    padding: 0;
     a{
       color: #212529;
     }
@@ -73,8 +73,4 @@
 }
 
 //@media screen and (max-width: 1020px) {
-//  .service-hit{
-//    width: 80%;
-//    background-color: red;
-//  }
 //}

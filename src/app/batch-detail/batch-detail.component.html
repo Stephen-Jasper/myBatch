@@ -30,8 +30,20 @@
             {{date |date: 'd MMM YYYY HH:mm:ss a'}}
         </div>
     </div>
+<!--    CONTENT-->
+    <div class="batch-card">
+        <img class="card-img-det" src="https://karir.bca.co.id/public/assets/img/logo-color.svg" alt="...">
 
-    <app-batch-services></app-batch-services>
+        <div class="batch-wiki">
+            <h5 class="text-title"><b>GET - DEV</b> <br>
+                <b>VA Inquiry</b>
+            </h5>
+            <p class="batch-text">https://localhost:400/va-inquiry</p>
+            <p class="batch-desc">VA-Inquiry, batch inquiry data untuk sync admin fee transaksi post-dated dari db transfer ke db fnd</p>
+            <button (click)="backToList()" class="btn btn-primary backTo">Back</button>
+        </div>
+    </div>
+
 </div>
 
 <div class="footer">

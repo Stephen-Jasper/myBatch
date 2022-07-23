@@ -1,10 +1,13 @@
-export interface BatchResponse{
-    id?: string;
-    req_method?: string;
-    name?: string;
+export interface BatchData{
+    batchId?: string;
+    categoryId?: string;
+    batchName?: string;
+    description?: string;
+    requestMethod?: string;
+    environtment?: string;
     mainUrl?: string;
-    env?: string;
-    img?: string;
+    endpoint?: string;
+    imgUrl?: string;
 }
 
 export interface mockResp{

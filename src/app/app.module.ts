@@ -8,11 +8,10 @@ import {FormsModule} from "@angular/forms";
 import { BatchHeaderComponent } from './batch-header/batch-header.component';
 import { BatchServicesComponent } from './batch-services/batch-services.component';
 import { BatchHitComponent } from './batch-services/batch-hit/batch-hit.component';
-import { BatchDetailComponent } from './batch-services/batch-detail/batch-detail.component';
+import { BatchDetailComponent } from './batch-detail/batch-detail.component';
 import { MatIconModule } from "@angular/material/icon";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BatchServicesService } from "./batch-services/batch-services.service";
-// import { NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -30,10 +29,8 @@ import { BatchServicesService } from "./batch-services/batch-services.service";
         MatIconModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        // NgSelectModule
     ],
     exports: [
-        // NgSelectModule
     ],
   providers: [BatchServicesService],
   bootstrap: [AppComponent]

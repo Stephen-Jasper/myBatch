@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BatchResponse} from "../../batch-dto/batch-response";
+import {BatchData} from "../../batch-dto/batch-response";
 import {BatchServicesService} from "../batch-services.service";
 import {$0} from "@angular/compiler/src/chars";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-batch-hit',
@@ -11,7 +12,7 @@ import {$0} from "@angular/compiler/src/chars";
 export class BatchHitComponent implements OnInit {
 
   @Input()
-  dataResponseCard: BatchResponse[];
+  dataResponseCard: BatchData[];
 
   lastHit: string = '';
   vaResponse: boolean;
@@ -24,7 +25,8 @@ export class BatchHitComponent implements OnInit {
   public APIdata = [];
   response:string = 'Get response by click "Hit!"';
 
-  constructor(private _batchData: BatchServicesService) { }
+  constructor(private _batchData: BatchServicesService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -54,14 +56,8 @@ export class BatchHitComponent implements OnInit {
   }
 
   findData(str: string){
-    console.log('kepanggil : ' + str);
-    // this.result = this.dataResponseCard.find(x=>x.name == str).name;
-    // this.dataResponseCard = this.dataResponseCard.filter(function (data) {
-    //   data.name === str;
-    //   console.log(data.name);
-    // })
     return this.dataResponseCard.filter((data) => {
-      return data.name === str;
+      return data.batchName === str;
     })
   }
 
@@ -75,7 +71,7 @@ export class BatchHitComponent implements OnInit {
   }
 
   toDetail(){
-    alert('To Detail');
+    this.router.navigate(['/data-detail'])
   }
 
 }
