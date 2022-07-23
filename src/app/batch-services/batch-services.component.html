@@ -5,7 +5,8 @@
         <div class="service-list">
             <div class="service-add">
                 <p style="align-self: center">Batch inquiry</p>
-                <mat-icon (click)="addBatch()" class="create-service">add</mat-icon>
+                <mat-icon (click)="addBatch()" class="create-service"
+                          data-toggle="modal" data-target="#createBatch">add</mat-icon>
             </div>
 
             <div class="line"></div>
@@ -22,14 +23,14 @@
             </div>
         </div>
         <div class="service-hit">
-<!--            COMPONENT TO HIT SERVICES-->
+<!--            COMPONENT CARD TO HIT SERVICES-->
                 <app-batch-hit [dataResponseCard]="dataResponse"></app-batch-hit>
         </div>
     </div>
 
 
     <!-- Popup delete -->
-    <div *ngIf="showPopup" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div *ngIf="showPopupDelete" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -37,7 +38,22 @@
                 </div>
                 <div class="modal-footer">
                     <button (click)="cancelDel()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button (click)="delete()" type="button" class="btn btn-primary">Delete</button>
+                    <button (click)="deleteService()" type="button" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Create -->
+    <div *ngIf="showPopupCreate" class="modal fade" id="createBatch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <app-batch-input></app-batch-input>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="cancelDel()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button (click)="createService()" type="button" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>

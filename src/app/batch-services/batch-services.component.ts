@@ -9,7 +9,8 @@ import {BatchServicesService} from "./batch-services.service";
 })
 export class BatchServicesComponent implements OnInit {
 
-  showPopup:boolean = false;
+  showPopupDelete:boolean = false;
+  showPopupCreate:boolean = false;
   dataResponse: BatchData[];
   data = [];
   constructor(private batchService: BatchServicesService) { }
@@ -78,24 +79,30 @@ export class BatchServicesComponent implements OnInit {
   }
 
   addBatch(){
-    alert('Add Batch');
+    this.showPopupCreate = true;
+  }
+
+  createService(){
+    // HIT SERVICE CREATE
+    window.location.reload();
   }
 
   activePopUp(){
-    this.showPopup = true;
+    this.showPopupDelete = true;
   }
 
-  delete(){
+  deleteService(){
     alert('Batch deleted!');
     window.location.reload();
   }
 
   cancelDel(){
-    this.showPopup =false;
+    this.showPopupDelete =false;
   }
 
   edit(){
     alert('Edit batch');
   }
+
 
 }

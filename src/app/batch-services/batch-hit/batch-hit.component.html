@@ -25,9 +25,7 @@
 <!--        RESPONSE FIELD-->
         <div class="response-detail">
             <div *ngIf="loadingHit" class="loader"></div>
-
             {{lastHit}} {{response}}
-<!--            {{vaResponse}}-->
             <br>
             <div class="items" *ngFor="let emp of APIdata">
                 {{emp.message}} {{emp.status}}
@@ -51,15 +49,6 @@
         </div>
 
         <div class="batch-list">
-
-<!--            <div class="batch-item"> &lt;!&ndash; LOOP DATA HERE &ndash;&gt;-->
-<!--                <img (click)="toDetail()" src="https://karir.bca.co.id/public/assets/img/logo-color.svg" class="card-img-top" alt="...">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title"><b>GET - DEV</b></h5>-->
-<!--                    <p class="card-text">Hit beneran (VA)</p>-->
-<!--                    <button (click)="RealResponse()" class="btn btn-primary">HIT!</button>-->
-<!--                </div>-->
-<!--            </div>-->
 
             <div *ngFor="let batch of dataResponseCard" class="batch-item"> <!-- LOOP DATA HERE -->
                 <img (click)="toDetail()" src="{{batch.imgUrl}}" class="card-img-top" alt="...">
