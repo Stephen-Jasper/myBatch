@@ -18,13 +18,15 @@ export class BatchHitComponent implements OnInit {
   result = [];
   searchedBatch: string;
   selectedBatch: string;
+  selectedId: string;
   loadingHit:boolean = false;
   popUpHit:boolean = false;
+  executeResponse: boolean = false;
 
   public APIdata = [];
-  response:string = 'Get response by click "Hit!"';
+  guide:string = 'Get response by click "Hit!"';
 
-  constructor(private _batchData: BatchServicesService,
+  constructor(private _batchService: BatchServicesService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class BatchHitComponent implements OnInit {
   hit(){
     this.loadingHit = true;
     this.APIdata = [];
-    this._batchData.getServiceData()
+    this._batchService.getServiceData()
         .subscribe(data => {
           this.APIdata.push(data)
           this.loadingHit = false;
@@ -60,20 +62,33 @@ export class BatchHitComponent implements OnInit {
     })
   }
 
-  selectBatchHit(batchName: string){
+  selectBatchHit(batchName: string, batchId: string){
     this.selectedBatch = batchName;
+    this.selectedId = batchId;
     this.popUpHit = true;
   }
 
-  getResponse(name: string){
-    if(name === 'VA Inquiry'){
-      this.response = 'false';
-    }else{
-      this.response = 'true';
-    }
-    this.lastHit = name + ' : ';
+  getResponse(batchId: string, batchName: string){
+    this._batchService.executeBatch(batchId).toPromise().then((response) => {
+      if(response) {
+        this.executeResponse = response;
+      }else{
+        window.location.reload();
+        this.router.navigate(['/401']);
+      }
+    }).catch(response => {
+      window.scrollTo(0,0);
+    });
+    this.guide = '';
+    this.selectedBatch = batchName;
+    this.lastHit = batchName + ' : ';
     this.popUpHit = false;
-    window.scroll(0,0);
+    // if(batchId === 'VA Inquiry'){
+    //   this.executeResponse = false;
+    // }else{
+    //   this.executeResponse = true;
+    // }
+    // window.scroll(0,0);
   }
 
   toDetail(){

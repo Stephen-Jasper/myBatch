@@ -25,7 +25,7 @@ export class BatchServicesComponent implements OnInit {
     //     batchName: 'Payroll Inquiry ',
     //     description: 'blablabla',
     //     requestMethod: 'GET',
-    //     environtment: 'DEV',
+    //     environment: 'DEV',
     //     mainUrl: 'https://www.instagram.com',
     //     endpoint: 'dataBatch',
     //     imgUrl: '../assets/kuromi.png'
@@ -36,7 +36,7 @@ export class BatchServicesComponent implements OnInit {
     //     batchName: 'Transfer Inquiry ',
     //     description: 'blablabla',
     //     requestMethod: 'GET',
-    //     environtment: 'UAT',
+    //     environment: 'UAT',
     //     mainUrl: 'https://www.facebook.com',
     //     endpoint: 'dataBatch',
     //     imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
@@ -47,7 +47,7 @@ export class BatchServicesComponent implements OnInit {
     //     batchName: 'VA Inquiry ',
     //     description: 'blablabla',
     //     requestMethod: 'GET',
-    //     environtment: 'DEV',
+    //     environment: 'DEV',
     //     mainUrl: 'https://www.facebook.com',
     //     endpoint: 'dataBatch',
     //     imgUrl: '../assets/Kero2.jpg'
@@ -58,7 +58,7 @@ export class BatchServicesComponent implements OnInit {
     //     batchName: 'Transfer DOM Inquiry ',
     //     description: 'blablabla',
     //     requestMethod: 'GET',
-    //     environtment: 'UAT',
+    //     environment: 'UAT',
     //     mainUrl: 'https://www.facebook.com',
     //     endpoint: 'dataBatch',
     //     imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
@@ -80,19 +80,6 @@ export class BatchServicesComponent implements OnInit {
     });
 
   }
-
-  // getDataBatch2(){
-  //   this.batchService.getAllBatchData().subscribe(response => {
-  //     if (response.output_schema.error_code === 'MBB-00-000') { // Success Get Data
-  //       this.dataResponse = response.output_schema;
-  //     }else { // Failed
-  //       window.location.reload();
-  //       this.router.navigate(['/401']);
-  //     }
-  //   }, error => {
-  //     this.router.navigate(['/401']);
-  //   })
-  // }
 
   addBatch(){
     this.showPopupCreate = true;

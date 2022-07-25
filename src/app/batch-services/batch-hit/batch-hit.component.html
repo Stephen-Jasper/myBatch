@@ -5,7 +5,7 @@
                 <p>Response</p>
             </div>
 
-<!--            <button (click)="hit()">HIT service</button>-->
+<!--            <button (click)="hit()">HIT service</button> API DARI SERVICE-->
 
 <!--            SEARCH FIELD-->
             <div class="batch-search">
@@ -25,7 +25,8 @@
 <!--        RESPONSE FIELD-->
         <div class="response-detail">
             <div *ngIf="loadingHit" class="loader"></div>
-            {{lastHit}} {{response}}
+            {{lastHit}} {{guide}} {{executeResponse}}
+<!--            <p *ngIf="executeResponse === true"> {{executeResponse}} </p>-->
             <br>
             <div class="items" *ngFor="let emp of APIdata">
                 {{emp.message}} {{emp.status}}
@@ -55,7 +56,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><b>{{batch.requestMethod}} - {{batch.environment}}</b></h5>
                     <p class="card-text">{{batch.batchName}}</p>
-                    <button (click)="selectBatchHit(batch.batchName)" class="btn btn-primary"
+                    <button (click)="selectBatchHit(batch.batchName, batch.batchId)" class="btn btn-primary"
                             data-toggle="modal" data-target="#popUpbatch">HIT!</button>
                 </div>
             </div>
@@ -72,7 +73,7 @@
                 </div>
                 <div class="modal-footer">
                     <button (click)="cancelHit()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button (click)="getResponse(selectedBatch)" type="button" class="btn btn-primary" data-dismiss="modal">Hit!</button>
+                    <button (click)="getResponse(selectedId, selectedBatch)" type="button" class="btn btn-primary" data-dismiss="modal">Hit!</button>
                 </div>
             </div>
         </div>

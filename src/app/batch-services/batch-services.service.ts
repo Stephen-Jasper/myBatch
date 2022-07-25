@@ -31,12 +31,23 @@ export class BatchServicesService {
         )
   }
 
-    errorMapping(error): Observable<any> {
-        if (error.status === 400) {
-            this.router.navigate(['/404']).then(r => null);
-        } else if (error.status === 408 || error.status === 500) {
-            return throwError(error.error.error_schema);
-        }
-        return error;
-    }
+  executeBatch(batchId: string): Observable<any>{
+      return this.http.get<ServiceResponse<any>>(`${environment.apiUrl}/hit/batch/${batchId}`)
+          .pipe(
+              map(response =>{
+                  return response;
+              }), catchError((error) => {
+                  return this.errorMapping(error);
+              })
+          )
+  }
+
+  errorMapping(error): Observable<any> {
+      if (error.status === 400) {
+          this.router.navigate(['/404']).then(r => null);
+      } else if (error.status === 408 || error.status === 500) {
+          return throwError(error.error.error_schema);
+      }
+      return error;
+  }
 }
