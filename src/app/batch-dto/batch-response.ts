@@ -4,7 +4,7 @@ export interface BatchData{
     batchName?: string;
     description?: string;
     requestMethod?: string;
-    environtment?: string;
+    environment?: string;
     mainUrl?: string;
     endpoint?: string;
     imgUrl?: string;

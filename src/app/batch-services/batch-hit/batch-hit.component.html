@@ -53,7 +53,7 @@
             <div *ngFor="let batch of dataResponseCard" class="batch-item"> <!-- LOOP DATA HERE -->
                 <img (click)="toDetail()" src="{{batch.imgUrl}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title"><b>{{batch.requestMethod}} - {{batch.environtment}}</b></h5>
+                    <h5 class="card-title"><b>{{batch.requestMethod}} - {{batch.environment}}</b></h5>
                     <p class="card-text">{{batch.batchName}}</p>
                     <button (click)="selectBatchHit(batch.batchName)" class="btn btn-primary"
                             data-toggle="modal" data-target="#popUpbatch">HIT!</button>

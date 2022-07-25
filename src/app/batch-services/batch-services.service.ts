@@ -21,7 +21,7 @@ export class BatchServicesService {
   }
 
   getAllBatchData(): Observable<any>{
-    return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/get-list-batch`)
+    return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/batch/get-list-batch`)
         .pipe(
             map(response =>{
               return response;
