@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BatchData} from "../batch-dto/batch-response";
 import {BatchServicesService} from "./batch-services.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-batch-services',
@@ -13,70 +14,85 @@ export class BatchServicesComponent implements OnInit {
   showPopupCreate:boolean = false;
   dataResponse: BatchData[];
   data = [];
-  constructor(private batchService: BatchServicesService) { }
+  constructor(private batchService: BatchServicesService,
+              private router: Router) { }
 
   ngOnInit(): void {
-    this.dataResponse = [
-      {
-        batchId: '1',
-        categoryId: '1',
-        batchName: 'Payroll Inquiry ',
-        description: 'blablabla',
-        requestMethod: 'GET',
-        environtment: 'DEV',
-        mainUrl: 'https://www.instagram.com',
-        endpoint: 'dataBatch',
-        imgUrl: '../assets/kuromi.png'
-      },
-      {
-        batchId: '2',
-        categoryId: '1',
-        batchName: 'Transfer Inquiry ',
-        description: 'blablabla',
-        requestMethod: 'GET',
-        environtment: 'UAT',
-        mainUrl: 'https://www.facebook.com',
-        endpoint: 'dataBatch',
-        imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
-      },
-      {
-        batchId: '3',
-        categoryId: '2',
-        batchName: 'VA Inquiry ',
-        description: 'blablabla',
-        requestMethod: 'GET',
-        environtment: 'DEV',
-        mainUrl: 'https://www.facebook.com',
-        endpoint: 'dataBatch',
-        imgUrl: '../assets/Kero2.jpg'
-      },
-      {
-        batchId: '4',
-        categoryId: '3',
-        batchName: 'Transfer DOM Inquiry ',
-        description: 'blablabla',
-        requestMethod: 'GET',
-        environtment: 'UAT',
-        mainUrl: 'https://www.facebook.com',
-        endpoint: 'dataBatch',
-        imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
-      },
-    ]
+    // this.dataResponse = [
+    //   {
+    //     batchId: '1',
+    //     categoryId: '1',
+    //     batchName: 'Payroll Inquiry ',
+    //     description: 'blablabla',
+    //     requestMethod: 'GET',
+    //     environtment: 'DEV',
+    //     mainUrl: 'https://www.instagram.com',
+    //     endpoint: 'dataBatch',
+    //     imgUrl: '../assets/kuromi.png'
+    //   },
+    //   {
+    //     batchId: '2',
+    //     categoryId: '1',
+    //     batchName: 'Transfer Inquiry ',
+    //     description: 'blablabla',
+    //     requestMethod: 'GET',
+    //     environtment: 'UAT',
+    //     mainUrl: 'https://www.facebook.com',
+    //     endpoint: 'dataBatch',
+    //     imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
+    //   },
+    //   {
+    //     batchId: '3',
+    //     categoryId: '2',
+    //     batchName: 'VA Inquiry ',
+    //     description: 'blablabla',
+    //     requestMethod: 'GET',
+    //     environtment: 'DEV',
+    //     mainUrl: 'https://www.facebook.com',
+    //     endpoint: 'dataBatch',
+    //     imgUrl: '../assets/Kero2.jpg'
+    //   },
+    //   {
+    //     batchId: '4',
+    //     categoryId: '3',
+    //     batchName: 'Transfer DOM Inquiry ',
+    //     description: 'blablabla',
+    //     requestMethod: 'GET',
+    //     environtment: 'UAT',
+    //     mainUrl: 'https://www.facebook.com',
+    //     endpoint: 'dataBatch',
+    //     imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
+    //   },
+    // ]
     this.getDataBatch();
   }
 
   getDataBatch(){
     this.batchService.getAllBatchData().toPromise().then((response) => {
-      // if (response.error_schema.error_code === 'MBB-00-000') {
-      //   this.dataResponse = response.output_schema;
-      // } else { // kalo gagal dpt data
-      //   window.location.reload();
-      // }
+      if (response) { // Success Get Data
+        this.dataResponse = response;
+      } else { // Failed
+        window.location.reload();
+        this.router.navigate(['/401']);
+      }
     }).catch(response => {
       window.scrollTo(0, 0);
     });
 
   }
+
+  // getDataBatch2(){
+  //   this.batchService.getAllBatchData().subscribe(response => {
+  //     if (response.output_schema.error_code === 'MBB-00-000') { // Success Get Data
+  //       this.dataResponse = response.output_schema;
+  //     }else { // Failed
+  //       window.location.reload();
+  //       this.router.navigate(['/401']);
+  //     }
+  //   }, error => {
+  //     this.router.navigate(['/401']);
+  //   })
+  // }
 
   addBatch(){
     this.showPopupCreate = true;
