@@ -11,11 +11,11 @@
 
             <div class="line"></div>
             <div class="service-loop">
-                <ul *ngFor="let emp of dataResponse">
+                <ul *ngFor="let batch of dataResponse">
                     <div class="batch-component">
-                        <a href="{{emp.batchId}}" target="_blank"><li>{{emp.batchName}}</li></a>  <!-- href ke routing id-->
+                        <a href="{{batch.batchId}}" target="_blank"><li>{{batch.batchName}}</li></a>  <!-- href ke routing id-->
                         <div class="tools">
-                            <mat-icon (click)="activePopUp()" data-toggle="modal" data-target="#exampleModalCenter" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                            <mat-icon (click)="activePopUp(batch.batchId, batch.batchName)" data-toggle="modal" data-target="#exampleModalCenter" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
                             <mat-icon (click)="edit()" aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
                         </div>
                     </div>
@@ -33,12 +33,12 @@
     <div *ngIf="showPopupDelete" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-body">
-                    Sure want to delete?
+                <div class="modal-body confirm-hit">
+                    Sure want to <b style="color: red">Delete </b> <b style="color: #0064b6">{{selected_Batch}}</b> ?
                 </div>
                 <div class="modal-footer">
                     <button (click)="cancelDel()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button (click)="deleteService()" type="button" class="btn btn-primary">Delete</button>
+                    <button (click)="deleteService(selected_Id)" type="button" class="btn btn-primary">Delete</button>
                 </div>
             </div>
         </div>

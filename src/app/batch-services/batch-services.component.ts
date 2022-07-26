@@ -10,6 +10,8 @@ import {Router} from "@angular/router";
 })
 export class BatchServicesComponent implements OnInit {
 
+  selected_Batch: string;
+  selected_Id: string;
   showPopupDelete:boolean = false;
   showPopupCreate:boolean = false;
   dataResponse: BatchData[];
@@ -90,13 +92,23 @@ export class BatchServicesComponent implements OnInit {
     window.location.reload();
   }
 
-  activePopUp(){
+  activePopUp(id: string, name:string){
+    this.selected_Id = id;
+    this.selected_Batch = name;
     this.showPopupDelete = true;
   }
 
-  deleteService(){
-    alert('Batch deleted!');
-    window.location.reload();
+  deleteService(DeletedId: string){
+    this.batchService.deleteBatch(DeletedId).toPromise().then((response) => {
+      if(response){
+        alert("Succesfully delete batch!");
+        window.location.reload();
+      }else{
+        this.router.navigate(['/401']);
+      }
+    }).catch(err => {
+      window.scrollTo(0,0);
+    })
   }
 
   cancelDel(){

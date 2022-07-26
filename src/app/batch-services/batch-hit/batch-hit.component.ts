@@ -21,7 +21,7 @@ export class BatchHitComponent implements OnInit {
   selectedId: string;
   loadingHit:boolean = false;
   popUpHit:boolean = false;
-  executeResponse: boolean = false;
+  executeResponse: boolean;
 
   public APIdata = [];
   guide:string = 'Get response by click "Hit!"';
@@ -30,15 +30,6 @@ export class BatchHitComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-  }
-
-  RealResponse(){
-    // this._batchData.hitVABatch().subscribe(resp => {
-    //   if(resp){
-    //     this.vaResponse = resp;
-    //   }else{
-    //   }
-    // });
   }
 
   filterIt($event){
