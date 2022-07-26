@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CategoryData} from "../../batch-dto/batch-response";
 
 @Component({
   selector: 'app-batch-input',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BatchInputComponent implements OnInit {
 
+  dataCat: CategoryData[];
   constructor() { }
 
   ngOnInit(): void {

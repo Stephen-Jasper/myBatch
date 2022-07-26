@@ -10,8 +10,8 @@ export interface BatchData{
     imgUrl?: string;
 }
 
-export interface mockResp{
-    balikan?: boolean;
+export interface CategoryData{
+    catName?: boolean;
 }
 
 export interface DogData{
