@@ -46,7 +46,7 @@ export class BatchServicesService {
 
   // DELETE BATCH
   deleteBatch(batchId: string): Observable<any>{
-      return this.http.get<ServiceResponse<any>>(`${environment.apiUrl}/batch/delete-batch/${batchId}`)
+      return this.http.delete<ServiceResponse<any>>(`${environment.apiUrl}/batch/delete-batch/${batchId}`)
           .pipe(
               map(response =>{
                   return response;
