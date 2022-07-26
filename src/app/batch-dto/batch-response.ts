@@ -11,7 +11,7 @@ export interface BatchData{
 }
 
 export interface CategoryData{
-    catName?: boolean;
+    categoryName?: string;
 }
 
 export interface DogData{

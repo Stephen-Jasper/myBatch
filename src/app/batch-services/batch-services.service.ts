@@ -16,6 +16,19 @@ export class BatchServicesService {
   constructor(private http: HttpClient,
               private router: Router) { }
 
+  getFeature(): Observable<any>{
+      return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/category/get-category`)
+          .pipe(
+              map(
+                  response =>{
+                      return response;
+                  }, catchError((error) => {
+                      return this.errorMapping(error);
+                  })
+              )
+          )
+  }
+
   getServiceData(): Observable<DogData[]>{
     return this.http.get<DogData[]>(this.url);
   }

@@ -28,16 +28,11 @@
 
         <div class="batch-fitur">
             <label for="batchFitur">Feature Name</label>
-            <select class="form-control" id="batchFitur">
-                <option value="GET">GET</option>
-                <option value="POST">POST</option>
+            <select [(ngModel)]="selectedLevel" (change)="upp()" class="form-control" id="batchFitur">
+                <option *ngFor="let cat of dataCat" value="{{cat}}">
+                    {{cat.categoryName}}</option>
             </select>
         </div>
-
-<!--        <div class="batch-fitur">-->
-<!--            <label for="BatchFiture">Feature Name</label>-->
-<!--            <input type="text" class="form-control" id="BatchFiture" placeholder="ex: Payroll">-->
-<!--        </div>-->
     </div>
 
     <div class="form-group">
