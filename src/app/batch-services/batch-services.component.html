@@ -1,5 +1,13 @@
 <div class="service-container">
-    <p class="page-title">My Batch Services</p>
+    <div class="batch-head">
+        <div>
+            <p class="page-title">My Batch Services</p>
+        </div>
+        <div>
+            <button (click)="popUpFeature()" class="btn btn-primary"
+                    data-toggle="modal" data-target="#createFeature">New Feature</button>
+        </div>
+    </div>
 
     <div class="service-data">
         <div class="service-list">
@@ -28,6 +36,25 @@
         </div>
     </div>
 
+    <!-- Popup CreateFeature -->
+    <div *ngIf="showPopupFeature" class="modal fade" id="createFeature" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body confirm-hit">
+                    <div class="form-group">
+                        <label for="featureName">Create new feature</label>
+                        <input type="text" [(ngModel)]="newFeature"
+                                class="form-control" id="featureName"
+                                placeholder="New feature name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button (click)="createFeature(newFeature)" class="btn btn-primary">Create Feature</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Popup delete -->
     <div *ngIf="showPopupDelete" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -51,10 +78,6 @@
                 <div class="modal-body">
                     <app-batch-input></app-batch-input>
                 </div>
-<!--                <div class="modal-footer">-->
-<!--                    <button (click)="cancelDel()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>-->
-<!--                    <button (click)="createService()" type="button" class="btn btn-primary">Save</button>-->
-<!--                </div>-->
             </div>
         </div>
     </div>

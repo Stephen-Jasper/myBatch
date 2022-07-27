@@ -28,7 +28,21 @@ export class InputServiceService {
         )
   }
 
-  // CREATE BATCH
+  //   CREATE NEW FEATURE
+  createNewFeature(newFreature: string): Observable<any>{
+      return this.http.post(`${environment.apiUrl}/category/add-category`, newFreature)
+          .pipe(
+              map(
+                  response => {
+                      return response;
+                  }, catchError((error) => {
+                      return this.errorMapping(error);
+                  })
+              )
+          )
+  }
+
+  // CREATE NEW BATCH
   createNewBatch(requestBody: BatchRequest): Observable<any>{
       return this.http.post(`${environment.apiUrl}/batch/add-batch`, requestBody)
           .pipe(

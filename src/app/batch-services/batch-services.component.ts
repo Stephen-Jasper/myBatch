@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {BatchData, BatchRequest} from "../batch-dto/batch-response";
 import {BatchServicesService} from "./batch-services.service";
 import {Router} from "@angular/router";
+import {InputServiceService} from "./batch-input/input-service.service";
 
 @Component({
   selector: 'app-batch-services',
@@ -12,12 +13,14 @@ export class BatchServicesComponent implements OnInit {
 
   selected_Batch: string;
   selected_Id: string;
-  showPopupDelete:boolean = false;
+  newFeature = '';
+  showPopupFeature:boolean = false;
   showPopupCreate:boolean = false;
+  showPopupDelete:boolean = false;
   dataResponse: BatchData[];
-  inputRequest: BatchRequest;
   data = [];
   constructor(private batchService: BatchServicesService,
+              private inputService: InputServiceService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -84,20 +87,36 @@ export class BatchServicesComponent implements OnInit {
 
   }
 
-  storeData(data: BatchRequest){
-    this.inputRequest = data;
+  popUpFeature(){
+    this.showPopupFeature = true;
+  }
+
+  createFeature(value: string){
+    if(value === ''){
+      alert('Please enter feature name!');
+    }else{ // HIT SERVICE
+      this.inputService.createNewFeature(value).toPromise().then((response) => {
+        if(response){
+          alert("Succesfully add feature!");
+          window.location.reload();
+        }else{
+          this.router.navigate(['/401']);
+        }
+      }).catch(err => {
+        window.scrollTo(0,0);
+      })
+    }
   }
 
   addBatch(){
     this.showPopupCreate = true;
   }
 
-  createService(){
-    // HIT SERVICE CREATE
-    window.location.reload();
+  cancelDel(){
+    this.showPopupDelete =false;
   }
 
-  activePopUp(id: string, name:string){
+  activePopUp(id: string, name:string){ // FUNCTION FOR DELETE
     this.selected_Id = id;
     this.selected_Batch = name;
     this.showPopupDelete = true;
@@ -114,10 +133,6 @@ export class BatchServicesComponent implements OnInit {
     }).catch(err => {
       window.scrollTo(0,0);
     })
-  }
-
-  cancelDel(){
-    this.showPopupDelete =false;
   }
 
   edit(){
