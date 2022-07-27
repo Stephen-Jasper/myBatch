@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CategoryData} from "../../batch-dto/batch-response";
 import {Route, Router} from "@angular/router";
 import {BatchServicesService} from "../batch-services.service";
+import {InputServiceService} from "./input-service.service";
 
 @Component({
   selector: 'app-batch-input',
@@ -14,24 +15,24 @@ export class BatchInputComponent implements OnInit {
   selectedLevel = '';
 
   constructor(private router: Router,
-              private inputService: BatchServicesService) { } // Servicenya sesuaikan
+              private inputService: InputServiceService) { } // Servicenya sesuaikan
 
   ngOnInit(): void {
-    this.dataCat = [
-      {
-        categoryName: 'Transfer Payroll'
-      },
-      {
-        categoryName: 'Transfer VA'
-      },
-      {
-        categoryName: 'Transfer BCA'
-      },
-      {
-        categoryName: 'Transfer DOM'
-      }
-    ]
-   // this.getFeatureData();
+    // this.dataCat = [
+    //   {
+    //     categoryName: 'Transfer Payroll'
+    //   },
+    //   {
+    //     categoryName: 'Transfer VA'
+    //   },
+    //   {
+    //     categoryName: 'Transfer BCA'
+    //   },
+    //   {
+    //     categoryName: 'Transfer DOM'
+    //   }
+    // ]
+   this.getFeatureData();
   }
 
   getFeatureData(){

@@ -22,14 +22,13 @@
             <label for="ReqMethod">Req Method</label>
             <select class="form-control" id="ReqMethod">
                 <option value="GET">GET</option>
-                <option value="POST">POST</option>
             </select>
         </div>
 
         <div class="batch-fitur">
             <label for="batchFitur">Feature Name</label>
-            <select [(ngModel)]="selectedLevel" (change)="upp()" class="form-control" id="batchFitur">
-                <option *ngFor="let cat of dataCat" value="{{cat}}">
+            <select  class="form-control" id="batchFitur">
+                <option *ngFor="let cat of dataCat">
                     {{cat.categoryName}}</option>
             </select>
         </div>

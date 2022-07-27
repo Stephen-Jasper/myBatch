@@ -20,53 +20,53 @@ export class BatchServicesComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.dataResponse = [
-      {
-        batchId: '1',
-        categoryId: '1',
-        batchName: 'Payroll Inquiry ',
-        description: 'blablabla',
-        requestMethod: 'GET',
-        environment: 'DEV',
-        mainUrl: 'https://www.instagram.com',
-        endpoint: 'dataBatch',
-        imgUrl: '../assets/kuromi.png'
-      },
-      {
-        batchId: '2',
-        categoryId: '1',
-        batchName: 'Transfer Inquiry ',
-        description: 'blablabla',
-        requestMethod: 'GET',
-        environment: 'UAT',
-        mainUrl: 'https://www.facebook.com',
-        endpoint: 'dataBatch',
-        imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
-      },
-      {
-        batchId: '3',
-        categoryId: '2',
-        batchName: 'VA Inquiry ',
-        description: 'blablabla',
-        requestMethod: 'GET',
-        environment: 'DEV',
-        mainUrl: 'https://www.facebook.com',
-        endpoint: 'dataBatch',
-        imgUrl: '../assets/Kero2.jpg'
-      },
-      {
-        batchId: '4',
-        categoryId: '3',
-        batchName: 'Transfer DOM Inquiry ',
-        description: 'blablabla',
-        requestMethod: 'GET',
-        environment: 'UAT',
-        mainUrl: 'https://www.facebook.com',
-        endpoint: 'dataBatch',
-        imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
-      },
-    ]
-    // this.getDataBatch();
+    // this.dataResponse = [
+    //   {
+    //     batchId: '1',
+    //     categoryId: '1',
+    //     batchName: 'Payroll Inquiry ',
+    //     description: 'blablabla',
+    //     requestMethod: 'GET',
+    //     environment: 'DEV',
+    //     mainUrl: 'https://www.instagram.com',
+    //     endpoint: 'dataBatch',
+    //     imgUrl: '../assets/kuromi.png'
+    //   },
+    //   {
+    //     batchId: '2',
+    //     categoryId: '1',
+    //     batchName: 'Transfer Inquiry ',
+    //     description: 'blablabla',
+    //     requestMethod: 'GET',
+    //     environment: 'UAT',
+    //     mainUrl: 'https://www.facebook.com',
+    //     endpoint: 'dataBatch',
+    //     imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
+    //   },
+    //   {
+    //     batchId: '3',
+    //     categoryId: '2',
+    //     batchName: 'VA Inquiry ',
+    //     description: 'blablabla',
+    //     requestMethod: 'GET',
+    //     environment: 'DEV',
+    //     mainUrl: 'https://www.facebook.com',
+    //     endpoint: 'dataBatch',
+    //     imgUrl: '../assets/Kero2.jpg'
+    //   },
+    //   {
+    //     batchId: '4',
+    //     categoryId: '3',
+    //     batchName: 'Transfer DOM Inquiry ',
+    //     description: 'blablabla',
+    //     requestMethod: 'GET',
+    //     environment: 'UAT',
+    //     mainUrl: 'https://www.facebook.com',
+    //     endpoint: 'dataBatch',
+    //     imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
+    //   },
+    // ]
+    this.getDataBatch();
   }
 
   getDataBatch(){

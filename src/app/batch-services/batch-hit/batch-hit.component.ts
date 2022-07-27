@@ -1,8 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BatchData} from "../../batch-dto/batch-response";
+import {CategoryData} from "../../batch-dto/batch-response";
 import {BatchServicesService} from "../batch-services.service";
 import {$0} from "@angular/compiler/src/chars";
 import {Router} from "@angular/router";
+import {InputServiceService} from "../batch-input/input-service.service";
 
 @Component({
   selector: 'app-batch-hit',
@@ -15,7 +17,7 @@ export class BatchHitComponent implements OnInit {
   dataResponseCard: BatchData[];
 
   lastHit: string = '';
-  result = [];
+  categoryList: CategoryData[];
   searchedBatch: string;
   selectedBatch: string;
   selectedId: string;
@@ -23,13 +25,32 @@ export class BatchHitComponent implements OnInit {
   popUpHit:boolean = false;
   executeResponse: boolean;
 
-  public APIdata = [];
+  // public APIdata = [];
   guide:string = 'Get response by click "Hit!"';
 
   constructor(private _batchService: BatchServicesService,
+              private dataService: InputServiceService,
               private router: Router) { }
 
   ngOnInit(): void {
+    this.getCategoryFilter();
+  }
+
+  getCategoryFilter(){
+    this.dataService.getFeature().toPromise().then((response) => {
+      if(response){
+        this.categoryList = response;
+      }else { // Failed
+        window.location.reload();
+        this.router.navigate(['/401']);
+      }
+    }).catch(response => {
+      window.scrollTo(0, 0);
+    })
+  }
+
+  filterbyCategory(){
+    alert('Data Filtered');
   }
 
   filterIt($event){
@@ -37,15 +58,15 @@ export class BatchHitComponent implements OnInit {
     this.dataResponseCard = this.dataResponseCard.filter(value);
   }
 
-  hit(){
-    this.loadingHit = true;
-    this.APIdata = [];
-    this._batchService.getServiceData()
-        .subscribe(data => {
-          this.APIdata.push(data)
-          this.loadingHit = false;
-        });
-  }
+  // hit(){
+  //   this.loadingHit = true;
+  //   this.APIdata = [];
+  //   this._batchService.getServiceData()
+  //       .subscribe(data => {
+  //         this.APIdata.push(data)
+  //         this.loadingHit = false;
+  //       });
+  // }
 
   findData(str: string){
     return this.dataResponseCard.filter((data) => {

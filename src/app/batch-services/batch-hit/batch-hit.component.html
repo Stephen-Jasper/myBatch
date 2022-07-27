@@ -25,9 +25,9 @@
             <div *ngIf="loadingHit" class="loader"></div>
             {{lastHit}} {{guide}} {{executeResponse}}
             <br>
-            <div class="items" *ngFor="let emp of APIdata">
-                {{emp.message}} {{emp.status}}
-            </div>
+<!--            <div class="items" *ngFor="let emp of APIdata">-->
+<!--                {{emp.message}} {{emp.status}}-->
+<!--            </div>-->
         </div>
     </div>
 
@@ -35,23 +35,32 @@
 <!--        FILTER FIELD-->
         <div class="batch-filter">
             <div style="display: flex">
-                <input type="text"
-                       class="input-filter"
-                       [(ngModel)]="searchedBatch"
-                       placeholder="Search by Category">
+                <label for="batchFiturFilter"></label>
+                <select  class="form-control category-filter" id="batchFiturFilter">
+                    <option *ngFor="let cat of categoryList">
+                        {{cat.categoryName}}</option>
+                </select>
 
-                <button class="btn-filter">
+                <button (click)="filterbyCategory()" class="btn-filter">
                     <mat-icon>filter_list</mat-icon>
                 </button>
             </div>
         </div>
+
+<!--        <div class="batch-fitur">-->
+<!--            <label for="batchFitur">Feature Name</label>-->
+<!--            <select  class="form-control" id="batchFitur">-->
+<!--                <option *ngFor="let cat of dataCat">-->
+<!--                    {{cat.categoryName}}</option>-->
+<!--            </select>-->
+<!--        </div>-->
 
         <div class="batch-list">
 
             <div *ngFor="let batch of dataResponseCard" class="batch-item"> <!-- LOOP DATA HERE -->
                 <img (click)="toDetail()" src="{{batch.imgUrl}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title"><b>{{batch.requestMethod}} - {{batch.environment}}</b></h5>
+                    <h5 class="card-title"><b>{{batch.environment}}</b></h5>
                     <p class="card-text">{{batch.batchName}}</p>
                     <button (click)="selectBatchHit(batch.batchName, batch.batchId)" class="btn btn-primary"
                             data-toggle="modal" data-target="#popUpbatch">HIT!</button>
