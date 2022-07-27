@@ -4,7 +4,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BatchLoginComponent } from './batch-login/batch-login.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BatchHeaderComponent } from './batch-header/batch-header.component';
 import { BatchServicesComponent } from './batch-services/batch-services.component';
 import { BatchHitComponent } from './batch-services/batch-hit/batch-hit.component';
@@ -31,6 +31,7 @@ import { BatchInputComponent } from './batch-services/batch-input/batch-input.co
         MatIconModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        ReactiveFormsModule,
     ],
     exports: [
     ],

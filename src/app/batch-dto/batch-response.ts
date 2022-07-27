@@ -11,7 +11,19 @@ export interface BatchData{
 }
 
 export interface CategoryData{
+    categoryId?: string;
     categoryName?: string;
+}
+
+export interface BatchRequest{
+    categoryId?: string; // Fiture name
+    batchName?: string;
+    description?: string;
+    requestMethod?: string;
+    environment?: string;
+    mainUrl?: string;
+    endpoint?: string;
+    imgUrl?: string;
 }
 
 export interface DogData{

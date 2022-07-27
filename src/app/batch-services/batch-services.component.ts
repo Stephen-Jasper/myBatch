@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BatchData} from "../batch-dto/batch-response";
+import {BatchData, BatchRequest} from "../batch-dto/batch-response";
 import {BatchServicesService} from "./batch-services.service";
 import {Router} from "@angular/router";
 
@@ -15,6 +15,7 @@ export class BatchServicesComponent implements OnInit {
   showPopupDelete:boolean = false;
   showPopupCreate:boolean = false;
   dataResponse: BatchData[];
+  inputRequest: BatchRequest;
   data = [];
   constructor(private batchService: BatchServicesService,
               private router: Router) { }
@@ -81,6 +82,10 @@ export class BatchServicesComponent implements OnInit {
       window.scrollTo(0, 0);
     });
 
+  }
+
+  storeData(data: BatchRequest){
+    this.inputRequest = data;
   }
 
   addBatch(){
