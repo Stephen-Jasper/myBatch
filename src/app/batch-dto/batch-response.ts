@@ -16,12 +16,12 @@ export interface CategoryData{
 }
 
 export interface BatchRequest{
-    categoryId?: string; // Fiture name
-    batchName?: string;
+    category_id?: string; // Fiture name
+    batch_name?: string;
     description?: string;
-    requestMethod?: string;
+    request_method?: string;
     environment?: string;
-    mainUrl?: string;
+    main_url?: string;
     endpoint?: string;
     imgUrl?: string;
 }

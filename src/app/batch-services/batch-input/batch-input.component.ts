@@ -103,17 +103,27 @@ export class BatchInputComponent implements OnInit {
 
   submit(){
     this.requestBatch = {
-      categoryId: this.batchInputForm.controls['category_Name'].value,
-      batchName: this.batchInputForm.controls['batch_Name'].value,
+      category_id: this.batchInputForm.controls['category_Name'].value,
+      batch_name: this.batchInputForm.controls['batch_Name'].value,
       description: this.batchInputForm.controls['batch_Desc'].value,
-      requestMethod: this.batchInputForm.controls['req_Method'].value,
+      request_method: this.batchInputForm.controls['req_Method'].value,
       environment: this.batchInputForm.controls['batch_Environment'].value,
-      mainUrl: this.batchInputForm.controls['batch_url'].value,
+      main_url: this.batchInputForm.controls['batch_url'].value,
       endpoint: this.batchInputForm.controls['batch_endPoint'].value,
       imgUrl: this.batchInputForm.controls['batch_Logo'].value
     }
     console.log(this.requestBatch);
-    console.log('masuk submit');
+    this.inputService.createNewBatch(this.requestBatch).toPromise().then((response) => {
+      if(response){
+        alert('Success create new batch!');
+        window.location.reload();
+      }else{
+        this.router.navigate(['/401']);
+      }
+    }).catch(err => {
+      window.scrollTo(0,0);
+    })
+    console.log(this.requestBatch);
     // window.location.reload();
   }
 
