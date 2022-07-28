@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BatchData, BatchRequest} from "../batch-dto/batch-response";
+import {BatchData, BatchRequest, FeatureRequest} from "../batch-dto/batch-response";
 import {BatchServicesService} from "./batch-services.service";
 import {Router} from "@angular/router";
 import {InputServiceService} from "./batch-input/input-service.service";
@@ -18,6 +18,7 @@ export class BatchServicesComponent implements OnInit {
   showPopupCreate:boolean = false;
   showPopupDelete:boolean = false;
   dataResponse: BatchData[];
+  requestNewFeature: FeatureRequest;
   data = [];
   constructor(private batchService: BatchServicesService,
               private inputService: InputServiceService,
@@ -95,7 +96,10 @@ export class BatchServicesComponent implements OnInit {
     if(value === ''){
       alert('Please enter feature name!');
     }else{ // HIT SERVICE
-      this.inputService.createNewFeature(value).toPromise().then((response) => {
+      this.requestNewFeature = {
+        "category_name" : value
+      }
+      this.inputService.createNewFeature(this.requestNewFeature).toPromise().then((response) => {
         if(response){
           alert("Succesfully add feature!");
           window.location.reload();

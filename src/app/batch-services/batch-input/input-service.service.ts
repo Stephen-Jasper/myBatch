@@ -4,7 +4,7 @@ import {catchError, map, Observable, throwError} from "rxjs";
 import {ServiceResponse} from "../../batch-dto/service-response";
 import {environment} from "../../../environments/environment";
 import {Router} from "@angular/router";
-import {BatchRequest} from "../../batch-dto/batch-response";
+import {BatchRequest, FeatureRequest} from "../../batch-dto/batch-response";
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +29,8 @@ export class InputServiceService {
   }
 
   //   CREATE NEW FEATURE
-  createNewFeature(newFreature: string): Observable<any>{
-      return this.http.post(`${environment.apiUrl}/category/add-category`, newFreature)
+  createNewFeature(requestFeature: FeatureRequest): Observable<any>{
+      return this.http.post(`${environment.apiUrl}/category/add-category`, requestFeature)
           .pipe(
               map(
                   response => {

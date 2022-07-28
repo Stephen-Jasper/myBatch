@@ -15,6 +15,10 @@ export interface CategoryData{
     categoryName?: string;
 }
 
+export interface FeatureRequest{
+    category_name?: string;
+}
+
 export interface BatchRequest{
     category_id?: string; // Fiture name
     batch_name?: string;
