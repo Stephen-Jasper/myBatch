@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {interval} from "rxjs";
 import {DetailServiceService} from "./detail-service.service";
 import {BatchDataDetail} from "../batch-dto/batch-response";
+import {stringify} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-batch-detail',
@@ -14,8 +15,10 @@ export class BatchDetailComponent implements OnInit {
   date: Date | undefined;
   loadingDate: boolean = true;
   detailData: BatchDataDetail;
+  requestId: string;
 
   constructor(private router: Router,
+              private activeRoute: ActivatedRoute,
               private detailService: DetailServiceService) { }
 
   ngOnInit(): void {
@@ -24,11 +27,12 @@ export class BatchDetailComponent implements OnInit {
       this.date = new Date();
       this.loadingDate = false;
     });
+    this.requestId = stringify(this.activeRoute.snapshot.params);
     this.getDataDetail();
   }
 
   getDataDetail(){
-    this.detailService.getSelectedBatch('1').toPromise().then((response) =>{
+    this.detailService.getSelectedBatch(this.requestId).toPromise().then((response) =>{
       if(response){
         this.detailData = response;
       }else{
