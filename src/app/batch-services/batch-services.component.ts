@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BatchData, BatchRequest, FeatureRequest} from "../batch-dto/batch-response";
+import {BatchData, BatchRequest, CategoryData, FeatureRequest} from "../batch-dto/batch-response";
 import {BatchServicesService} from "./batch-services.service";
 import {Router} from "@angular/router";
 import {InputServiceService} from "./batch-input/input-service.service";
@@ -18,6 +18,7 @@ export class BatchServicesComponent implements OnInit {
   showPopupCreate:boolean = false;
   showPopupDelete:boolean = false;
   dataResponse: BatchData[];
+  categoryList: CategoryData[];
   requestNewFeature: FeatureRequest;
   data = [];
   constructor(private batchService: BatchServicesService,
@@ -72,6 +73,7 @@ export class BatchServicesComponent implements OnInit {
     //   },
     // ]
     this.getDataBatch();
+    this.getCategoryFilter();
   }
 
   getDataBatch(){
@@ -85,7 +87,32 @@ export class BatchServicesComponent implements OnInit {
     }).catch(response => {
       window.scrollTo(0, 0);
     });
+  }
 
+  getCategoryFilter(){
+    this.inputService.getFeature().toPromise().then((response) => {
+      if(response){
+        this.categoryList = response;
+      }else { // Failed
+        window.location.reload();
+        this.router.navigate(['/401']);
+      }
+    }).catch(response => {
+      window.scrollTo(0, 0);
+    })
+  }
+
+  deleteFeature(id: string){
+    this.inputService.deleteFeature(id).toPromise().then((response) => {
+      if(response){
+        alert('Succesfully delete feature!');
+        window.location.reload();
+      }else{
+        this.router.navigate(['/401']);
+      }
+    }).catch(err => {
+      window.scrollTo(0,0);
+    })
   }
 
   popUpFeature(){

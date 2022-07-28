@@ -42,6 +42,19 @@ export class InputServiceService {
           )
   }
 
+  deleteFeature(featureId: string): Observable<any>{
+      return this.http.delete(`${environment.apiUrl}/category/delete-category/${featureId}`)
+          .pipe(
+              map(
+                  response => {
+                      return response;
+                  }, catchError((error) => {
+                      return this.errorMapping(error);
+                  })
+              )
+          )
+  }
+
   // CREATE NEW BATCH
   createNewBatch(requestBody: BatchRequest): Observable<any>{
       return this.http.post(`${environment.apiUrl}/batch/add-batch`, requestBody)

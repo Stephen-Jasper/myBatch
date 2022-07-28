@@ -42,6 +42,11 @@
             <div class="modal-content">
                 <div class="modal-body confirm-hit">
                     <div class="form-group">
+                        <p class="batch-ext-title">Existing Feature</p>
+                            <label *ngFor="let catList of categoryList" class="cat-exist">
+                                {{catList.categoryName}}
+                                <mat-icon (click)="deleteFeature(catList.categoryId)">delete</mat-icon>
+                            </label> <br>
                         <label for="featureName">Create new feature</label>
                         <input type="text" [(ngModel)]="newFeature"
                                 class="form-control" id="featureName"
