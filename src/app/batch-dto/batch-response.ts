@@ -19,6 +19,18 @@ export interface FeatureRequest{
     category_name?: string;
 }
 
+export interface BatchDataDetail{
+    batchId?: string;
+    categoryId?: string; // Fiture name
+    batchName?: string;
+    description?: string;
+    requestMethod?: string;
+    environment?: string;
+    mainUrl?: string;
+    endpoint?: string;
+    imgUrl?: string;
+}
+
 export interface BatchRequest{
     category_id?: string; // Fiture name
     batch_name?: string;
