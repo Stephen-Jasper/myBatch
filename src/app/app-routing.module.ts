@@ -17,7 +17,7 @@ const routes: Routes = [
     component: BatchHeaderComponent
   },
   {
-    path:'data-detail',
+    path:'myBatch/data-detail/:BchId',
     component: BatchDetailComponent
   }
 ];

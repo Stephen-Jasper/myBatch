@@ -103,8 +103,8 @@ export class BatchHitComponent implements OnInit {
     // window.scroll(0,0);
   }
 
-  toDetail(){
-    this.router.navigate(['/data-detail'])
+  toDetail(BchId: string){
+    this.router.navigate(['myBatch/data-detail/' + BchId]);
   }
 
   cancelHit(){

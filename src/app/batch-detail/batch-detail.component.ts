@@ -20,6 +20,11 @@ export class BatchDetailComponent implements OnInit {
       this.date = new Date();
       this.loadingDate = false;
     });
+
+  }
+
+  editBatch(){
+
   }
 
   backToList(){

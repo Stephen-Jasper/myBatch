@@ -25,9 +25,6 @@
             <div *ngIf="loadingHit" class="loader"></div>
             {{lastHit}} {{guide}} {{executeResponse}}
             <br>
-<!--            <div class="items" *ngFor="let emp of APIdata">-->
-<!--                {{emp.message}} {{emp.status}}-->
-<!--            </div>-->
         </div>
     </div>
 
@@ -47,18 +44,10 @@
             </div>
         </div>
 
-<!--        <div class="batch-fitur">-->
-<!--            <label for="batchFitur">Feature Name</label>-->
-<!--            <select  class="form-control" id="batchFitur">-->
-<!--                <option *ngFor="let cat of dataCat">-->
-<!--                    {{cat.categoryName}}</option>-->
-<!--            </select>-->
-<!--        </div>-->
-
         <div class="batch-list">
 
             <div *ngFor="let batch of dataResponseCard" class="batch-item"> <!-- LOOP DATA HERE -->
-                <img (click)="toDetail()" src="{{batch.imgUrl}}" class="card-img-top" alt="...">
+                <img (click)="toDetail(batch.batchId)" src="{{batch.imgUrl}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><b>{{batch.environment}}</b></h5>
                     <p class="card-text">{{batch.batchName}}</p>
