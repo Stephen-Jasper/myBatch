@@ -169,10 +169,4 @@ export class BatchServicesComponent implements OnInit {
       window.scrollTo(0,0);
     })
   }
-
-  edit(){
-    alert('Edit batch');
-  }
-
-
 }

@@ -61,7 +61,7 @@
         <div class="modal-content">
             <div class="modal-body confirm-hit">
 <!--                    INPUT FORM-->
-                <form  autocomplete="off" >
+                <form (ngSubmit)="submit()" [formGroup]="batchEditForm" autocomplete="off" >
                     <div class="edit-title">
                         Edit Batch </div>
                     <div class="form-group">

@@ -4,6 +4,7 @@ import {catchError, map, Observable, throwError} from "rxjs";
 import {ServiceResponse} from "../batch-dto/service-response";
 import {environment} from "../../environments/environment";
 import {Router} from "@angular/router";
+import {BatchDataDetail} from "../batch-dto/batch-response";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,18 @@ export class DetailServiceService {
                 })
             )
         )
+  }
+
+  // UPDATE BATCH
+  updateSelectedBatch(BchId: string, requestUpdateBatch: BatchDataDetail): Observable<any>{
+      return this.http.put(`${environment.apiUrl}/batch/update-batch/${BchId}`, requestUpdateBatch)
+          .pipe(
+              map((response) =>{
+                  return response;
+              }), catchError((error) => {
+                  return this.errorMapping(error);
+              })
+          )
   }
 
   errorMapping(error): Observable<any> {
