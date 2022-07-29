@@ -13,6 +13,7 @@ export class BatchDetailComponent implements OnInit {
 
   date: Date | undefined;
   loadingDate: boolean = true;
+  showPopupEdit:boolean = false;
   detailData: BatchDataDetail;
   requestId: string;
 
@@ -46,7 +47,7 @@ export class BatchDetailComponent implements OnInit {
   }
 
   editBatch(){
-    alert(this.detailData.batchName);
+    this.showPopupEdit = true;
   }
 
   backToList(){

@@ -76,6 +76,10 @@ export class BatchServicesComponent implements OnInit {
     this.getCategoryFilter();
   }
 
+  toDetail(BchId: string){
+    this.router.navigate(['myBatch/data-detail/' + BchId]);
+  }
+
   getDataBatch(){
     this.batchService.getAllBatchData().toPromise().then((response) => {
       if (response) { // Success Get Data

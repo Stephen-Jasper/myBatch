@@ -30,6 +30,7 @@
             {{date |date: 'd MMM YYYY HH:mm:ss a'}}
         </div>
     </div>
+
 <!--    CONTENT-->
     <div class="batch-card">
         <img class="card-img-det" src="https://karir.bca.co.id/public/assets/img/logo-color.svg" alt="...">
@@ -41,7 +42,7 @@
             <p class="batch-text">{{detailData.mainUrl}}{{detailData.endpoint}}</p>
             <p class="batch-desc">{{detailData.description}}</p>
             <div class="action-button">
-                <button (click)="editBatch()" class="btn btn-primary backTo btnEdit">Edit</button>
+                <button (click)="editBatch()" data-toggle="modal" data-target="#editBatch" class="btn btn-primary backTo btnEdit">Edit</button>
                 <button (click)="backToList()" class="btn btn-primary backTo">Back</button>
             </div>
         </div>
@@ -52,5 +53,74 @@
 <div class="footer">
     <div class="footer-line"></div>
     @Copyright MyBatch 2022 - Jasper & Kelvin
+</div>
+
+<!-- Popup CreateFeature -->
+<div *ngIf="showPopupEdit" class="modal fade" id="editBatch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body confirm-hit">
+<!--                    INPUT FORM-->
+                <form  autocomplete="off" >
+                    <div class="edit-title">
+                        Edit Batch </div>
+                    <div class="form-group">
+                        <label for="batchLogo">Batch logo (Optional)</label>
+                        <input type="file" class="form-control-file" id="batchLogo" formControlName="batch_Logo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BatchName">Batch Name (Optional)</label>
+                        <input type="text" class="form-control" id="BatchName" formControlName="batch_Name" placeholder="{{detailData.batchName}}">
+                    </div>
+
+<!--                    <div class="form-group">-->
+<!--                        <label for="BatchEnv">Environment (Optional)</label>-->
+<!--                        <select class="form-control" id="BatchEnv" formControlName="batch_Environment">-->
+<!--                            <option value="DEV">DEV</option>-->
+<!--                            <option value="UAT">UAT</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+
+<!--                    <div class="form-group batch-split">-->
+<!--                        <div class="batch-req">-->
+<!--                            <label for="ReqMethod">Req Method (Optional)</label>-->
+<!--                            <select class="form-control" id="ReqMethod" formControlName="req_Method">-->
+<!--                                <option value="GET">GET</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+
+<!--                        <div class="batch-fitur">-->
+<!--                            <label for="batchFitur">Feature Name</label>-->
+<!--                            <select  class="form-control" id="batchFitur" formControlName="category_Name">-->
+<!--                                <option *ngFor="let cat of dataCat" value='{{cat.categoryId}}'>-->
+<!--                                    {{cat.categoryName}}</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <div class="form-group">
+                        <label for="mainUrl">Main Url (Optional)</label>
+                        <input type="text" class="form-control" id="mainUrl" formControlName="batch_url" placeholder="{{detailData.mainUrl}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endPoint">End Point (Optional)</label>
+                        <input type="text" class="form-control" id="endPoint" formControlName="batch_endPoint" placeholder="{{detailData.endpoint}}" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BatchDesc">Description (Optional)</label>
+                        <textarea class="form-control" id="BatchDesc" rows="3" formControlName="batch_Desc" placeholder="{{detailData.description}}"></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
