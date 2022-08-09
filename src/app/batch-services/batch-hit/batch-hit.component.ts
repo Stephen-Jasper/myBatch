@@ -17,6 +17,7 @@ export class BatchHitComponent implements OnInit {
   dataResponseCard: BatchData[];
 
   lastHit: string = '';
+  errorExecute: string = '';
   categoryList: CategoryData[];
   searchedBatch: string;
   selectedBatch: string;
@@ -84,23 +85,20 @@ export class BatchHitComponent implements OnInit {
     this._batchService.executeBatch(batchId).toPromise().then((response) => {
       if(response) {
         this.executeResponse = response;
+        window.scrollTo(0,0);
       }else{
         window.location.reload();
         this.router.navigate(['/401']);
       }
     }).catch(response => {
       window.scrollTo(0,0);
+      this.errorExecute = 'Failed to hit Batch! Please check rest API'
     });
     this.guide = '';
     this.selectedBatch = batchName;
     this.lastHit = batchName + ' : ';
     this.popUpHit = false;
-    // if(batchId === 'VA Inquiry'){
-    //   this.executeResponse = false;
-    // }else{
-    //   this.executeResponse = true;
-    // }
-    // window.scroll(0,0);
+    console.log('res: ' + this.executeResponse);
   }
 
   toDetail(BchId: string){

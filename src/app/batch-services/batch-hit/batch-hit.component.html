@@ -25,6 +25,7 @@
             <div *ngIf="loadingHit" class="loader"></div>
             {{lastHit}} {{guide}} {{executeResponse}}
             <br>
+            <div style="color: red">{{errorExecute}}</div>
         </div>
     </div>
 
@@ -71,6 +72,12 @@
                     <button (click)="getResponse(selectedId, selectedBatch)" type="button" class="btn btn-primary" data-dismiss="modal">Hit!</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between">
+        <div></div>
+        <div>
         </div>
     </div>
 </div>

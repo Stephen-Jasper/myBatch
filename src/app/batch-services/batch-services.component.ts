@@ -169,4 +169,8 @@ export class BatchServicesComponent implements OnInit {
       window.scrollTo(0,0);
     })
   }
+
+  goUp(){
+    window.scrollTo(0,0);
+  }
 }
