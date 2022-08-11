@@ -5,6 +5,7 @@ import {BatchServicesService} from "../batch-services.service";
 import {$0} from "@angular/compiler/src/chars";
 import {Router} from "@angular/router";
 import {InputServiceService} from "../batch-input/input-service.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-batch-hit',
@@ -16,11 +17,13 @@ export class BatchHitComponent implements OnInit {
   @Input()
   dataResponseCard: BatchData[];
 
+  categoryIdForm = new FormGroup({});
   lastHit: string = '';
   errorExecute: string = '';
   categoryList: CategoryData[];
   searchedBatch: string;
   selectedBatch: string;
+  selectedCategory: string = '';
   selectedId: string;
   loadingHit:boolean = false;
   popUpHit:boolean = false;
@@ -31,7 +34,16 @@ export class BatchHitComponent implements OnInit {
 
   constructor(private _batchService: BatchServicesService,
               private dataService: InputServiceService,
-              private router: Router) { }
+              private router: Router,
+              private fb: FormBuilder) {
+    this.categoryIdForm = this.fb.group({
+      categoryIdFiltered: ''
+    })
+  }
+
+  get CategoryId(){
+    return this.categoryIdForm.get('categoryIdFiltered');
+  }
 
   ngOnInit(): void {
     this.getCategoryFilter();
@@ -51,7 +63,18 @@ export class BatchHitComponent implements OnInit {
   }
 
   filterbyCategory(){
-    alert('Data Filtered');
+    this.selectedCategory = this.categoryIdForm.controls['categoryIdFiltered'].value;
+    this._batchService.getBatchbyCategory(this.selectedCategory).toPromise().then((response) => {
+      if(response){
+        this.dataResponseCard = response;
+        // console.log(response);
+      }else{
+        window.location.reload();
+        this.router.navigate(['/401']);
+      }
+    }).catch(response => {
+      window.scrollTo(0, 0);
+    })
   }
 
   filterIt($event){

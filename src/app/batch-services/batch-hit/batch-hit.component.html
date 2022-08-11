@@ -30,20 +30,22 @@
     </div>
 
     <div class="card">
-<!--        FILTER FIELD-->
-        <div class="batch-filter">
-            <div style="display: flex">
-                <label for="batchFiturFilter"></label>
-                <select  class="form-control category-filter" id="batchFiturFilter">
-                    <option *ngFor="let cat of categoryList">
-                        {{cat.categoryName}}</option>
-                </select>
+<!--        FILTER FIELD -->
+        <form [formGroup]="categoryIdForm">
+            <div class="batch-filter">
+                <div style="display: flex">
+                    <label for="batchFiturFilter"></label>
+                    <select class="form-control category-filter" id="batchFiturFilter" formControlName="categoryIdFiltered">
+                        <option *ngFor="let cat of categoryList" value='{{cat.categoryId}}'>
+                            {{cat.categoryName}}</option>
+                    </select>
 
-                <button (click)="filterbyCategory()" class="btn-filter">
-                    <mat-icon>filter_list</mat-icon>
-                </button>
+                    <button (click)="filterbyCategory()" class="btn-filter">
+                        <mat-icon>filter_list</mat-icon>
+                    </button>
+                </div>
             </div>
-        </div>
+        </form>
 
         <div class="batch-list">
 

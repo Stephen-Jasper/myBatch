@@ -20,7 +20,7 @@ export class BatchServicesService {
     return this.http.get<DogData[]>(this.url);
   }
 
-  // READ ALL BATCH FROM DB
+  // GET ALL BATCH FROM DB
   getAllBatchData(): Observable<any>{
     return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/batch/get-list-batch`)
         .pipe(
@@ -30,6 +30,18 @@ export class BatchServicesService {
               return this.errorMapping(error);
             })
         )
+  }
+
+  // GET BATCH BY CATEGORY
+  getBatchbyCategory(categoryId: string): Observable<any>{
+      return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/batch/get-list-batch/category/${categoryId}`)
+          .pipe(
+              map( response => {
+                  return response;
+              }), catchError((error) => {
+                  return this.errorMapping(error);
+              })
+          )
   }
 
   // HIT BATCH SERVICE
