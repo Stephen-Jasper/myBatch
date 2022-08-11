@@ -82,17 +82,22 @@ export class BatchHitComponent implements OnInit {
   }
 
   getResponse(batchId: string, batchName: string){
+    this.errorExecute = '';
+    this.loadingHit = true;
     this._batchService.executeBatch(batchId).toPromise().then((response) => {
       if(response) {
         this.executeResponse = response;
+        this.loadingHit = false;
         window.scrollTo(0,0);
       }else{
         window.location.reload();
+        this.loadingHit = false;
         this.router.navigate(['/401']);
       }
     }).catch(response => {
       window.scrollTo(0,0);
       this.errorExecute = 'Failed to hit Batch! Please check rest API'
+      this.loadingHit = false;
     });
     this.guide = '';
     this.selectedBatch = batchName;
