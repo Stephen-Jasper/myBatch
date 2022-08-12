@@ -43,16 +43,23 @@
                     <button (click)="filterbyCategory()" class="btn-filter">
                         <mat-icon>filter_list</mat-icon>
                     </button>
+                    <button (click)="getAllDataBack()" class="btn-filter">
+                        <mat-icon>autorenew</mat-icon>
+                    </button>
                 </div>
             </div>
         </form>
 
         <div class="batch-list">
+            <div *ngIf="dataResponseCard.length === 0">
+                Empty batch!
+            </div>
 
             <div *ngFor="let batch of dataResponseCard" class="batch-item"> <!-- LOOP DATA HERE -->
                 <img (click)="toDetail(batch.batchId)" src="{{batch.imgUrl}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{batch.environment}}</h5>
+                    <h5>{{convertBatchCategory(batch.categoryId)}}</h5>
                     <p class="card-text">{{batch.batchName}}</p>
                     <button (click)="selectBatchHit(batch.batchName, batch.batchId)" class="btn btn-primary"
                             data-toggle="modal" data-target="#popUpbatch">HIT!</button>

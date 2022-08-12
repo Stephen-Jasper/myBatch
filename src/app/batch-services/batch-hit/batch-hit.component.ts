@@ -49,6 +49,10 @@ export class BatchHitComponent implements OnInit {
     this.getCategoryFilter();
   }
 
+  convertBatchCategory(batch: string){
+    return this.categoryList[parseInt(batch)].categoryName;
+  }
+
   getCategoryFilter(){
     this.dataService.getFeature().toPromise().then((response) => {
       if(response){
@@ -75,6 +79,10 @@ export class BatchHitComponent implements OnInit {
     }).catch(response => {
       window.scrollTo(0, 0);
     })
+  }
+
+  getAllDataBack(){
+    window.location.reload();
   }
 
   filterIt($event){
