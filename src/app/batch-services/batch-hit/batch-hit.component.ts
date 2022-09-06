@@ -17,10 +17,12 @@ export class BatchHitComponent implements OnInit {
   @Input()
   dataResponseCard: BatchData[];
 
+  @Input()
+  categoryList: CategoryData[];
+
   categoryIdForm = new FormGroup({});
   lastHit: string = '';
   errorExecute: string = '';
-  categoryList: CategoryData[];
   searchedBatch: string;
   selectedBatch: string;
   selectedCategory: string = '';
@@ -46,32 +48,31 @@ export class BatchHitComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCategoryFilter();
+    // this.getCategoryFilter();
   }
 
   convertBatchCategory(batch: string){
-    return this.categoryList[parseInt(batch)].categoryName;
+    return this.categoryList[parseInt(batch)-1].categoryName;
   }
 
-  getCategoryFilter(){
-    this.dataService.getFeature().toPromise().then((response) => {
-      if(response){
-        this.categoryList = response;
-      }else { // Failed
-        window.location.reload();
-        this.router.navigate(['/401']);
-      }
-    }).catch(response => {
-      window.scrollTo(0, 0);
-    })
-  }
+  // getCategoryFilter(){
+  //   this.dataService.getFeature().toPromise().then((response) => {
+  //     if(response){
+  //       this.categoryList = response;
+  //     }else { // Failed
+  //       window.location.reload();
+  //       this.router.navigate(['/401']);
+  //     }
+  //   }).catch(response => {
+  //     window.scrollTo(0, 0);
+  //   })
+  // }
 
   filterbyCategory(){
     this.selectedCategory = this.categoryIdForm.controls['categoryIdFiltered'].value;
     this._batchService.getBatchbyCategory(this.selectedCategory).toPromise().then((response) => {
       if(response){
         this.dataResponseCard = response;
-        // console.log(response);
       }else{
         window.location.reload();
         this.router.navigate(['/401']);
