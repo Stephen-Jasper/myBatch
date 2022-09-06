@@ -16,7 +16,7 @@ export class BatchDetailComponent implements OnInit {
   loadingDate: boolean = true;
   showPopupEdit:boolean = false;
   batchEditForm = new FormGroup({});
-  detailData: BatchDataDetail;
+  detailData:  BatchDataDetail;
   requestId: string;
 
   constructor(private router: Router,
@@ -80,8 +80,8 @@ export class BatchDetailComponent implements OnInit {
   getDataDetail(){
     this.detailService.getSelectedBatch(this.requestId).toPromise().then((response) =>{
       if(response){
+        console.log(response);
         this.detailData = response;
-        console.log('data awal: ' + this.detailData);
       }else{
         window.location.reload();
         this.router.navigate(['/401']);

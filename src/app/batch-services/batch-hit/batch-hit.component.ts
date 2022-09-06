@@ -20,6 +20,7 @@ export class BatchHitComponent implements OnInit {
   @Input()
   categoryList: CategoryData[];
 
+  dataFromService: BatchData[];
   categoryIdForm = new FormGroup({});
   lastHit: string = '';
   errorExecute: string = '';
@@ -30,6 +31,7 @@ export class BatchHitComponent implements OnInit {
   loadingHit:boolean = false;
   popUpHit:boolean = false;
   executeResponse: boolean;
+  isNoData: boolean = false;
 
   // public APIdata = [];
   guide:string = 'Get response by click "Hit!"';
@@ -49,6 +51,20 @@ export class BatchHitComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getCategoryFilter();
+    this.getBatchData();
+  }
+
+  getBatchData(){
+    this._batchService.getAllBatchData().toPromise().then((response) => {
+      if (response) { // Success Get Data
+        this.dataFromService = response;
+      } else { // Failed
+        window.location.reload();
+        this.router.navigate(['/401']);
+      }
+    }).catch(response => {
+      window.scrollTo(0, 0);
+    });
   }
 
   convertBatchCategory(batch: string){
@@ -69,10 +85,16 @@ export class BatchHitComponent implements OnInit {
   // }
 
   filterbyCategory(){
+    this.isNoData = false;
     this.selectedCategory = this.categoryIdForm.controls['categoryIdFiltered'].value;
     this._batchService.getBatchbyCategory(this.selectedCategory).toPromise().then((response) => {
       if(response){
-        this.dataResponseCard = response;
+        console.log(response);
+        this.dataFromService = response;
+        console.log('all data 2: ' + this.dataFromService);
+        if(response.length === 0){
+          this.isNoData = true;
+        }
       }else{
         window.location.reload();
         this.router.navigate(['/401']);

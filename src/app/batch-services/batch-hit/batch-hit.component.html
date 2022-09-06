@@ -51,11 +51,11 @@
         </form>
 
         <div class="batch-list">
-            <div *ngIf="dataResponseCard.length === 0">
+            <div *ngIf="isNoData">
                 Empty batch!
             </div>
 
-            <div *ngFor="let batch of dataResponseCard" class="batch-item"> <!-- LOOP DATA HERE -->
+            <div *ngFor="let batch of dataFromService" class="batch-item"> <!-- LOOP DATA HERE -->
                 <img (click)="toDetail(batch.batchId)" src="{{batch.imgUrl}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{batch.environment}}</h5>

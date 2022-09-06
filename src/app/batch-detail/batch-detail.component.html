@@ -36,11 +36,11 @@
         <img class="card-img-det" src="https://karir.bca.co.id/public/assets/img/logo-color.svg" alt="...">
 
         <div class="batch-wiki">
-            <h5 class="text-title"><b style="color: red">{{detailData.environment}}</b> <br>
-                <b>{{detailData.batchName}}</b>
+            <h5 class="text-title"><b style="color: red">{{detailData?.environment}}</b> <br>
+                <b>{{detailData?.batchName}}</b>
             </h5>
-            <p class="batch-text">{{detailData.mainUrl}}{{detailData.endpoint}}</p>
-            <p class="batch-desc">{{detailData.description}}</p>
+            <p class="batch-text">{{detailData?.mainUrl}}{{detailData?.endpoint}}</p>
+            <p class="batch-desc">{{detailData?.description}}</p>
             <div class="action-button">
                 <button (click)="editBatch()" data-toggle="modal" data-target="#editBatch" class="btn btn-primary backTo btnEdit">Edit</button>
                 <button (click)="backToList()" class="btn btn-primary backTo">Back</button>
@@ -116,7 +116,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
