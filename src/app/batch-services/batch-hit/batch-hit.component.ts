@@ -63,9 +63,13 @@ export class BatchHitComponent implements OnInit {
   }
 
   getBatchData(){
+    this.isNoData = false;
     this._batchService.getAllBatchData().toPromise().then((response) => {
       if (response) { // Success Get Data
         this.dataFromService = response;
+        if(response.length === 0){
+          this.isNoData = true;
+        }
       } else { // Failed
         window.location.reload();
         this.router.navigate(['/401']);

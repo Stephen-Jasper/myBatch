@@ -1,0 +1,45 @@
+.navbar{
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  //border-bottom-right-radius: 20px;
+  //border-bottom-left-radius: 20px;
+}
+
+.fit-title{
+  font-size: 45px;
+  color: #f3f3f3;
+  text-decoration: none;
+  padding-right: 25px;
+}
+.fit-title:hover{
+  color: #abb7d9;
+}
+
+#history-feature, #batch-feature{
+  font-size: 30px;
+  color: #f3f3f3;
+}
+#history-feature:hover, #batch-feature:hover{
+  color: #abb7d9;
+}
+
+.-batch{
+  font-style: italic;
+}
+
+.btn-light{
+  background-color: transparent;
+  border: none;
+  box-shadow: transparent;
+}
+
+.btn-light:focus{
+  color: #0064b6;
+}
+
+#logout-btn{
+  font-size: 15px;
+  padding: 10px 40px;
+}

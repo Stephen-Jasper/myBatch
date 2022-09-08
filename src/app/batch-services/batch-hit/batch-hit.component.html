@@ -1,33 +1,4 @@
 <div class="batch-hit-container">
-<!--    <div class="batch-response">-->
-<!--        <div class="response-search">-->
-<!--            <div>-->
-<!--                <p>Response</p>-->
-<!--            </div>-->
-
-<!--&lt;!&ndash;            SEARCH FIELD&ndash;&gt;-->
-<!--            <div class="batch-search">-->
-<!--                <input type="text"-->
-<!--                       class="input-search"-->
-<!--                       [(ngModel)]="searchedBatch"-->
-<!--                       placeholder="Search Service"-->
-<!--                       (keyup)="filterIt($event)">-->
-
-<!--                <button class="btn-search">-->
-<!--                    <mat-icon class="search-logo">search</mat-icon>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--&lt;!&ndash;        RESPONSE FIELD&ndash;&gt;-->
-<!--        <div class="response-detail">-->
-<!--            <div *ngIf="loadingHit" class="loader"></div>-->
-<!--            {{lastHit}} {{guide}} {{executeResponse}}-->
-<!--            <br>-->
-<!--            <div style="color: red">{{errorExecute}}</div>-->
-<!--        </div>-->
-<!--    </div>-->
-
     <div class="card">
 <!--        FILTER FIELD -->
         <form [formGroup]="categoryIdForm">
@@ -36,7 +7,6 @@
                     <input type="text"
                            class="input-search"
                            [(ngModel)]="searchedBatch"
-                           placeholder="Search Service"
                            formControlName="searchBatchFilterd"
                            (keyup)="filterIt($event)">
 

@@ -1,20 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #005CAA;">
+    <div class="service-feature">
+        <a class="fit-title -batch" href="/myBatch">MyBatch!</a>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">MyBatch! <span class="sr-only">(current)</span></a>
+                <a class="fit-title" id="batch-feature" href="/myBatch">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+
+            <li class="nav-item ">
+                <a class="fit-title" id="history-feature" href="/myBatch">History</a>
             </li>
         </ul>
+        <app-date-time></app-date-time>
         <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            <button (click)="logout()" class="btn btn-danger my-2 my-sm-0"
+                    id="logout-btn" type="submit">Logout</button>
         </form>
     </div>
 </nav>

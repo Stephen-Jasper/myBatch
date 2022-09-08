@@ -1,27 +1,32 @@
 <div class="service-container">
     <div class="batch-head">
         <div>
-            <p class="page-title">My Batch Services</p>
+            <p class="page-title">Batch Services</p>
         </div>
-<!--        <div>-->
-<!--            <button (click)="popUpFeature()" class="btn btn-primary"-->
-<!--                    data-toggle="modal" data-target="#createFeature">Create Feature</button>-->
-<!--        </div>-->
+
+        <div>
+            <button (click)="addBatch()" class="btn btn-warning add-feature"
+                    data-toggle="modal" data-target="#createBatch">Create Batch</button>
+
+            <button (click)="popUpFeature()" class="btn btn-warning add-feature"
+                    data-toggle="modal" data-target="#createFeature">Create Feature</button>
+        </div>
     </div>
 
     <div class="service-data">
         <div class="service-list">
-            <div class="service-add">
-                <button (click)="addBatch()" class="btn btn-primary create-service"
-                        data-toggle="modal" data-target="#createBatch">Create Batch</button>
-            </div>
+<!--            <div class="service-add">-->
+<!--                <button (click)="addBatch()" class="btn btn-primary create-service"-->
+<!--                        data-toggle="modal" data-target="#createBatch">Create Batch</button>-->
+<!--            </div>-->
 
-            <div>
-                <button (click)="popUpFeature()" class="btn btn-primary" style="margin-bottom: 10px"
-                        data-toggle="modal" data-target="#createFeature">Create Feature</button>
-            </div>
+<!--            <div>-->
+<!--                <button (click)="popUpFeature()" class="btn btn-primary" style="margin-bottom: 10px"-->
+<!--                        data-toggle="modal" data-target="#createFeature">Create Feature</button>-->
+<!--            </div>-->
 
-            <div class="line"></div>
+<!--            <div class="line"></div>-->
+
             <div class="service-loop">
                 <ul *ngFor="let batch of dataResponse">
                     <div class="batch-component">
@@ -88,7 +93,7 @@
                         <p class="batch-ext-title">Existing Feature</p>
                             <label *ngFor="let catList of categoryList" class="cat-exist">
                                 {{catList.categoryName}}
-                                <mat-icon (click)="deleteFeature(catList.categoryId)">delete</mat-icon>
+<!--                                <mat-icon (click)="deleteFeature(catList.categoryId)">delete</mat-icon>-->
                             </label> <br>
                         <label for="featureName">Create new feature</label>
                         <input type="text" [(ngModel)]="newFeature"
