@@ -1,0 +1,9 @@
+<div *ngIf="loadingDate" class="loader"></div>
+<div class="batch-subtitle">
+    <div class="display-name">
+    </div>
+
+    <div class="display-time">
+        {{date |date: 'd MMM YYYY HH:mm:ss a'}}
+    </div>
+</div>

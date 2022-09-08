@@ -1,4 +1,4 @@
-<div class="batch-header">
+
     <div class="batch-title">
         <div class="feature-container">
             <div class="service-feature">
@@ -19,22 +19,15 @@
         </div>
     </div>
 
-    <div *ngIf="loadingDate" class="loader"></div>
+    <app-navbar></app-navbar>
 
-    <div class="batch-subtitle">
-        <div class="display-name">
-        </div>
-
-        <div class="display-time">
-            {{date |date: 'd MMM YYYY HH:mm:ss a'}}
-        </div>
-    </div>
-
+<div class="batch-header">
+    <app-date-time></app-date-time>
     <app-batch-services></app-batch-services>
 </div>
 
-<div class="footer">
-    <div class="footer-line"></div>
-    @Copyright MyBatch 2022 - Jasper & Kelvin
-</div>
+<!--<div class="footer">-->
+<!--    <div class="footer-line"></div>-->
+<!--    @Copyright MyBatch 2022 - Jasper & Kelvin-->
+<!--</div>-->
 

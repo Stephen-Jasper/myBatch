@@ -13,6 +13,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BatchServicesService } from "./batch-services/batch-services.service";
 import { BatchInputComponent } from './batch-services/batch-input/batch-input.component';
+import { NavbarComponent } from './batch-header/navbar/navbar.component';
+import { DateTimeComponent } from './utils/date-time/date-time.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { BatchInputComponent } from './batch-services/batch-input/batch-input.co
     BatchServicesComponent,
     BatchHitComponent,
     BatchDetailComponent,
-    BatchInputComponent
+    BatchInputComponent,
+    NavbarComponent,
+    DateTimeComponent
   ],
     imports: [
         BrowserModule,

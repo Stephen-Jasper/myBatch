@@ -3,10 +3,10 @@
         <div>
             <p class="page-title">My Batch Services</p>
         </div>
-        <div>
-            <button (click)="popUpFeature()" class="btn btn-primary"
-                    data-toggle="modal" data-target="#createFeature">Create Feature</button>
-        </div>
+<!--        <div>-->
+<!--            <button (click)="popUpFeature()" class="btn btn-primary"-->
+<!--                    data-toggle="modal" data-target="#createFeature">Create Feature</button>-->
+<!--        </div>-->
     </div>
 
     <div class="service-data">
@@ -14,6 +14,11 @@
             <div class="service-add">
                 <button (click)="addBatch()" class="btn btn-primary create-service"
                         data-toggle="modal" data-target="#createBatch">Create Batch</button>
+            </div>
+
+            <div>
+                <button (click)="popUpFeature()" class="btn btn-primary" style="margin-bottom: 10px"
+                        data-toggle="modal" data-target="#createFeature">Create Feature</button>
             </div>
 
             <div class="line"></div>
