@@ -1,70 +1,125 @@
 <div class="batch-hit-container">
-    <div class="batch-response">
-        <div class="response-search">
-            <div>
-                <p>Response</p>
-            </div>
+<!--    <div class="batch-response">-->
+<!--        <div class="response-search">-->
+<!--            <div>-->
+<!--                <p>Response</p>-->
+<!--            </div>-->
 
-<!--            SEARCH FIELD-->
-            <div class="batch-search">
-<!--                (ngModelChange)="findData($event)"-->
-                <input type="text"
-                       class="input-search"
-                       [(ngModel)]="searchedBatch"
-                       placeholder="Search Service"
-                       (keyup)="filterIt($event)">
+<!--&lt;!&ndash;            SEARCH FIELD&ndash;&gt;-->
+<!--            <div class="batch-search">-->
+<!--                <input type="text"-->
+<!--                       class="input-search"-->
+<!--                       [(ngModel)]="searchedBatch"-->
+<!--                       placeholder="Search Service"-->
+<!--                       (keyup)="filterIt($event)">-->
 
-                <button class="btn-search">
-                    <mat-icon class="search-logo">search</mat-icon>
-                </button>
-            </div>
-        </div>
+<!--                <button class="btn-search">-->
+<!--                    <mat-icon class="search-logo">search</mat-icon>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
 
-<!--        RESPONSE FIELD-->
-        <div class="response-detail">
-            <div *ngIf="loadingHit" class="loader"></div>
-            {{lastHit}} {{guide}} {{executeResponse}}
-            <br>
-            <div style="color: red">{{errorExecute}}</div>
-        </div>
-    </div>
+<!--&lt;!&ndash;        RESPONSE FIELD&ndash;&gt;-->
+<!--        <div class="response-detail">-->
+<!--            <div *ngIf="loadingHit" class="loader"></div>-->
+<!--            {{lastHit}} {{guide}} {{executeResponse}}-->
+<!--            <br>-->
+<!--            <div style="color: red">{{errorExecute}}</div>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <div class="card">
 <!--        FILTER FIELD -->
         <form [formGroup]="categoryIdForm">
-            <div class="batch-filter">
-                <div style="display: flex">
-                    <label for="batchFiturFilter"></label>
-                    <select class="form-control category-filter" id="batchFiturFilter" formControlName="categoryIdFiltered">
-                        <option *ngFor="let cat of categoryList" value='{{cat.categoryId}}'>
-                            {{cat.categoryName}}</option>
-                    </select>
+            <div style="display: flex; justify-content: space-between">
+                <div class="batch-search">
+                    <input type="text"
+                           class="input-search"
+                           [(ngModel)]="searchedBatch"
+                           placeholder="Search Service"
+                           formControlName="searchBatchFilterd"
+                           (keyup)="filterIt($event)">
 
-                    <button (click)="filterbyCategory()" class="btn-filter">
-                        <mat-icon>filter_list</mat-icon>
+                    <button class="btn-search" (click)="findBatch()">
+                        <mat-icon class="search-logo">search</mat-icon>
                     </button>
-                    <button (click)="getAllDataBack()" class="btn-filter">
-                        <mat-icon>autorenew</mat-icon>
-                    </button>
+                </div>
+
+                <div class="batch-filter">
+                    <div style="display: flex">
+                        <label for="batchFiturFilter"></label>
+                        <select class="form-control category-filter" id="batchFiturFilter" formControlName="categoryIdFiltered">
+                            <option selected="selected">Find by Feature</option>
+                            <option *ngFor="let cat of categoryList" value='{{cat.categoryId}}'>
+                                {{cat.categoryName}}</option>
+                        </select>
+
+                        <button (click)="filterbyCategory()" class="btn-filter">
+                            <mat-icon>filter_list</mat-icon>
+                        </button>
+                        <button (click)="getAllDataBack()" class="btn-filter">
+                            <mat-icon>autorenew</mat-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
 
         <div class="batch-list">
-            <div *ngIf="isNoData">
-                Empty batch!
-            </div>
 
-            <div *ngFor="let batch of dataFromService" class="batch-item"> <!-- LOOP DATA HERE -->
-                <img (click)="toDetail(batch.batchId)" src="{{batch.imgUrl}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{batch.environment}}</h5>
-                    <h5>{{convertBatchCategory(batch.categoryId)}}</h5>
-                    <p class="card-text">{{batch.batchName}}</p>
-                    <button (click)="selectBatchHit(batch.batchName, batch.batchId)" class="btn btn-primary"
-                            data-toggle="modal" data-target="#popUpbatch">HIT!</button>
+<!--            <div *ngFor="let batch of dataFromService" class="batch-item"> &lt;!&ndash; LOOP DATA HERE &ndash;&gt;-->
+<!--                <img (click)="toDetail(batch.batchId)" src="{{batch.imgUrl}}" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">{{batch.environment}}</h5>-->
+<!--                    <h5>{{convertBatchCategory(batch.categoryId)}}</h5>-->
+<!--                    <p class="card-text">{{batch.batchName}}</p>-->
+<!--                    <button (click)="selectBatchHit(batch.batchName, batch.batchId)" class="btn btn-primary"-->
+<!--                            data-toggle="modal" data-target="#popUpbatch">HIT!</button>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            ==================================================================================================== -->
+
+            <div *ngIf="popUpResponse" class="fixed">
+                <div style="display: flex; justify-content: space-between">
+                    <div>
+                        <div style="display: flex">
+                            <div>{{lastHit}} {{executeResponse}}</div>
+                            <div *ngIf="loadingHit" class="loader"></div>
+                        </div>
+                        <div style="color: red">{{errorExecute}}</div>
+                    </div>
+                    <div>
+                        <button (click)="closeResponse()" class="btn btn-danger create-service"
+                                data-toggle="modal" data-target="#createBatch">X</button>
+                    </div>
                 </div>
             </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 15%">Environment</th>
+                        <th scope="col" style="width: 15%">Feature</th>
+                        <th scope="col" style="width: 30%">Name</th>
+                        <th scope="col" style="width: 10%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div *ngIf="isNoData">
+                        Empty batch!
+                    </div>
+                    <tr *ngFor="let batch of dataFromService" class="selectedBatch">
+                        <td>{{batch.environment}}</td>
+                        <td>{{convertBatchCategory(batch.categoryId)}}</td>
+                        <td (click)="toDetail(batch.batchId)" style="cursor: pointer">{{batch.batchName}}</td>
+                        <td>
+                            <button (click)="selectBatchHit(batch.batchName, batch.batchId, batch.categoryId)" class="btn btn-primary"
+                                    data-toggle="modal" data-target="#popUpbatch">HIT!</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
     </div>
@@ -74,7 +129,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    Sure want to Hit <b style="color: #0064b6">{{selectedBatch}}</b> ?
+                    Sure want to Hit {{selectedfeature}} - <b style="color: #0064b6"> {{selectedBatch}}</b> ?
                 </div>
                 <div class="modal-footer">
                     <button (click)="cancelHit()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -84,9 +139,4 @@
         </div>
     </div>
 
-    <div style="display: flex; justify-content: space-between">
-        <div></div>
-        <div>
-        </div>
-    </div>
 </div>

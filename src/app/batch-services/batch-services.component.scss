@@ -1,6 +1,9 @@
 .service-container{
-  margin-left: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
   margin-top: 10px;
+  //background-color: lightyellow;
+  //border-radius: 5px;
 }
 
 .batch-head{
@@ -28,6 +31,7 @@
   }
   mat-icon:hover{
     color: green;
+    cursor: pointer;
   }
 }
 
@@ -46,6 +50,7 @@
 .batch-component{
   mat-icon:hover{
     color: #0064b6;
+    cursor: pointer;
   }
   li{
     word-break: break-word;
@@ -61,8 +66,9 @@
   }
 
   .create-service{
-    margin-left: 85px;
-    color: #0064b6;
+    //margin-left: 85px;
+    //color: #0064b6;
+    margin-bottom: 10px;
   }
 
   p{
@@ -95,6 +101,7 @@
     }
     a:hover{
       color: #0064b6;
+      cursor: pointer;
     }
   }
 }

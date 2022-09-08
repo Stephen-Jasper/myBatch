@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {catchError, map, Observable, throwError} from "rxjs";
-import {BatchData, DogData} from "../batch-dto/batch-response";
+import {BatchData} from "../batch-dto/batch-response";
 import {environment} from "../../environments/environment";
 import {Router} from "@angular/router";
 import {ServiceResponse} from "../batch-dto/service-response";
+import {seachRequest} from "../batch-dto/batch-response";
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,9 @@ export class BatchServicesService {
   constructor(private http: HttpClient,
               private router: Router) { }
 
-  getServiceData(): Observable<DogData[]>{
-    return this.http.get<DogData[]>(this.url);
-  }
+  // getServiceData(): Observable<DogData[]>{
+  //   return this.http.get<DogData[]>(this.url);
+  // }
 
   // GET ALL BATCH FROM DB
   getAllBatchData(): Observable<any>{
@@ -39,6 +40,18 @@ export class BatchServicesService {
               map( response => {
                   return response;
               }), catchError((error) => {
+                  return this.errorMapping(error);
+              })
+          )
+  }
+
+  // SEARCH BATCH
+  getSearchBatch(requestSearch: seachRequest){
+      return this.http.post<ServiceResponse<any>>(`${environment.apiUrl}/batch/search-batch`, requestSearch)
+          .pipe(
+              map(response => {
+                  return response;
+              }), catchError ((error) => {
                   return this.errorMapping(error);
               })
           )

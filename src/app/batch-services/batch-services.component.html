@@ -12,9 +12,8 @@
     <div class="service-data">
         <div class="service-list">
             <div class="service-add">
-                <p style="align-self: center">Batch inquiry</p>
-                <mat-icon (click)="addBatch()" class="create-service"
-                          data-toggle="modal" data-target="#createBatch">add</mat-icon>
+                <button (click)="addBatch()" class="btn btn-primary create-service"
+                        data-toggle="modal" data-target="#createBatch">Create Batch</button>
             </div>
 
             <div class="line"></div>
@@ -23,11 +22,48 @@
                     <div class="batch-component">
                         <a (click)="toDetail(batch.batchId)" target="_blank"><li>{{batch.batchName}}</li></a>  <!-- href ke routing id-->
                         <div class="tools">
-                            <mat-icon (click)="activePopUp(batch.batchId, batch.batchName)" data-toggle="modal" data-target="#exampleModalCenter" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
-<!--                            <mat-icon (click)="edit()" aria-hidden="false" aria-label="Example home icon">edit</mat-icon>-->
+                            <mat-icon (click)="activePopUp(batch.batchId, batch.batchName)" data-toggle="modal" data-target="#exampleModalCenter"
+                                      aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
                         </div>
                     </div>
                 </ul>
+
+<!--                <div id="accordion">-->
+<!--                    <div class="card">-->
+<!--                        <div class="card-header" id="headingOne">-->
+<!--                            <h5 class="mb-0">-->
+<!--                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
+<!--                                    Trf DOM-->
+<!--                                </button>-->
+<!--                            </h5>-->
+<!--                        </div>-->
+
+<!--                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">-->
+<!--                            <div class="card-body">-->
+<!--                                <ul>-->
+<!--                                    <div class="batch-component">-->
+<!--                                        <a><li>Batch Inquiry data base sys admin</li></a>  &lt;!&ndash; href ke routing id&ndash;&gt;-->
+<!--                                        <div class="tools">-->
+<!--                                            <mat-icon data-toggle="modal" data-target="#exampleModalCenter"-->
+<!--                                                      aria-hidden="false" aria-label="Example home icon">delete</mat-icon>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </ul>-->
+<!--                                <ul>-->
+<!--                                    <div class="batch-component">-->
+<!--                                        <a><li>Batch Postdated</li></a>  &lt;!&ndash; href ke routing id&ndash;&gt;-->
+<!--                                        <div class="tools">-->
+<!--                                            <mat-icon data-toggle="modal" data-target="#exampleModalCenter"-->
+<!--                                                      aria-hidden="false" aria-label="Example home icon">delete</mat-icon>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+
             </div>
             <mat-icon style="position: fixed; transform: scale(2); align-self: flex-end" (click)="goUp()">eject</mat-icon>
         </div>

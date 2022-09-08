@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BatchData} from "../../batch-dto/batch-response";
+import {BatchData, seachRequest} from "../../batch-dto/batch-response";
 import {CategoryData} from "../../batch-dto/batch-response";
 import {BatchServicesService} from "../batch-services.service";
 import {$0} from "@angular/compiler/src/chars";
@@ -21,6 +21,7 @@ export class BatchHitComponent implements OnInit {
   categoryList: CategoryData[];
 
   dataFromService: BatchData[];
+  inputSearchBatch: seachRequest;
   categoryIdForm = new FormGroup({});
   lastHit: string = '';
   errorExecute: string = '';
@@ -28,9 +29,11 @@ export class BatchHitComponent implements OnInit {
   selectedBatch: string;
   selectedCategory: string = '';
   selectedId: string;
+  selectedfeature: string;
   loadingHit:boolean = false;
   popUpHit:boolean = false;
   executeResponse: boolean;
+  popUpResponse: boolean = false;
   isNoData: boolean = false;
 
   // public APIdata = [];
@@ -41,12 +44,17 @@ export class BatchHitComponent implements OnInit {
               private router: Router,
               private fb: FormBuilder) {
     this.categoryIdForm = this.fb.group({
-      categoryIdFiltered: ''
+      categoryIdFiltered: '',
+      searchBatchFilterd: ''
     })
   }
 
   get CategoryId(){
     return this.categoryIdForm.get('categoryIdFiltered');
+  }
+
+  get SearchedBatch(){
+    return this.categoryIdForm.get('searchBatchFilterd');
   }
 
   ngOnInit(): void {
@@ -84,6 +92,29 @@ export class BatchHitComponent implements OnInit {
   //   })
   // }
 
+  findBatch(){
+    this.isNoData = false;
+    this.inputSearchBatch = {
+      batch_name: this.searchedBatch,
+      category_id: this.selectedCategory
+    }
+    console.log(this.inputSearchBatch);
+    this._batchService.getSearchBatch(this.inputSearchBatch).toPromise().then((response) => {
+      if(response){
+        console.log(response);
+        this.dataFromService = response;
+        if(response.length === 0){
+          this.isNoData = true;
+        }
+      }else{
+        window.location.reload();
+        this.router.navigate(['/401']);
+      }
+    }).catch(response => {
+      window.scrollTo(0, 0);
+    })
+  }
+
   filterbyCategory(){
     this.isNoData = false;
     this.selectedCategory = this.categoryIdForm.controls['categoryIdFiltered'].value;
@@ -110,7 +141,8 @@ export class BatchHitComponent implements OnInit {
 
   filterIt($event){
     const value = $event.target.value;
-    this.dataResponseCard = this.dataResponseCard.filter(value);
+    // this.dataResponseCard = this.dataResponseCard.filter(value);
+    console.log(value);
   }
 
   // hit(){
@@ -129,20 +161,22 @@ export class BatchHitComponent implements OnInit {
     })
   }
 
-  selectBatchHit(batchName: string, batchId: string){
+  selectBatchHit(batchName: string, batchId: string, categoryId:string){
     this.selectedBatch = batchName;
     this.selectedId = batchId;
+    this.selectedfeature = this.convertBatchCategory(categoryId);
     this.popUpHit = true;
   }
 
   getResponse(batchId: string, batchName: string){
     this.errorExecute = '';
     this.loadingHit = true;
+    this.popUpResponse = false;
+    this.executeResponse = null;
     this._batchService.executeBatch(batchId).toPromise().then((response) => {
       if(response) {
         this.executeResponse = response;
         this.loadingHit = false;
-        window.scrollTo(0,0);
       }else{
         window.location.reload();
         this.loadingHit = false;
@@ -157,7 +191,11 @@ export class BatchHitComponent implements OnInit {
     this.selectedBatch = batchName;
     this.lastHit = batchName + ' : ';
     this.popUpHit = false;
+    this.popUpResponse = true;
     console.log('res: ' + this.executeResponse);
+  }
+  closeResponse(){
+    this.popUpResponse = false;
   }
 
   toDetail(BchId: string){

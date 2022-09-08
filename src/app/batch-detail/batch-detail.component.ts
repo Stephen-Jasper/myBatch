@@ -112,7 +112,6 @@ export class BatchDetailComponent implements OnInit {
       environment: this.batchEditForm.controls['batch_Environment'].value,
       mainUrl: this.batchEditForm.controls['batch_url'].value,
       endpoint: this.batchEditForm.controls['batch_endPoint'].value,
-      imgUrl: this.batchEditForm.controls['batch_Logo'].value
     }
     console.log('data send: ' + this.detailData);
     this.detailService.updateSelectedBatch(this.requestId, this.detailData).toPromise().then((response) =>{

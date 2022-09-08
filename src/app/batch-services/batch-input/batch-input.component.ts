@@ -110,7 +110,6 @@ export class BatchInputComponent implements OnInit {
       environment: this.batchInputForm.controls['batch_Environment'].value,
       main_url: this.batchInputForm.controls['batch_url'].value,
       endpoint: this.batchInputForm.controls['batch_endPoint'].value,
-      imgUrl: this.batchInputForm.controls['batch_Logo'].value
     }
     console.log(this.requestBatch);
     this.inputService.createNewBatch(this.requestBatch).toPromise().then((response) => {
