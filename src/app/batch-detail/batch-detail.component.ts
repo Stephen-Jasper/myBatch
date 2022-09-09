@@ -105,12 +105,12 @@ export class BatchDetailComponent implements OnInit {
 
   submit(){
     this.detailData = {
-      categoryId: this.batchEditForm.controls['category_Name'].value,
-      batchName: this.batchEditForm.controls['batch_Name'].value,
+      category_id: this.batchEditForm.controls['category_Name'].value,
+      batch_name: this.batchEditForm.controls['batch_Name'].value,
       description: this.batchEditForm.controls['batch_Desc'].value,
-      requestMethod: this.batchEditForm.controls['req_Method'].value,
+      request_method: this.batchEditForm.controls['req_Method'].value,
       environment: this.batchEditForm.controls['batch_Environment'].value,
-      mainUrl: this.batchEditForm.controls['batch_url'].value,
+      main_url: this.batchEditForm.controls['batch_url'].value,
       endpoint: this.batchEditForm.controls['batch_endPoint'].value,
     }
     console.log('data send: ' + this.detailData);

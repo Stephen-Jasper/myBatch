@@ -5,7 +5,7 @@ import {BatchData} from "../batch-dto/batch-response";
 import {environment} from "../../environments/environment";
 import {Router} from "@angular/router";
 import {ServiceResponse} from "../batch-dto/service-response";
-import {seachRequest} from "../batch-dto/batch-response";
+import {seachRequest, FeatureRequest} from "../batch-dto/batch-response";
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +77,18 @@ export class BatchServicesService {
                   return response;
               }), catchError((error) => {
                   return this.errorMapping(error);
+              })
+          )
+  }
+
+  // EDIT FEATURE
+  updatedFeature(featureId: string, featureName: FeatureRequest): Observable<any>{
+      return this.http.put<ServiceResponse<any>>(`${environment.apiUrl}/category/update-category/${featureId}`, featureName)
+          .pipe(
+              map(response =>{
+                  return response
+              }), catchError((err) => {
+                  return this.errorMapping(err);
               })
           )
   }

@@ -7,7 +7,7 @@
   //border-bottom-left-radius: 20px;
 }
 
-.fit-title{
+.logo-title, .fit-title{
   font-size: 45px;
   color: #f3f3f3;
   text-decoration: none;
@@ -17,11 +17,11 @@
   color: #abb7d9;
 }
 
-#history-feature, #batch-feature{
+#history-feature, #batch-feature, #web-feature{
   font-size: 30px;
   color: #f3f3f3;
 }
-#history-feature:hover, #batch-feature:hover{
+#history-feature:hover, #batch-feature:hover, #web-feature:hover{
   color: #abb7d9;
 }
 

@@ -30,9 +30,9 @@
             <div class="service-loop">
                 <ul *ngFor="let batch of dataResponse">
                     <div class="batch-component">
-                        <a (click)="toDetail(batch.batchId)" target="_blank"><li>{{batch.batchName}}</li></a>  <!-- href ke routing id-->
+                        <a (click)="toDetail(batch.batch_id)" target="_blank"><li>{{batch.batch_name}}</li></a>  <!-- href ke routing id-->
                         <div class="tools">
-                            <mat-icon (click)="activePopUp(batch.batchId, batch.batchName)" data-toggle="modal" data-target="#exampleModalCenter"
+                            <mat-icon (click)="activePopUp(batch.batch_id, batch.batch_name)" data-toggle="modal" data-target="#exampleModalCenter"
                                       aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
                         </div>
                     </div>

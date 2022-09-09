@@ -31,7 +31,7 @@
 
 .batch-list{
   margin-top: 10px;
-  display: flex;
+  //display: flex;
   flex-wrap: wrap;
   background-color: aliceblue;
 }
@@ -39,6 +39,10 @@
 .selectedBatch:hover{
   background-color: lightyellow;
   color: #0064b6;
+}
+
+.batch-edit{
+  cursor: pointer;
 }
 
 .batch-item{

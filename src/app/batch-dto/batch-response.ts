@@ -1,11 +1,11 @@
 export interface BatchData{
-    batchId?: string;
-    categoryId?: string; // Fiture name
-    batchName?: string;
+    batch_id?: string;
+    category_id?: string; // Fiture name
+    batch_name?: string;
     description?: string;
-    requestMethod?: string;
+    request_method?: string;
     environment?: string;
-    mainUrl?: string;
+    main_url?: string;
     endpoint?: string;
 }
 
@@ -24,13 +24,13 @@ export interface seachRequest{
 }
 
 export interface BatchDataDetail{
-    batchId?: string;
-    categoryId?: string; // Fiture name
-    batchName?: string;
+    batch_id?: string;
+    category_id?: string; // Fiture name
+    batch_name?: string;
     description?: string;
-    requestMethod?: string;
+    request_method?: string;
     environment?: string;
-    mainUrl?: string;
+    main_url?: string;
     endpoint?: string;
 }
 

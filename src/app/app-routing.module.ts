@@ -6,7 +6,7 @@ import {BatchDetailComponent} from "./batch-detail/batch-detail.component";
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'login', pathMatch: 'full'
+    path: '', redirectTo: 'myBatch', pathMatch: 'full'
   },
   {
     path:'login',

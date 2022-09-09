@@ -19,9 +19,8 @@
                     <div style="display: flex">
                         <label for="batchFiturFilter"></label>
                         <select class="form-control category-filter" id="batchFiturFilter" formControlName="categoryIdFiltered">
-                            <option selected="selected">Find by Feature</option>
                             <option *ngFor="let cat of categoryList" value='{{cat.categoryId}}'>
-                                {{cat.categoryName}}</option>
+                                {{cat.categoryName}}
                         </select>
 
                         <button (click)="filterbyCategory()" class="btn-filter">
@@ -66,30 +65,54 @@
                 </div>
             </div>
 
-            <table class="table table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width: 15%">Environment</th>
-                        <th scope="col" style="width: 15%">Feature</th>
-                        <th scope="col" style="width: 30%">Name</th>
-                        <th scope="col" style="width: 10%">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <div *ngIf="isNoData">
-                        Empty batch!
-                    </div>
-                    <tr *ngFor="let batch of dataFromService" class="selectedBatch">
-                        <td>{{batch.environment}}</td>
-                        <td>{{convertBatchCategory(batch.categoryId)}}</td>
-                        <td (click)="toDetail(batch.batchId)" style="cursor: pointer">{{batch.batchName}}</td>
-                        <td>
-                            <button (click)="selectBatchHit(batch.batchName, batch.batchId, batch.categoryId)" class="btn btn-primary"
-                                    data-toggle="modal" data-target="#popUpbatch">HIT!</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <mat-tab-group>
+                <mat-tab label="Batch list">
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col" style="width: 10%">Environment</th>
+                            <th scope="col" style="width: 25%">Feature</th>
+                            <th scope="col" style="width: 30%">Name</th>
+                            <th scope="col" style="width: 10%">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div *ngIf="isNoData">
+                            Empty batch!
+                        </div>
+                        <tr *ngFor="let batch of dataFromService" class="selectedBatch">
+                            <td>{{batch.environment}}</td>
+                            <td>{{convertBatchCategory(batch.category_id)}}</td>
+                            <td (click)="toDetail(batch.batch_id)" style="cursor: pointer">{{batch.batch_name}}</td>
+                            <td>
+                                <button (click)="selectBatchHit(batch.batch_name, batch.batch_id, batch.category_id)" class="btn btn-primary"
+                                        data-toggle="modal" data-target="#popUpbatch">HIT!</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </mat-tab>
+
+                <mat-tab label="Manage feature">
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col" style="width: 15%">Feature Name</th>
+                            <th scope="col" style="width: 15%">Edit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let cat of categoryList" class="selectedBatch">
+                            <td>{{cat.categoryName}}</td>
+                            <td><button (click)="showPopupEdit(cat.categoryId,cat.categoryName)" data-toggle="modal" data-target="#popUpEdit" class="btn btn-primary">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </mat-tab>
+            </mat-tab-group>
         </div>
 
     </div>
@@ -104,6 +127,27 @@
                 <div class="modal-footer">
                     <button (click)="cancelHit()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button (click)="getResponse(selectedId, selectedBatch)" type="button" class="btn btn-primary" data-dismiss="modal">Hit!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop up edit batch -->
+    <div *ngIf="popUpEdit" class="modal fade" id="popUpEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form [formGroup]="categoryUpdateForm">
+                        <div class="form-group">
+                            <label for="CategoryName">before: {{selectedFitName}}</label>
+                            <input type="text" class="form-control" id="CategoryName"
+                                   formControlName="categoryNameUpdated" placeholder="New feature name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="cancelHit()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button (click)="updateCategoryName()" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
                 </div>
             </div>
         </div>

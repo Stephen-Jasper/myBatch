@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BatchData, seachRequest} from "../../batch-dto/batch-response";
+import {BatchData, FeatureRequest, seachRequest} from "../../batch-dto/batch-response";
 import {CategoryData} from "../../batch-dto/batch-response";
 import {BatchServicesService} from "../batch-services.service";
 import {$0} from "@angular/compiler/src/chars";
@@ -22,19 +22,27 @@ export class BatchHitComponent implements OnInit {
 
   dataFromService: BatchData[];
   inputSearchBatch: seachRequest;
+  updateCategory: FeatureRequest;
   categoryIdForm = new FormGroup({});
+  categoryUpdateForm = new FormGroup({});
+
   lastHit: string = '';
   errorExecute: string = '';
   searchedBatch: string;
   selectedBatch: string;
   selectedCategory: string = '';
   selectedId: string;
+  selectedFitId: string;
+  selectedFitName: string;
   selectedfeature: string;
   loadingHit:boolean = false;
   popUpHit:boolean = false;
+  popUpEdit:boolean = false;
   executeResponse: boolean;
   popUpResponse: boolean = false;
   isNoData: boolean = false;
+
+  newFeatureName: string;
 
   // public APIdata = [];
   guide:string = 'Get response by click "Hit!"';
@@ -47,6 +55,9 @@ export class BatchHitComponent implements OnInit {
       categoryIdFiltered: '',
       searchBatchFilterd: ''
     })
+    this.categoryUpdateForm = this.fb.group({
+      categoryNameUpdated: ''
+    })
   }
 
   get CategoryId(){
@@ -55,6 +66,10 @@ export class BatchHitComponent implements OnInit {
 
   get SearchedBatch(){
     return this.categoryIdForm.get('searchBatchFilterd');
+  }
+
+  get categoryNameUpdt(){
+    return this.categoryUpdateForm.get('categoryNameUpdated');
   }
 
   ngOnInit(): void {
@@ -81,20 +96,14 @@ export class BatchHitComponent implements OnInit {
 
   convertBatchCategory(batch: string){
     return this.categoryList[parseInt(batch)-1].categoryName;
+    // return batch
   }
 
-  // getCategoryFilter(){
-  //   this.dataService.getFeature().toPromise().then((response) => {
-  //     if(response){
-  //       this.categoryList = response;
-  //     }else { // Failed
-  //       window.location.reload();
-  //       this.router.navigate(['/401']);
-  //     }
-  //   }).catch(response => {
-  //     window.scrollTo(0, 0);
-  //   })
-  // }
+  showPopupEdit(fitId: string, fitName: string){
+    this.popUpEdit = true
+    this.selectedFitId = fitId;
+    this.selectedFitName = fitName
+  }
 
   findBatch(){
     this.isNoData = false;
@@ -149,22 +158,6 @@ export class BatchHitComponent implements OnInit {
     console.log(value);
   }
 
-  // hit(){
-  //   this.loadingHit = true;
-  //   this.APIdata = [];
-  //   this._batchService.getServiceData()
-  //       .subscribe(data => {
-  //         this.APIdata.push(data)
-  //         this.loadingHit = false;
-  //       });
-  // }
-
-  findData(str: string){
-    return this.dataResponseCard.filter((data) => {
-      return data.batchName === str;
-    })
-  }
-
   selectBatchHit(batchName: string, batchId: string, categoryId:string){
     this.selectedBatch = batchName;
     this.selectedId = batchId;
@@ -200,6 +193,23 @@ export class BatchHitComponent implements OnInit {
   }
   closeResponse(){
     this.popUpResponse = false;
+  }
+
+  updateCategoryName(){
+    this.updateCategory = {
+      category_name: this.categoryUpdateForm.controls['categoryNameUpdated'].value
+    }
+    console.log(this.updateCategory);
+    this._batchService.updatedFeature(this.selectedFitId, this.updateCategory).toPromise().then((response) =>{
+      if(response){
+        alert('Update Success!');
+        window.location.reload();
+      }else{
+        this.router.navigate(['/401']);
+      }
+    }).catch(err => {
+      window.scrollTo(0,0);
+    })
   }
 
   toDetail(BchId: string){
