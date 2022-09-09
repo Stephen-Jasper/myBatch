@@ -13,7 +13,9 @@ export class BatchServicesComponent implements OnInit {
 
   selected_Batch: string;
   selected_Id: string;
-  newFeature = '';
+  newFeature: string = '';
+  newUrlDev: string = '';
+  newUrlUat: string = '';
   showPopupFeature:boolean = false;
   showPopupCreate:boolean = false;
   showPopupDelete:boolean = false;
@@ -124,12 +126,14 @@ export class BatchServicesComponent implements OnInit {
     this.showPopupFeature = true;
   }
 
-  createFeature(value: string){
-    if(value === ''){
+  createFeature(name: string, dev: string, uat:string){
+    if(name === ''){
       alert('Please enter feature name!');
     }else{ // HIT SERVICE
       this.requestNewFeature = {
-        "category_name" : value
+        "category_name" : name,
+        "main_url_dev": dev,
+        "main_url_uat": uat
       }
       this.inputService.createNewFeature(this.requestNewFeature).toPromise().then((response) => {
         if(response){

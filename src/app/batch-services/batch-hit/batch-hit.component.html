@@ -19,8 +19,8 @@
                     <div style="display: flex">
                         <label for="batchFiturFilter"></label>
                         <select class="form-control category-filter" id="batchFiturFilter" formControlName="categoryIdFiltered">
-                            <option *ngFor="let cat of categoryList" value='{{cat.categoryId}}'>
-                                {{cat.categoryName}}
+                            <option *ngFor="let cat of categoryList" value='{{cat.category_id}}'>
+                                {{cat.category_name}}
                         </select>
 
                         <button (click)="filterbyCategory()" class="btn-filter">
@@ -98,13 +98,17 @@
                         <thead>
                         <tr>
                             <th scope="col" style="width: 15%">Feature Name</th>
+                            <th scope="col" style="width: 15%">DEV url</th>
+                            <th scope="col" style="width: 15%">UAT url</th>
                             <th scope="col" style="width: 15%">Edit</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr *ngFor="let cat of categoryList" class="selectedBatch">
-                            <td>{{cat.categoryName}}</td>
-                            <td><button (click)="showPopupEdit(cat.categoryId,cat.categoryName)" data-toggle="modal" data-target="#popUpEdit" class="btn btn-primary">
+                            <td>{{cat.category_name}}</td>
+                            <td>{{cat.main_url_dev}}</td>
+                            <td>{{cat.main_url_uat}}</td>
+                            <td><button (click)="showPopupEdit(cat.category_id,cat.category_name)" data-toggle="modal" data-target="#popUpEdit" class="btn btn-primary">
                                     <mat-icon>edit</mat-icon>
                                 </button>
                             </td>

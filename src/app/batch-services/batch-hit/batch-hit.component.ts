@@ -95,7 +95,7 @@ export class BatchHitComponent implements OnInit {
   }
 
   convertBatchCategory(batch: string){
-    return this.categoryList[parseInt(batch)-1].categoryName;
+    return this.categoryList[parseInt(batch)-1].category_name;
     // return batch
   }
 

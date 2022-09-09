@@ -9,13 +9,22 @@ export interface BatchData{
     endpoint?: string;
 }
 
+export interface BatchGroupData{
+    category: CategoryData[];
+    batch: BatchData[];
+}
+
 export interface CategoryData{
-    categoryId?: string;
-    categoryName?: string;
+    category_id?: string;
+    category_name?: string;
+    main_url_dev?: string;
+    main_url_uat?: string;
 }
 
 export interface FeatureRequest{
     category_name?: string;
+    main_url_dev?: string;
+    main_url_uat?: string;
 }
 
 export interface seachRequest{

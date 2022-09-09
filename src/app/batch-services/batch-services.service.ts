@@ -33,6 +33,18 @@ export class BatchServicesService {
         )
   }
 
+  // GET ALL BATCH DATA WITH GROUP
+  getAllgroupData(): Observable<any>{
+      return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/batch/get-list-batch/grouped`)
+          .pipe(
+              map(response => {
+                  return response;
+              }), catchError((error) => {
+                  return this.errorMapping(error);
+              })
+          )
+  }
+
   // GET BATCH BY CATEGORY
   getBatchbyCategory(categoryId: string): Observable<any>{
       return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/batch/get-list-batch/category/${categoryId}`)
