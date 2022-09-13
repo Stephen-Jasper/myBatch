@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryData } from "../batch-dto/batch-response";
+import {HistoryServiceService} from "./history-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-batch-history',
@@ -6,10 +9,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./batch-history.component.scss']
 })
 export class BatchHistoryComponent implements OnInit {
+  historyData: HistoryData[];
+  isNoHistoryData: boolean;
 
-  constructor() { }
+  constructor(private historyService: HistoryServiceService,
+              private router: Router) { }
 
   ngOnInit(): void {
+    this.getHistory();
+  }
+
+  getHistory(){
+    this.isNoHistoryData = false;
+    this.historyService.getHitBatchHistory().toPromise().then((response) => {
+      if(response){
+        this.historyData = response;
+        if(response.length === 0){
+          this.isNoHistoryData = true;
+        }
+      }else{
+        // window.location.reload();
+        this.router.navigate(['/401']);
+      }
+    }).catch(resp =>{
+      // window.location.reload();
+    })
   }
 
 }
