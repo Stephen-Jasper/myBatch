@@ -35,7 +35,9 @@
   flex-wrap: wrap;
   background-color: aliceblue;
 }
-
+.selectedBatch{
+  font-size: 20px;
+}
 .selectedBatch:hover{
   background-color: lightyellow;
   color: #0064b6;
@@ -110,6 +112,12 @@
   border-radius: 5px;
   padding: 10px;
   background-color: white;
+}
+
+.label-before{
+  label{
+    font-size: 20px;
+  }
 }
 
 .loader {

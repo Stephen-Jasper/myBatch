@@ -52,3 +52,10 @@ export interface BatchRequest{
     main_url?: string;
     endpoint?: string;
 }
+
+export interface historyData{
+    history_id?: string;
+    hit_date?: string;
+    batch_name?: string;
+    result?: string;
+}

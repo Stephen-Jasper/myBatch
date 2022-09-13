@@ -97,10 +97,10 @@
                     <table class="table table-sm">
                         <thead>
                         <tr>
-                            <th scope="col" style="width: 15%">Feature Name</th>
-                            <th scope="col" style="width: 15%">DEV url</th>
-                            <th scope="col" style="width: 15%">UAT url</th>
-                            <th scope="col" style="width: 15%">Edit</th>
+                            <th scope="col" style="width: 10%">Feature Name</th>
+                            <th scope="col" style="width: 25%">DEV url</th>
+                            <th scope="col" style="width: 25%">UAT url</th>
+                            <th scope="col" style="width: 5%">Edit</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -142,18 +142,18 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <form [formGroup]="categoryUpdateForm">
-                        <div class="form-group">
-                            <label for="CategoryName">before: {{selectedFitName}}</label>
+                        <div class="form-group label-before">
+                            <label for="CategoryName">Before: {{selectedFitName}}</label>
                             <input type="text" class="form-control" id="CategoryName"
-                                   formControlName="categoryNameUpdated" placeholder="New feature name">
+                                   formControlName="categoryNameUpdated">
 
-                            <label for="DevUrl">before: {{selectedDevUrl}}</label>
+                            <label for="DevUrl">Before: {{selectedDevUrl}}</label>
                             <input type="text" class="form-control" id="DevUrl"
-                                   formControlName="devUrlUpdated" placeholder="New feature name">
+                                   formControlName="devUrlUpdated">
 
-                            <label for="UatUrl">before: {{selectedUatUrl}}</label>
+                            <label for="UatUrl">Before: {{selectedUatUrl}}</label>
                             <input type="text" class="form-control" id="UatUrl"
-                                   formControlName="uatUrlUpdated" placeholder="New feature name">
+                                   formControlName="uatUrlUpdated">
                         </div>
                     </form>
                 </div>
