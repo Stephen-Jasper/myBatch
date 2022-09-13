@@ -16,6 +16,7 @@ import { BatchInputComponent } from './batch-services/batch-input/batch-input.co
 import { NavbarComponent } from './batch-header/navbar/navbar.component';
 import { DateTimeComponent } from './utils/date-time/date-time.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { BatchHistoryComponent } from './batch-history/batch-history.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     BatchDetailComponent,
     BatchInputComponent,
     NavbarComponent,
-    DateTimeComponent
+    DateTimeComponent,
+    BatchHistoryComponent
   ],
     imports: [
         BrowserModule,

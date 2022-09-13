@@ -108,7 +108,7 @@
                             <td>{{cat.category_name}}</td>
                             <td>{{cat.main_url_dev}}</td>
                             <td>{{cat.main_url_uat}}</td>
-                            <td><button (click)="showPopupEdit(cat.category_id,cat.category_name)" data-toggle="modal" data-target="#popUpEdit" class="btn btn-primary">
+                            <td><button (click)="showPopupEdit(cat.category_id,cat.category_name, cat.main_url_dev, cat.main_url_uat)" data-toggle="modal" data-target="#popUpEdit" class="btn btn-primary">
                                     <mat-icon>edit</mat-icon>
                                 </button>
                             </td>
@@ -146,6 +146,14 @@
                             <label for="CategoryName">before: {{selectedFitName}}</label>
                             <input type="text" class="form-control" id="CategoryName"
                                    formControlName="categoryNameUpdated" placeholder="New feature name">
+
+                            <label for="DevUrl">before: {{selectedDevUrl}}</label>
+                            <input type="text" class="form-control" id="DevUrl"
+                                   formControlName="devUrlUpdated" placeholder="New feature name">
+
+                            <label for="UatUrl">before: {{selectedUatUrl}}</label>
+                            <input type="text" class="form-control" id="UatUrl"
+                                   formControlName="uatUrlUpdated" placeholder="New feature name">
                         </div>
                     </form>
                 </div>

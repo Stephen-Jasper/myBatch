@@ -34,6 +34,8 @@ export class BatchHitComponent implements OnInit {
   selectedId: string;
   selectedFitId: string;
   selectedFitName: string;
+  selectedDevUrl: string;
+  selectedUatUrl: string;
   selectedfeature: string;
   loadingHit:boolean = false;
   popUpHit:boolean = false;
@@ -56,7 +58,9 @@ export class BatchHitComponent implements OnInit {
       searchBatchFilterd: ''
     })
     this.categoryUpdateForm = this.fb.group({
-      categoryNameUpdated: ''
+      categoryNameUpdated: '',
+      devUrlUpdated: '',
+      uatUrlUpdated: ''
     })
   }
 
@@ -70,6 +74,14 @@ export class BatchHitComponent implements OnInit {
 
   get categoryNameUpdt(){
     return this.categoryUpdateForm.get('categoryNameUpdated');
+  }
+
+  get categoryDevUpdated(){
+    return this.categoryUpdateForm.get('devUrlUpdated');
+  }
+
+  get categoryUatUpdated(){
+    return this.categoryUpdateForm.get('uatUrlUpdated');
   }
 
   ngOnInit(): void {
@@ -99,10 +111,12 @@ export class BatchHitComponent implements OnInit {
     // return batch
   }
 
-  showPopupEdit(fitId: string, fitName: string){
+  showPopupEdit(fitId: string, fitName: string, devUrl: string, uatUrl: string){
     this.popUpEdit = true
     this.selectedFitId = fitId;
-    this.selectedFitName = fitName
+    this.selectedFitName = fitName;
+    this.selectedDevUrl = devUrl;
+    this.selectedUatUrl = uatUrl;
   }
 
   findBatch(){
@@ -197,7 +211,9 @@ export class BatchHitComponent implements OnInit {
 
   updateCategoryName(){
     this.updateCategory = {
-      category_name: this.categoryUpdateForm.controls['categoryNameUpdated'].value
+      category_name: this.categoryUpdateForm.controls['categoryNameUpdated'].value,
+      main_url_dev: this.categoryUpdateForm.controls['devUrlUpdated'].value,
+      main_url_uat: this.categoryUpdateForm.controls['uatUrlUpdated'].value
     }
     console.log(this.updateCategory);
     this._batchService.updatedFeature(this.selectedFitId, this.updateCategory).toPromise().then((response) =>{
