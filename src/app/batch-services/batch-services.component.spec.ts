@@ -29,4 +29,9 @@ describe('BatchServicesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show popup feature', () => {
+    component.popUpFeature();
+    expect(component.showPopupFeature).toBeTrue();
+  });
 });

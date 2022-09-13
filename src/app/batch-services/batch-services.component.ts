@@ -127,8 +127,8 @@ export class BatchServicesComponent implements OnInit {
   }
 
   createFeature(name: string, dev: string, uat:string){
-    if(name === ''){
-      alert('Please enter feature name!');
+    if(name === '' || dev === '' || uat === ''){
+      alert('Please complete the field!');
     }else{ // HIT SERVICE
       this.requestNewFeature = {
         "category_name" : name,
