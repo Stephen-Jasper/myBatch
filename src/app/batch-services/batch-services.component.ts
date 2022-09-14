@@ -16,6 +16,7 @@ export class BatchServicesComponent implements OnInit {
   newFeature: string = '';
   newUrlDev: string = '';
   newUrlUat: string = '';
+  panelOpen: boolean = false;
   showPopupFeature:boolean = false;
   showPopupCreate:boolean = false;
   showPopupDelete:boolean = false;
@@ -80,6 +81,20 @@ export class BatchServicesComponent implements OnInit {
 
   toDetail(BchId: string){
     this.router.navigate(['myBatch/data-detail/' + BchId]);
+  }
+
+  expandBatch(id: string){
+    this.panelOpen = false;
+    this.batchService.getBatchbyCategory(id).toPromise().then((resp)=>{
+      if(resp){
+        this.dataResponse = resp;
+      }else { // Failed
+        window.location.reload();
+        this.router.navigate(['/401']);
+      }
+    }).catch(response => {
+      window.scrollTo(0, 0);
+    });
   }
 
   getDataBatch(){

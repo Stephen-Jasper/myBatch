@@ -99,10 +99,6 @@ export class BatchDetailComponent implements OnInit {
     this.router.navigate(['/myBatch'])
   }
 
-  logout(){
-    this.router.navigate(['/login']);
-  }
-
   submit(){
     this.detailData = {
       category_id: this.batchEditForm.controls['category_Name'].value,

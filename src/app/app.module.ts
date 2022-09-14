@@ -17,6 +17,7 @@ import { NavbarComponent } from './batch-header/navbar/navbar.component';
 import { DateTimeComponent } from './utils/date-time/date-time.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BatchHistoryComponent } from './batch-history/batch-history.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { BatchHistoryComponent } from './batch-history/batch-history.component';
         HttpClientModule,
         ReactiveFormsModule,
         MatTabsModule,
+        MatExpansionModule,
     ],
     exports: [
     ],

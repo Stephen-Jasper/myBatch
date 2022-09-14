@@ -96,11 +96,6 @@ export class BatchInputComponent implements OnInit {
     })
   }
 
-  upp(){
-    alert('Select ' + this.selectedLevel);
-    console.log('Test');
-  }
-
   submit(){
     this.requestBatch = {
       category_id: this.batchInputForm.controls['category_Name'].value,
