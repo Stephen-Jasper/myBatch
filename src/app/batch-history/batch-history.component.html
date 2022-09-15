@@ -1,9 +1,15 @@
 <app-navbar></app-navbar>
 <div class="batch-header">
-    <div class="history-title">
-        Batch hit history
+    <div class="history-title" style="display: flex; justify-content: space-between">
+        <div class="history-subtitle">
+            Batch hit history
+        </div>
+
+        <button (click)="clearHistory()" class="btn btn-danger clear-btn">
+            Clear</button>
     </div>
-    <table class="table table-striped">
+
+    <table class="table table-striped tbl-history">
         <thead>
         <tr class="history-header">
             <th scope="col">Batch name</th>
@@ -11,15 +17,17 @@
             <th scope="col">Hit date</th>
         </tr>
         </thead>
+
         <tbody>
-        <div *ngIf="isNoHistoryData">
-            Empty!
-        </div>
-        <tr *ngFor="let hist of historyData" class="batch-history">
-            <td>{{hist.batch_name}}</td>
-            <td>{{hist.result}}</td>
-            <td>{{hist.hit_date}}</td>
-        </tr>
+            <div *ngIf="isNoHistoryData" class="batch-history">
+                Empty!
+            </div>
+
+            <tr *ngFor="let hist of historyData" class="batch-history">
+                <td>{{hist.batch_name}}</td>
+                <td>{{hist.result}}</td>
+                <td>{{hist.hit_date}}</td>
+            </tr>
         </tbody>
     </table>
 </div>

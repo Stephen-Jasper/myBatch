@@ -27,10 +27,23 @@ export class HistoryServiceService {
         )
   }
 
+  // CLEAR HISTORY DATA
+  clearAllData(): Observable<any>{
+      return this.http.delete<ServiceResponse<any>>(`${environment.apiUrl}/history/clear-history`)
+          .pipe(
+              map(
+                  response => {
+                      return response
+                  }, catchError( (err) => {
+                      return this.errorMapping(err);
+                  })
+              )
+          )
+  }
 
   errorMapping(error): Observable<any> {
     if (error.status === 400) {
-      this.router.navigate(['/404']).then(r => null);
+      this.router.navigate(['/401']).then(r => null);
     } else if (error.status === 408 || error.status === 500) {
       return throwError(error.error.error_schema);
     }

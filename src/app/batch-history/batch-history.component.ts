@@ -28,12 +28,20 @@ export class BatchHistoryComponent implements OnInit {
           this.isNoHistoryData = true;
         }
       }else{
-        // window.location.reload();
         this.router.navigate(['/401']);
       }
     }).catch(resp =>{
-      // window.location.reload();
-    })
+      this.router.navigate(['/401']);
+    });
+  }
+
+  clearHistory(){
+    this.historyService.clearAllData().toPromise().then((response) => {
+      alert('Succesfully clear history data!');
+      window.location.reload();
+    }).catch(resp =>{
+      this.router.navigate(['/401']);
+    });
   }
 
 }
