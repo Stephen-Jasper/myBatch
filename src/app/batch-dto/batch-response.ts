@@ -10,7 +10,12 @@ export interface BatchData{
 }
 
 export interface BatchGroupData{
-    category: CategoryData[];
+    batches_per_categories: CategoryGroupedData[];
+}
+
+export interface CategoryGroupedData{
+    category_id?: string;
+    category_name?: string;
     batch: BatchData[];
 }
 

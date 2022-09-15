@@ -26,7 +26,7 @@
 <!--                    </div>-->
 <!--                </ul>-->
 
-                <mat-expansion-panel *ngFor="let cat of categoryList" hideToggle [expanded]="panelOpen">
+                <mat-expansion-panel *ngFor="let cat of categoryList" hideToggle>
                     <mat-expansion-panel-header>
                         <mat-panel-title style="background-color: bisque;" (click)="expandBatch(cat.category_id)">
                             {{cat.category_name}}
@@ -35,6 +35,16 @@
                     <p *ngFor="let data of dataResponse"
                         (click)="toDetail(data.batch_id)" target="_blank">{{data.batch_name}}</p>
                 </mat-expansion-panel>
+
+<!--                <mat-expansion-panel *ngFor="let cat of dataGroupResponse.batches_per_categories; index as i" hideToggle>-->
+<!--                    <mat-expansion-panel-header>-->
+<!--                        <mat-panel-title style="background-color: bisque;">-->
+<!--                            {{i}} {{cat.category_name}}-->
+<!--                        </mat-panel-title>-->
+<!--                    </mat-expansion-panel-header>-->
+<!--                    <p *ngFor="let data of dataGroupResponse.batches_per_categories[i].batch"-->
+<!--                       (click)="toDetail(data.batch_id)" target="_blank">{{data.batch_name}}</p>-->
+<!--                </mat-expansion-panel>-->
 
             </div>
             <mat-icon style="position: fixed; transform: scale(2); align-self: flex-end" (click)="goUp()">eject</mat-icon>

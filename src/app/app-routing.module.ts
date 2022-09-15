@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '', redirectTo: 'myBatch', pathMatch: 'full'
   },
   {
-    path:'login',
+    path:'401',
     component: BatchLoginComponent
   },
   {

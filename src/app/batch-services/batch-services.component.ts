@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BatchData, BatchRequest, CategoryData, FeatureRequest} from "../batch-dto/batch-response";
+import {BatchData, BatchGroupData, BatchRequest, CategoryData, FeatureRequest} from "../batch-dto/batch-response";
 import {BatchServicesService} from "./batch-services.service";
 import {Router} from "@angular/router";
 import {InputServiceService} from "./batch-input/input-service.service";
@@ -21,6 +21,7 @@ export class BatchServicesComponent implements OnInit {
   showPopupCreate:boolean = false;
   showPopupDelete:boolean = false;
   dataResponse: BatchData[];
+  dataGroupResponse: BatchGroupData;
   categoryList: CategoryData[];
   requestNewFeature: FeatureRequest;
   data = [];
@@ -75,12 +76,26 @@ export class BatchServicesComponent implements OnInit {
     //     imgUrl: 'https://karir.bca.co.id/public/assets/img/logo-color.svg'
     //   },
     // ]
+    this.getGroupedData();
     this.getDataBatch();
     this.getCategoryFilter();
   }
 
   toDetail(BchId: string){
     this.router.navigate(['myBatch/data-detail/' + BchId]);
+  }
+
+  getGroupedData(){
+    this.batchService.getAllgroupData().toPromise().then((resp)=>{
+      if(resp){
+        this.dataGroupResponse = resp;
+      }else { // Failed
+        window.location.reload();
+        this.router.navigate(['/401']);
+      }
+    }).catch(response => {
+      window.scrollTo(0, 0);
+    });
   }
 
   expandBatch(id: string){
@@ -171,7 +186,7 @@ export class BatchServicesComponent implements OnInit {
     this.showPopupDelete =false;
   }
 
-  activePopUp(id: string, name:string){ // FUNCTION FOR DELETE
+  activePopUp(id: string, name:string){
     this.selected_Id = id;
     this.selected_Batch = name;
     this.showPopupDelete = true;
