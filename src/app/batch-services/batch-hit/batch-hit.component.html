@@ -19,6 +19,7 @@
                     <div style="display: flex">
                         <label for="batchFiturFilter"></label>
                         <select class="form-control category-filter" id="batchFiturFilter" formControlName="categoryIdFiltered">
+                            <option value="default">All batch
                             <option *ngFor="let cat of categoryList" value='{{cat.category_id}}'>
                                 {{cat.category_name}}
                         </select>
@@ -26,9 +27,9 @@
                         <button (click)="filterbyCategory()" class="btn-filter">
                             <mat-icon>filter_list</mat-icon>
                         </button>
-                        <button (click)="getAllDataBack()" class="btn-filter">
-                            <mat-icon>autorenew</mat-icon>
-                        </button>
+<!--                        <button (click)="getAllDataBack()" class="btn-filter">-->
+<!--                            <mat-icon>autorenew</mat-icon>-->
+<!--                        </button>-->
                     </div>
                 </div>
             </div>
@@ -56,7 +57,7 @@
                         <tr>
                             <th scope="col" style="width: 10%">Environment</th>
                             <th scope="col" style="width: 25%">Feature</th>
-                            <th scope="col" style="width: 30%">Name</th>
+                            <th scope="col" style="width: 25%;">Name</th>
                             <th scope="col" style="width: 10%">Action</th>
                         </tr>
                         </thead>
@@ -65,11 +66,11 @@
                             Empty batch!
                         </div>
                         <tr *ngFor="let batch of dataFromService" class="selectedBatch">
-                            <td>{{batch.environment}}</td>
-                            <td>{{convertBatchCategory(batch.category_id)}}</td>
-                            <td (click)="toDetail(batch.batch_id)" style="cursor: pointer">{{batch.batch_name}}</td>
-                            <td>
-                                <button (click)="selectBatchHit(batch.batch_name, batch.batch_id, batch.category_id)" class="btn btn-primary"
+                            <td style="width: 17%;">{{batch.environment}}</td>
+                            <td style="width: 35%">{{convertBatchCategory(batch.category_id)}}</td>
+                            <td (click)="toDetail(batch.batch_id)" style="cursor: pointer;width: 39%;">{{batch.batch_name}}</td>
+                            <td style="width: 10%;">
+                                <button (click)="selectBatchHit(batch.batch_name, batch.batch_id, batch.category_id)" class="btn btn-warning"
                                         data-toggle="modal" data-target="#popUpbatch">HIT!</button>
                             </td>
                         </tr>
@@ -78,7 +79,7 @@
                 </mat-tab>
 
                 <mat-tab label="Manage feature">
-                    <table class="table table-sm">
+                    <table class="table table-striped table-sm">
                         <thead>
                         <tr>
                             <th scope="col" style="width: 10%">Feature Name</th>
@@ -89,11 +90,12 @@
                         </thead>
                         <tbody>
                         <tr *ngFor="let cat of categoryList" class="selectedBatch">
-                            <td>{{cat.category_name}}</td>
-                            <td>{{cat.main_url_dev}}</td>
-                            <td>{{cat.main_url_uat}}</td>
-                            <td><button (click)="showPopupEdit(cat.category_id,cat.category_name, cat.main_url_dev, cat.main_url_uat)" data-toggle="modal" data-target="#popUpEdit" class="btn btn-primary">
-                                    <mat-icon>edit</mat-icon>
+                            <td style="width: 15%;">{{cat.category_name}}</td>
+                            <td style="width: 37%;">{{cat.main_url_dev}}</td>
+                            <td style="width: 37%">{{cat.main_url_uat}}</td>
+                            <td>
+                                <button (click)="showPopupEdit(cat.category_id,cat.category_name, cat.main_url_dev, cat.main_url_uat)" data-toggle="modal" data-target="#popUpEdit" class="btn btn-primary">
+                                    <mat-icon class="icon-disp">edit</mat-icon>
                                 </button>
                             </td>
                         </tr>
@@ -103,7 +105,7 @@
             </mat-tab-group>
         </div>
 
-        <div *ngIf="popUpResponse" class="fixed">
+        <div *ngIf="popUpResponse" class="fixed example-box" cdkDrag>
             <div style="display: flex; justify-content: space-between">
                 <div>
                     <div style="display: flex">
@@ -149,11 +151,11 @@
 
                             <label for="DevUrl">Before: {{selectedDevUrl}}</label>
                             <input type="text" class="form-control" id="DevUrl"
-                                   formControlName="devUrlUpdated">
+                                   formControlName="devUrlUpdated" placeholder="Dev">
 
                             <label for="UatUrl">Before: {{selectedUatUrl}}</label>
                             <input type="text" class="form-control" id="UatUrl"
-                                   formControlName="uatUrlUpdated">
+                                   formControlName="uatUrlUpdated" placeholder="Uat">
                         </div>
                     </form>
                 </div>

@@ -99,7 +99,7 @@ export class BatchServicesComponent implements OnInit {
   }
 
   expandBatch(id: string){
-    this.panelOpen = false;
+    this.panelOpen = true;
     this.batchService.getBatchbyCategory(id).toPromise().then((resp)=>{
       if(resp){
         this.dataResponse = resp;

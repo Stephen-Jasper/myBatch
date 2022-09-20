@@ -18,6 +18,7 @@ import { DateTimeComponent } from './utils/date-time/date-time.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BatchHistoryComponent } from './batch-history/batch-history.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
         ReactiveFormsModule,
         MatTabsModule,
         MatExpansionModule,
+        DragDropModule,
     ],
     exports: [
     ],

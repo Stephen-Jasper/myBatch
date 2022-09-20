@@ -1,14 +1,14 @@
 <div class="service-container">
     <div class="batch-head">
         <div>
-            <p class="page-title">Feature</p>
+            <p class="page-title">Transfer Batch</p>
         </div>
 
         <div>
-            <button (click)="addBatch()" class="btn btn-warning add-feature"
+            <button (click)="addBatch()" class="btn btn-primary add-feature"
                     data-toggle="modal" data-target="#createBatch">Create Batch</button>
 
-            <button (click)="popUpFeature()" class="btn btn-warning add-feature"
+            <button (click)="popUpFeature()" class="btn btn-primary add-feature"
                     data-toggle="modal" data-target="#createFeature">Create Feature</button>
         </div>
     </div>
@@ -27,14 +27,19 @@
 <!--                </ul>-->
 
                 <p class="page-title">Feature</p>
-                <mat-expansion-panel *ngFor="let cat of categoryList" hideToggle>
+                <mat-expansion-panel *ngFor="let cat of categoryList" hideToggle (destroyed)="panelOpen">
                     <mat-expansion-panel-header>
                         <mat-panel-title (click)="expandBatch(cat.category_id)">
                             {{cat.category_name}}
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <p *ngFor="let data of dataResponse"
-                        (click)="toDetail(data.batch_id)" target="_blank" class="btch-feature">{{data.batch_name}}</p>
+                    <div *ngFor="let data of dataResponse" class="list-batch">
+                        <p (click)="toDetail(data.batch_id)" target="_blank" class="btch-feature">{{data.environment}} - {{data.batch_name}}</p>
+
+                        <mat-icon (click)="activePopUp(data.batch_id, data.batch_name)" data-toggle="modal" data-target="#exampleModalCenter"
+                                  class="tools" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+
+                    </div>
                 </mat-expansion-panel>
 
 <!--                <mat-expansion-panel *ngFor="let cat of dataGroupResponse.batches_per_categories; index as i" hideToggle>-->
@@ -44,7 +49,7 @@
 <!--                        </mat-panel-title>-->
 <!--                    </mat-expansion-panel-header>-->
 <!--                    <p *ngFor="let data of dataGroupResponse.batches_per_categories[i].batch"-->
-<!--                       (click)="toDetail(data.batch_id)" target="_blank">{{data.batch_name}}</p>-->
+<!--                       (click)="toDetail(data.batch_id)" target="_blank">{{data.environment}} - {{data.batch_name}}</p>-->
 <!--                </mat-expansion-panel>-->
 
             </div>

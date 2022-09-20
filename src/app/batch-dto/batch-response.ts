@@ -60,6 +60,7 @@ export interface BatchRequest{
 
 export interface HistoryData{
     history_id?: string;
+    category_name?: string;
     hit_date?: string;
     batch_name?: string;
     result?: string;

@@ -145,21 +145,25 @@ export class BatchHitComponent implements OnInit {
   filterbyCategory(){
     this.isNoData = false;
     this.selectedCategory = this.categoryIdForm.controls['categoryIdFiltered'].value;
-    this._batchService.getBatchbyCategory(this.selectedCategory).toPromise().then((response) => {
-      if(response){
-        console.log(response);
-        this.dataFromService = response;
-        console.log('all data 2: ' + this.dataFromService);
-        if(response.length === 0){
-          this.isNoData = true;
+    if(this.selectedCategory === 'default'){
+      this.getBatchData();
+    }else{
+      this._batchService.getBatchbyCategory(this.selectedCategory).toPromise().then((response) => {
+        if(response){
+          console.log(response);
+          this.dataFromService = response;
+          console.log('all data 2: ' + this.dataFromService);
+          if(response.length === 0){
+            this.isNoData = true;
+          }
+        }else{
+          window.location.reload();
+          this.router.navigate(['/401']);
         }
-      }else{
-        window.location.reload();
-        this.router.navigate(['/401']);
-      }
-    }).catch(response => {
-      window.scrollTo(0, 0);
-    })
+      }).catch(response => {
+        window.scrollTo(0, 0);
+      })
+    }
   }
 
   getAllDataBack(){
