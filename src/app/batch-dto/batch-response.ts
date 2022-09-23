@@ -16,7 +16,7 @@ export interface BatchGroupData{
 export interface CategoryGroupedData{
     category_id?: string;
     category_name?: string;
-    batch: BatchData[];
+    list_batch: BatchData[];
 }
 
 export interface CategoryData{

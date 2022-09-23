@@ -16,41 +16,16 @@
     <div class="service-data">
         <div class="service-list">
             <div class="service-loop">
-<!--                <ul *ngFor="let batch of dataResponse">-->
-<!--                    <div class="batch-component">-->
-<!--                        <a (click)="toDetail(batch.batch_id)" target="_blank"><li>{{batch.batch_name}}</li></a>  &lt;!&ndash; href ke routing id&ndash;&gt;-->
-<!--                        <div class="tools">-->
-<!--                            <mat-icon (click)="activePopUp(batch.batch_id, batch.batch_name)" data-toggle="modal" data-target="#exampleModalCenter"-->
-<!--                                      aria-hidden="false" aria-label="Example home icon">delete</mat-icon>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </ul>-->
 
-                <p class="page-title">Feature</p>
-                <mat-expansion-panel *ngFor="let cat of categoryList" hideToggle (destroyed)="panelOpen">
+                <mat-expansion-panel *ngFor="let cat of dataGroupResponse?.batches_per_categories; index as i" hideToggle>
                     <mat-expansion-panel-header>
-                        <mat-panel-title (click)="expandBatch(cat.category_id)">
+                        <mat-panel-title>
                             {{cat.category_name}}
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <div *ngFor="let data of dataResponse" class="list-batch">
-                        <p (click)="toDetail(data.batch_id)" target="_blank" class="btch-feature">{{data.environment}} - {{data.batch_name}}</p>
-
-                        <mat-icon (click)="activePopUp(data.batch_id, data.batch_name)" data-toggle="modal" data-target="#exampleModalCenter"
-                                  class="tools" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
-
-                    </div>
+                    <p *ngFor="let data of dataGroupResponse?.batches_per_categories[i]?.list_batch"
+                       (click)="toDetail(data.batch_id)" target="_blank">{{data.environment}} - {{data.batch_name}}</p>
                 </mat-expansion-panel>
-
-<!--                <mat-expansion-panel *ngFor="let cat of dataGroupResponse.batches_per_categories; index as i" hideToggle>-->
-<!--                    <mat-expansion-panel-header>-->
-<!--                        <mat-panel-title style="background-color: bisque;">-->
-<!--                            {{i}} {{cat.category_name}}-->
-<!--                        </mat-panel-title>-->
-<!--                    </mat-expansion-panel-header>-->
-<!--                    <p *ngFor="let data of dataGroupResponse.batches_per_categories[i].batch"-->
-<!--                       (click)="toDetail(data.batch_id)" target="_blank">{{data.environment}} - {{data.batch_name}}</p>-->
-<!--                </mat-expansion-panel>-->
 
             </div>
 <!--            <mat-icon style="position: fixed; transform: scale(2); align-self: flex-end" (click)="goUp()">eject</mat-icon>-->
