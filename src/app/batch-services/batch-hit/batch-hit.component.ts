@@ -107,8 +107,12 @@ export class BatchHitComponent implements OnInit {
   }
 
   convertBatchCategory(batch: string){
-    return this.categoryList[parseInt(batch)-1].category_name;
-    // return batch
+    for (let i=0; i<this.categoryList.length; ++i){
+      if(this.categoryList[i].category_id === batch){
+        return this.categoryList[i].category_name;
+      }
+    }
+    return batch;
   }
 
   showPopupEdit(fitId: string, fitName: string, devUrl: string, uatUrl: string){

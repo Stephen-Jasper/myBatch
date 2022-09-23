@@ -17,14 +17,14 @@
         <div class="service-list">
             <div class="service-loop">
 
-                <mat-expansion-panel *ngFor="let cat of dataGroupResponse?.batches_per_categories; index as i" hideToggle>
+                <mat-expansion-panel *ngFor="let cat of dataGroupResponse?.batches_per_categories; index as i">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             {{cat.category_name}}
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     <p *ngFor="let data of dataGroupResponse?.batches_per_categories[i]?.list_batch"
-                       (click)="toDetail(data.batch_id)" target="_blank">{{data.environment}} - {{data.batch_name}}</p>
+                       (click)="toDetail(data.batch_id)" target="_blank" class="btch-feature list-batch">{{data.environment}} - {{data.batch_name}}</p>
                 </mat-expansion-panel>
 
             </div>
