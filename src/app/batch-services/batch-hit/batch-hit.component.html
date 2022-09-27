@@ -7,8 +7,7 @@
                     <input type="text"
                            class="input-search"
                            [(ngModel)]="searchedBatch"
-                           formControlName="searchBatchFilterd"
-                           (keyup)="filterIt($event)">
+                           formControlName="searchBatchFilterd">
 
                     <button class="btn-search" (click)="findBatch()">
                         <mat-icon class="search-logo">search</mat-icon>
@@ -27,9 +26,6 @@
                         <button (click)="filterbyCategory()" class="btn-filter">
                             <mat-icon>filter_list</mat-icon>
                         </button>
-<!--                        <button (click)="getAllDataBack()" class="btn-filter">-->
-<!--                            <mat-icon>autorenew</mat-icon>-->
-<!--                        </button>-->
                     </div>
                 </div>
             </div>

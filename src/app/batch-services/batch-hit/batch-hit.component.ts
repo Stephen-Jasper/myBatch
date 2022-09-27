@@ -129,10 +129,8 @@ export class BatchHitComponent implements OnInit {
       batch_name: this.searchedBatch,
       category_id: this.selectedCategory
     }
-    console.log(this.inputSearchBatch);
     this._batchService.getSearchBatch(this.inputSearchBatch).toPromise().then((response) => {
       if(response){
-        console.log(response);
         this.dataFromService = response;
         if(response.length === 0){
           this.isNoData = true;
@@ -154,9 +152,7 @@ export class BatchHitComponent implements OnInit {
     }else{
       this._batchService.getBatchbyCategory(this.selectedCategory).toPromise().then((response) => {
         if(response){
-          console.log(response);
           this.dataFromService = response;
-          console.log('all data 2: ' + this.dataFromService);
           if(response.length === 0){
             this.isNoData = true;
           }
@@ -168,16 +164,6 @@ export class BatchHitComponent implements OnInit {
         window.scrollTo(0, 0);
       })
     }
-  }
-
-  getAllDataBack(){
-    window.location.reload();
-  }
-
-  filterIt($event){
-    const value = $event.target.value;
-    // this.dataResponseCard = this.dataResponseCard.filter(value);
-    console.log(value);
   }
 
   selectBatchHit(batchName: string, batchId: string, categoryId:string){
@@ -211,7 +197,6 @@ export class BatchHitComponent implements OnInit {
     this.lastHit = batchName + ' : ';
     this.popUpHit = false;
     this.popUpResponse = true;
-    console.log('res: ' + this.executeResponse);
   }
   closeResponse(){
     this.popUpResponse = false;
@@ -223,7 +208,6 @@ export class BatchHitComponent implements OnInit {
       main_url_dev: this.categoryUpdateForm.controls['devUrlUpdated'].value,
       main_url_uat: this.categoryUpdateForm.controls['uatUrlUpdated'].value
     }
-    console.log(this.updateCategory);
     this._batchService.updatedFeature(this.selectedFitId, this.updateCategory).toPromise().then((response) =>{
       if(response){
         alert('Update Success!');

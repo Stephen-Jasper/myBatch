@@ -80,7 +80,6 @@ export class BatchDetailComponent implements OnInit {
   getDataDetail(){
     this.detailService.getSelectedBatch(this.requestId).toPromise().then((response) =>{
       if(response){
-        console.log(response);
         this.detailData = response;
       }else{
         window.location.reload();
@@ -109,7 +108,6 @@ export class BatchDetailComponent implements OnInit {
       main_url: this.batchEditForm.controls['batch_url'].value,
       endpoint: this.batchEditForm.controls['batch_endPoint'].value,
     }
-    console.log('data send: ' + this.detailData);
     this.detailService.updateSelectedBatch(this.requestId, this.detailData).toPromise().then((response) =>{
       if(response){
         // this.detailData = response;
@@ -122,7 +120,6 @@ export class BatchDetailComponent implements OnInit {
     }).catch(err => {
       window.scrollTo(0,0);
     })
-    console.log(this.detailData);
   }
 
 }

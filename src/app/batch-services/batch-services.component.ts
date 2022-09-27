@@ -114,7 +114,6 @@ export class BatchServicesComponent implements OnInit {
   getDataBatch(){
     this.batchService.getAllBatchData().toPromise().then((response) => {
       if (response) { // Success Get Data
-        console.log(response);
         this.dataResponse = response;
       } else { // Failed
         window.location.reload();

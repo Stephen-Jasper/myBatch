@@ -106,7 +106,6 @@ export class BatchInputComponent implements OnInit {
       main_url: this.batchInputForm.controls['batch_url'].value,
       endpoint: this.batchInputForm.controls['batch_endPoint'].value,
     }
-    console.log(this.requestBatch);
     this.inputService.createNewBatch(this.requestBatch).toPromise().then((response) => {
       if(response){
         alert('Success create new batch!');
@@ -117,8 +116,6 @@ export class BatchInputComponent implements OnInit {
     }).catch(err => {
       window.scrollTo(0,0);
     })
-    console.log(this.requestBatch);
-    // window.location.reload();
   }
 
 
