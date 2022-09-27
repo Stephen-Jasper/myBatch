@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BatchLoginComponent } from './batch-login/batch-login.component';
@@ -19,6 +19,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { BatchHistoryComponent } from './batch-history/batch-history.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {HttpRequestInterceptor} from "./utils/Interceptor/http-request-interceptor";
+import {HttpErrorInterceptor} from "./utils/Interceptor/http-error.interceptor";
+import {HttpTimeoutInterceptor} from "./utils/Interceptor/http-timeout.interceptor";
 
 @NgModule({
   declarations: [
@@ -47,7 +50,19 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     ],
     exports: [
     ],
-  providers: [BatchServicesService],
+  providers: [
+      BatchServicesService,
+      {
+          provide: HTTP_INTERCEPTORS,
+          useClass: HttpErrorInterceptor,
+          multi: true
+      },
+      {
+          provide: HTTP_INTERCEPTORS,
+          useClass: HttpTimeoutInterceptor,
+          multi: true
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
