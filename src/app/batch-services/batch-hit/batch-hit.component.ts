@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {BatchData, FeatureRequest, seachRequest} from "../../batch-dto/batch-response";
 import {CategoryData} from "../../batch-dto/batch-response";
 import {BatchServicesService} from "../batch-services.service";
-import {$0} from "@angular/compiler/src/chars";
 import {Router} from "@angular/router";
 import {InputServiceService} from "../batch-input/input-service.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
@@ -98,11 +97,11 @@ export class BatchHitComponent implements OnInit {
           this.isNoData = true;
         }
       } else { // Failed
-        window.location.reload();
         this.router.navigate(['/401']);
       }
     }).catch(response => {
       window.scrollTo(0, 0);
+      this.router.navigate(['/401']);
     });
   }
 
@@ -136,11 +135,11 @@ export class BatchHitComponent implements OnInit {
           this.isNoData = true;
         }
       }else{
-        window.location.reload();
         this.router.navigate(['/401']);
       }
     }).catch(response => {
       window.scrollTo(0, 0);
+      this.router.navigate(['/401']);
     })
   }
 
@@ -157,11 +156,11 @@ export class BatchHitComponent implements OnInit {
             this.isNoData = true;
           }
         }else{
-          window.location.reload();
           this.router.navigate(['/401']);
         }
       }).catch(response => {
         window.scrollTo(0, 0);
+        this.router.navigate(['/401']);
       })
     }
   }
@@ -213,10 +212,12 @@ export class BatchHitComponent implements OnInit {
         alert('Update Success!');
         window.location.reload();
       }else{
+        alert('Upadate Failed!');
         this.router.navigate(['/401']);
       }
     }).catch(err => {
       window.scrollTo(0,0);
+      this.router.navigate(['/401']);
     })
   }
 

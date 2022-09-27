@@ -118,11 +118,10 @@ export class BatchDetailComponent implements OnInit {
     }
     this.detailService.updateSelectedBatch(this.requestId, this.detailData).toPromise().then((response) =>{
       if(response){
-        // this.detailData = response;
         alert('Successfully update your batch!')
         window.location.reload()
-        // this.router.navigate(['/myBatch'])
       }else{
+        alert('Failed to update your batch!');
         this.router.navigate(['/401']);
       }
     }).catch(err => {

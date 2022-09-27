@@ -95,6 +95,7 @@ export class BatchServicesComponent implements OnInit {
       }
     }).catch(response => {
       window.scrollTo(0, 0);
+      this.router.navigate(['/401']);
     });
   }
 
@@ -108,6 +109,7 @@ export class BatchServicesComponent implements OnInit {
       }
     }).catch(response => {
       window.scrollTo(0, 0);
+      this.router.navigate(['/401']);
     });
   }
 
@@ -121,6 +123,7 @@ export class BatchServicesComponent implements OnInit {
       }
     }).catch(response => {
       window.scrollTo(0, 0);
+      this.router.navigate(['/401']);
     });
   }
 
@@ -134,6 +137,7 @@ export class BatchServicesComponent implements OnInit {
       }
     }).catch(response => {
       window.scrollTo(0, 0);
+      this.router.navigate(['/401']);
     })
   }
 
@@ -143,10 +147,12 @@ export class BatchServicesComponent implements OnInit {
         alert('Succesfully delete feature!');
         window.location.reload();
       }else{
+        alert('Faild delete feature!');
         this.router.navigate(['/401']);
       }
     }).catch(err => {
       window.scrollTo(0,0);
+      this.router.navigate(['/401']);
     })
   }
 
@@ -168,10 +174,12 @@ export class BatchServicesComponent implements OnInit {
           alert("Succesfully add feature!");
           window.location.reload();
         }else{
+          alert("Faild to add feature!");
           this.router.navigate(['/401']);
         }
       }).catch(err => {
         window.scrollTo(0,0);
+        this.router.navigate(['/401']);
       })
     }
   }
@@ -196,10 +204,12 @@ export class BatchServicesComponent implements OnInit {
         alert("Succesfully delete batch!");
         window.location.reload();
       }else{
+        alert("Failed to delete batch");
         this.router.navigate(['/401']);
       }
     }).catch(err => {
       window.scrollTo(0,0);
+      this.router.navigate(['/401']);
     })
   }
 
