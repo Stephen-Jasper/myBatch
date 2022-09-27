@@ -31,7 +31,8 @@
 
                     <div class="form-group">
                         <label for="BatchName">Batch Name (Optional)</label>
-                        <input type="text" class="form-control" id="BatchName" formControlName="batch_Name" placeholder="{{detailData.batch_name}}">
+                        <input type="text" class="form-control" id="BatchName" formControlName="batch_Name"
+                               [(ngModel)]="detailName">
                     </div>
 
 <!--                    <div class="form-group">-->
@@ -42,36 +43,19 @@
 <!--                        </select>-->
 <!--                    </div>-->
 
-<!--                    <div class="form-group batch-split">-->
-<!--                        <div class="batch-req">-->
-<!--                            <label for="ReqMethod">Req Method (Optional)</label>-->
-<!--                            <select class="form-control" id="ReqMethod" formControlName="req_Method">-->
-<!--                                <option value="GET">GET</option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-
-<!--                        <div class="batch-fitur">-->
-<!--                            <label for="batchFitur">Feature Name</label>-->
-<!--                            <select  class="form-control" id="batchFitur" formControlName="category_Name">-->
-<!--                                <option *ngFor="let cat of dataCat" value='{{cat.categoryId}}'>-->
-<!--                                    {{cat.categoryName}}</option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
                     <div class="form-group">
                         <label for="mainUrl">Main Url (Optional)</label>
-                        <input type="text" class="form-control" id="mainUrl" formControlName="batch_url" placeholder="{{detailData.main_url}}">
+                        <input type="text" class="form-control" id="mainUrl" formControlName="batch_url" [(ngModel)]="detailUrl">
                     </div>
 
                     <div class="form-group">
                         <label for="endPoint">End Point (Optional)</label>
-                        <input type="text" class="form-control" id="endPoint" formControlName="batch_endPoint" placeholder="{{detailData.endpoint}}" >
+                        <input type="text" class="form-control" id="endPoint" formControlName="batch_endPoint" [(ngModel)]="detailEndPoint">
                     </div>
 
                     <div class="form-group">
                         <label for="BatchDesc">Description (Optional)</label>
-                        <textarea class="form-control" id="BatchDesc" rows="3" formControlName="batch_Desc" placeholder="{{detailData.description}}"></textarea>
+                        <textarea class="form-control" id="BatchDesc" rows="3" formControlName="batch_Desc" [(ngModel)]="detailDesc"></textarea>
                     </div>
 
                     <div class="modal-footer">

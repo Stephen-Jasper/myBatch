@@ -19,6 +19,11 @@ export class BatchDetailComponent implements OnInit {
   detailData:  BatchDataDetail;
   requestId: string;
 
+  detailName: string;
+  detailUrl: string;
+  detailEndPoint: string;
+  detailDesc: string;
+
   constructor(private router: Router,
               private activeRoute: ActivatedRoute,
               private detailService: DetailServiceService,
@@ -38,13 +43,8 @@ export class BatchDetailComponent implements OnInit {
   ngOnInit(): void {
     this.requestId = (this.activeRoute.snapshot.params as any).BchId;
     this.getDataDetail();
-
-    const source = interval(1000);
-    source.subscribe((res) => {
-      this.date = new Date();
-      this.loadingDate = false;
-    });
   }
+
   get logoField(){
     return this.batchEditForm.get('batch_Logo');
   }
@@ -81,13 +81,21 @@ export class BatchDetailComponent implements OnInit {
     this.detailService.getSelectedBatch(this.requestId).toPromise().then((response) =>{
       if(response){
         this.detailData = response;
+        this.setModelValue();
       }else{
         window.location.reload();
         this.router.navigate(['/401']);
       }
     }).catch(response => {
-      window.scrollTo(0,0);
+      this.router.navigate(['/401']);
     })
+  }
+
+  setModelValue(){
+    this.detailName = this.detailData.batch_name;
+    this.detailUrl = this.detailData.main_url;
+    this.detailEndPoint = this.detailData.endpoint;
+    this.detailDesc = this.detailData.description;
   }
 
   editBatch(){

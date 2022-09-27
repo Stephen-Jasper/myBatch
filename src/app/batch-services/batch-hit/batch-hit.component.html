@@ -144,17 +144,17 @@
                 <div class="modal-body">
                     <form [formGroup]="categoryUpdateForm">
                         <div class="form-group label-before">
-                            <label for="CategoryName">Before: {{selectedFitName}}</label>
+                            <label for="CategoryName">Feature Name</label>
                             <input type="text" class="form-control" id="CategoryName"
-                                   formControlName="categoryNameUpdated" placeholder="Feature Name" value="{{selectedFitName}}">
+                                   formControlName="categoryNameUpdated" [(ngModel)]="selectedFitName" autocomplete="off">
 
-                            <label for="DevUrl">Before: {{selectedDevUrl}}</label>
+                            <label for="DevUrl">DEV Url</label>
                             <input type="text" class="form-control" id="DevUrl"
-                                   formControlName="devUrlUpdated" placeholder="Url Dev">
+                                   formControlName="devUrlUpdated" [(ngModel)]="selectedDevUrl">
 
-                            <label for="UatUrl">Before: {{selectedUatUrl}}</label>
+                            <label for="UatUrl">UAT Url</label>
                             <input type="text" class="form-control" id="UatUrl"
-                                   formControlName="uatUrlUpdated" placeholder="Url Uat">
+                                   formControlName="uatUrlUpdated" [(ngModel)]="selectedUatUrl">
                         </div>
                     </form>
                 </div>
