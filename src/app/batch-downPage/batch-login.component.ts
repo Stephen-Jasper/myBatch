@@ -3,8 +3,8 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-batch-login',
-  templateUrl: './batch-login.component.html',
-  styleUrls: ['./batch-login.component.scss']
+  templateUrl: './batch-down.component.html',
+  styleUrls: ['./batch-down.component.scss']
 })
 export class BatchLoginComponent implements OnInit, DoCheck {
 

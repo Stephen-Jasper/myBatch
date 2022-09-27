@@ -28,10 +28,10 @@ export class BatchHistoryComponent implements OnInit {
           this.isNoHistoryData = true;
         }
       }else{
-        this.router.navigate(['/401']);
+        this.router.navigate(['/404']);
       }
     }).catch(resp =>{
-      this.router.navigate(['/401']);
+      this.router.navigate(['/404']);
     });
   }
 
@@ -40,7 +40,7 @@ export class BatchHistoryComponent implements OnInit {
       alert('Succesfully clear history data!');
       window.location.reload();
     }).catch(resp =>{
-      this.router.navigate(['/401']);
+      this.router.navigate(['/404']);
     });
   }
 

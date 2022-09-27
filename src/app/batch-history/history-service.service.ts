@@ -43,7 +43,7 @@ export class HistoryServiceService {
 
   errorMapping(error): Observable<any> {
     if (error.status === 400) {
-      this.router.navigate(['/401']).then(r => null);
+      this.router.navigate(['/404']).then(r => null);
     } else if (error.status === 408 || error.status === 500) {
       return throwError(error.error.error_schema);
     }

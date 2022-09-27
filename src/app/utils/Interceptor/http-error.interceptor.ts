@@ -20,9 +20,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                 if (error.status === 401) {
                   const hasHitMaxConcurrentSessions = error.error === this.concurrentLoginErrorMsg;
                   if (hasHitMaxConcurrentSessions) {
-                    this.zone.run(() => router.navigate(['/401'], {state: {hasHitMaxConcurrentSessions}}));
+                    this.zone.run(() => router.navigate(['/404'], {state: {hasHitMaxConcurrentSessions}}));
                   } else {
-                    this.zone.run(() => router.navigate(['/401']));
+                    this.zone.run(() => router.navigate(['/404']));
                   }
                 }
               } else if (error instanceof TimeoutError) {

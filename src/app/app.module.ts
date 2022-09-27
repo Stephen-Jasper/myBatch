@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BatchLoginComponent } from './batch-login/batch-login.component';
+import { BatchLoginComponent } from './batch-downPage/batch-login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BatchHeaderComponent } from './batch-header/batch-header.component';
 import { BatchServicesComponent } from './batch-services/batch-services.component';

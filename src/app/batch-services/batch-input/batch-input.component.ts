@@ -89,7 +89,7 @@ export class BatchInputComponent implements OnInit {
         this.dataCat = response;
       }else { // Failed
         window.location.reload();
-        this.router.navigate(['/401']);
+        this.router.navigate(['/404']);
       }
     }).catch(response => {
       window.scrollTo(0, 0);
@@ -111,7 +111,7 @@ export class BatchInputComponent implements OnInit {
         alert('Success create new batch!');
         window.location.reload();
       }else{
-        this.router.navigate(['/401']);
+        this.router.navigate(['/404']);
       }
     }).catch(err => {
       window.scrollTo(0,0);

@@ -84,10 +84,10 @@ export class BatchDetailComponent implements OnInit {
         this.setModelValue();
       }else{
         window.location.reload();
-        this.router.navigate(['/401']);
+        this.router.navigate(['/404']);
       }
     }).catch(response => {
-      this.router.navigate(['/401']);
+      this.router.navigate(['/404']);
     })
   }
 
@@ -122,7 +122,7 @@ export class BatchDetailComponent implements OnInit {
         window.location.reload()
       }else{
         alert('Failed to update your batch!');
-        this.router.navigate(['/401']);
+        this.router.navigate(['/404']);
       }
     }).catch(err => {
       window.scrollTo(0,0);

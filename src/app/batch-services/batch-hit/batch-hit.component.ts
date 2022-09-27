@@ -97,11 +97,11 @@ export class BatchHitComponent implements OnInit {
           this.isNoData = true;
         }
       } else { // Failed
-        this.router.navigate(['/401']);
+        this.router.navigate(['/404']);
       }
     }).catch(response => {
       window.scrollTo(0, 0);
-      this.router.navigate(['/401']);
+      this.router.navigate(['/404']);
     });
   }
 
@@ -135,11 +135,11 @@ export class BatchHitComponent implements OnInit {
           this.isNoData = true;
         }
       }else{
-        this.router.navigate(['/401']);
+        this.router.navigate(['/404']);
       }
     }).catch(response => {
       window.scrollTo(0, 0);
-      this.router.navigate(['/401']);
+      this.router.navigate(['/404']);
     })
   }
 
@@ -156,11 +156,11 @@ export class BatchHitComponent implements OnInit {
             this.isNoData = true;
           }
         }else{
-          this.router.navigate(['/401']);
+          this.router.navigate(['/404']);
         }
       }).catch(response => {
         window.scrollTo(0, 0);
-        this.router.navigate(['/401']);
+        this.router.navigate(['/404']);
       })
     }
   }
@@ -184,7 +184,7 @@ export class BatchHitComponent implements OnInit {
       }else{
         window.location.reload();
         this.loadingHit = false;
-        this.router.navigate(['/401']);
+        this.router.navigate(['/404']);
       }
     }).catch(response => {
       window.scrollTo(0,0);
@@ -213,11 +213,11 @@ export class BatchHitComponent implements OnInit {
         window.location.reload();
       }else{
         alert('Upadate Failed!');
-        this.router.navigate(['/401']);
+        this.router.navigate(['/404']);
       }
     }).catch(err => {
       window.scrollTo(0,0);
-      this.router.navigate(['/401']);
+      this.router.navigate(['/404']);
     })
   }
 
