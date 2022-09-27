@@ -23,8 +23,10 @@
                             {{cat.category_name}}
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <p *ngFor="let data of dataGroupResponse?.batches_per_categories[i]?.list_batch"
-                       (click)="toDetail(data.batch_id)" target="_blank" class="btch-feature list-batch">{{data.environment}} - {{data.batch_name}}</p>
+                    <div *ngFor="let data of dataGroupResponse?.batches_per_categories[i]?.list_batch" class="list-batch">
+                        <p (click)="toDetail(data.batch_id)" target="_blank" class="btch-feature">{{data.environment}} - {{data.batch_name}}</p>
+                        <mat-icon (click)="activePopUp(data.batch_id, data.batch_name)" data-toggle="modal" data-target="#deleteFeature">delete</mat-icon>
+                    </div>
                 </mat-expansion-panel>
 
             </div>
@@ -69,7 +71,7 @@
     </div>
 
     <!-- Popup delete -->
-    <div *ngIf="showPopupDelete" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div *ngIf="showPopupDelete" class="modal fade" id="deleteFeature" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body confirm-hit">

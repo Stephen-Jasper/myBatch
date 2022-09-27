@@ -42,11 +42,13 @@
 }
 
 .list-batch{
-  //display: flex;
-  //justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 .list-batch:hover{
-  background-color: cornflowerblue;
+  background-color: #54b3d6;
+  box-shadow: inset 200px 0 0 0 #54b3d6;
   color: white;
   border-radius: 10px;
   padding: 5px 5px;
@@ -61,7 +63,7 @@
   cursor: pointer;
 }
 .btch-feature:hover{
-  color: white;
+  //color: white;
 }
 
 .add-feature{
