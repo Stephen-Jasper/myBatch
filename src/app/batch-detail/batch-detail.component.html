@@ -11,10 +11,10 @@
             </h5>
             <p class="batch-text">{{detailData?.main_url}}{{detailData?.endpoint}}</p>
             <p class="batch-desc">{{detailData?.description}}</p>
-            <div class="action-button" style="background-color: red; color: red">
-                <button (click)="editBatch()" data-toggle="modal" data-target="#editBatch" class="btn btn-primary backTo btnEdit">Edit</button>
-                <button (click)="backToList()" class="btn btn-primary backTo">Back</button>
-            </div>
+        </div>
+        <div class="action-button">
+            <button (click)="editBatch()" data-toggle="modal" data-target="#editBatch" class="btn btn-primary backTo btnEdit">Edit</button>
+            <button (click)="backToList()" class="btn btn-primary backTo">Back</button>
         </div>
     </div>
 
