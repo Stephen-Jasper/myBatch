@@ -18,6 +18,7 @@ export class BatchDetailComponent implements OnInit {
   batchEditForm = new FormGroup({});
   detailData:  BatchDataDetail;
   requestId: string;
+  loadingLoad: boolean = true;
 
   detailName: string;
   detailUrl: string;
@@ -82,6 +83,7 @@ export class BatchDetailComponent implements OnInit {
       if(response){
         this.detailData = response;
         this.setModelValue();
+        this.loadingLoad = false;
       }else{
         window.location.reload();
         this.router.navigate(['/404']);
@@ -122,10 +124,10 @@ export class BatchDetailComponent implements OnInit {
         window.location.reload()
       }else{
         alert('Failed to update your batch!');
-        this.router.navigate(['/404']);
+        window.location.reload();
       }
     }).catch(err => {
-      window.scrollTo(0,0);
+      this.router.navigate(['/404']);
     })
   }
 
