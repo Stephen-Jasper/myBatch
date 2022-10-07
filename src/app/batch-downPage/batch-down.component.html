@@ -1,30 +1,25 @@
+<app-navbar></app-navbar>
 <div class="login-container">
-    <h1 class="login-title">MyBatch</h1>
+    <div class="container">
 
-    <div class="went-wrong">
-        SOMETHING WENT WRONG
-    </div>
+        <div class="error">
+            <p class="p">4</p>
+            <span class="dracula">
+			<div class="con">
+				<div class="hair"></div>
+				<div class="hair-r"></div>
+				<div class="head"></div>
+			</div>
+		    </span>
+            <p class="p">4</p>
 
-    <div class="login-box">
-        <div *ngIf="errorAuth" class="error-message">
-            Username / Password tidak terdaftar
-        </div>
-        <form>
-<!--            <div class="user-box">-->
-<!--                <input [(ngModel)]="username" type="text" name="nameUser" required="">-->
-<!--                <label>Username</label>-->
-<!--            </div>-->
-
-<!--            <div class="user-box user-pw">-->
-<!--                <input [(ngModel)]="password" type="password" name="passwordUser" required="">-->
-<!--                <label>Password</label>-->
-<!--            </div>-->
-
-            <div class="login_btn">
-<!--                [disabled]="formLoginValid" -->
-                <button (click)="submit()" type="submit" class="btn btn-primary batch-login">Back to Home</button>
+            <div class="page-ms">
+                <p class="page-msg"> Oops, looks like something wrong </p>
+                <button (click)="submit()" class="go-back">Go Back</button>
             </div>
-        </form>
+        </div>
 
     </div>
+
+    <iframe style="width:0;height:0;border:0; border:none;" scrolling="no" frameborder="no" allow="autoplay" src="https://instaud.io/_/2Vvu.mp3"></iframe>
 </div>

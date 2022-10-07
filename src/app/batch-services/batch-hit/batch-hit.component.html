@@ -61,6 +61,7 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <div *ngIf="loadData" class="loaderData"></div>
                         <div *ngIf="isNoData">
                             Empty batch!
                         </div>

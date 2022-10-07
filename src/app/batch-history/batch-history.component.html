@@ -13,6 +13,7 @@
         <thead>
         <tr class="history-header">
             <th scope="col">Feature</th>
+            <th scope="col">Env.</th>
             <th scope="col">Batch name</th>
             <th scope="col">Result</th>
             <th scope="col">Hit date</th>
@@ -26,6 +27,7 @@
 
             <tr *ngFor="let hist of historyData" class="batch-history">
                 <td>{{hist.category_name}}</td>
+                <td>{{hist.environment}}</td>
                 <td>{{hist.batch_name}}</td>
                 <td>{{hist.result}}</td>
                 <td>{{hist.hit_date}}</td>

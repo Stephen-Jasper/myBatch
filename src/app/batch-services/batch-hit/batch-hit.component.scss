@@ -130,11 +130,6 @@ tbody {
   cursor: move;
 }
 
-.icon-disp{
-  //height: 50px ;
-  //width: 50px;
-}
-
 .label-before{
   label{
     font-size: 20px;
@@ -151,6 +146,20 @@ tbody {
   animation: spin 2s linear infinite;
   margin-left: 22%;
   margin-top: 1%;
+  z-index: -1;
+  position: absolute;
+}
+
+.loaderData {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #0064b6;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin-left: 50%;
+  margin-top: 20%;
   z-index: -1;
   position: absolute;
 }

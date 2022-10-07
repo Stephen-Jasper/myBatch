@@ -42,6 +42,7 @@ export class BatchHitComponent implements OnInit {
   executeResponse: boolean;
   popUpResponse: boolean = false;
   isNoData: boolean = false;
+  loadData: boolean = true;
 
   newFeatureName: string;
 
@@ -93,6 +94,7 @@ export class BatchHitComponent implements OnInit {
     this._batchService.getAllBatchData().toPromise().then((response) => {
       if (response) { // Success Get Data
         this.dataFromService = response;
+        this.loadData = false;
         if(response.length === 0){
           this.isNoData = true;
         }
