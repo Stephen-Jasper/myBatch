@@ -44,14 +44,14 @@
 .list-batch{
   display: flex;
   justify-content: space-between;
-  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  //transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 .list-batch:hover{
-  background-color: #54b3d6;
-  box-shadow: inset 200px 0 0 0 #54b3d6;
-  color: white;
-  border-radius: 10px;
-  padding: 5px 5px;
+  //background-color: #54b3d6;
+  //box-shadow: inset 200px 0 0 0 #54b3d6;
+  color: #005CAA;
+  //border-radius: 10px;
+  //padding: 5px 5px;
 }
 .tools{
   cursor: pointer;

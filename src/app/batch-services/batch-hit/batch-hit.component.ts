@@ -179,18 +179,19 @@ export class BatchHitComponent implements OnInit {
     this.loadingHit = true;
     this.popUpResponse = false;
     this.executeResponse = null;
+    console.log('kirim', batchId, batchName);
     this._batchService.executeBatch(batchId).toPromise().then((response) => {
       if(response) {
         this.executeResponse = response;
+        console.log('resposne', response);
         this.loadingHit = false;
       }else{
-        window.location.reload();
+        this.executeResponse = response;
         this.loadingHit = false;
-        this.router.navigate(['/404']);
       }
     }).catch(response => {
       window.scrollTo(0,0);
-      this.errorExecute = 'Failed to hit Batch! Please check rest API'
+      this.errorExecute = 'Failed to hit Batch! Please check domain and endpoint'
       this.loadingHit = false;
     });
     this.guide = '';
