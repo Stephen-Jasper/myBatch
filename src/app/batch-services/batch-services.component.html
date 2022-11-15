@@ -49,18 +49,23 @@
                         <p class="batch-ext-title">Existing Feature</p>
                             <label *ngFor="let catList of categoryList" class="cat-exist">
                                 {{catList.category_name}}
-                            </label> <br>
-                        <label for="featureName">New feature</label>
+                            </label>
+                        <br>
+                        <label for="featureName">Feature name</label>
                         <input type="text" [(ngModel)]="newFeature"
                                 class="form-control" id="featureName">
 
-                        <label for="featureName">DEV domain url</label>
+                        <label for="featureName">domain DEV</label>
                         <input type="text" [(ngModel)]="newUrlDev"
-                               class="form-control" id="newDevUrl">
+                               class="form-control" id="newDevUrl"
+                                placeholder="https://your-feature-dev.apps">
 
-                        <label for="featureName">UAT domain url</label>
+                        <label for="featureName">domain UAT</label>
                         <input type="text" [(ngModel)]="newUrlUat"
-                               class="form-control" id="newUatUrl">
+                               class="form-control" id="newUatUrl"
+                               placeholder="https://your-feature-uat.apps">
+
+                        <div *ngIf="errorDomain" style="color: red; font-size: 14px">Domain UAT / DEV shouldn't end with '/'</div>
                     </div>
                 </div>
                 <div class="modal-footer">

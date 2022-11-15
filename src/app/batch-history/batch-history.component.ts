@@ -35,13 +35,4 @@ export class BatchHistoryComponent implements OnInit {
     });
   }
 
-  clearHistory(){
-    this.historyService.clearAllData().toPromise().then((response) => {
-      alert('Succesfully clear history data!');
-      window.location.reload();
-    }).catch(resp =>{
-      this.router.navigate(['/404']);
-    });
-  }
-
 }

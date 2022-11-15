@@ -16,7 +16,7 @@ export class BatchServicesComponent implements OnInit {
   newFeature: string = '';
   newUrlDev: string = '';
   newUrlUat: string = '';
-  panelOpen: boolean = false;
+  errorDomain: boolean = false;
   showPopupFeature:boolean = false;
   showPopupCreate:boolean = false;
   showPopupDelete:boolean = false;
@@ -169,18 +169,22 @@ export class BatchServicesComponent implements OnInit {
         "main_url_dev": dev,
         "main_url_uat": uat
       }
-      this.inputService.createNewFeature(this.requestNewFeature).toPromise().then((response) => {
-        if(response){
-          alert("Succesfully add feature!");
-          window.location.reload();
-        }else{
-          alert("Faild to add feature!");
+      if(dev.endsWith('/') || uat.endsWith('/')){
+        this.errorDomain = true;
+      }else{
+        this.inputService.createNewFeature(this.requestNewFeature).toPromise().then((response) => {
+          if(response){
+            alert("Succesfully add feature!");
+            window.location.reload();
+          }else{
+            alert("Faild to add feature!");
+            this.router.navigate(['/404']);
+          }
+        }).catch(err => {
+          window.scrollTo(0,0);
           this.router.navigate(['/404']);
-        }
-      }).catch(err => {
-        window.scrollTo(0,0);
-        this.router.navigate(['/404']);
-      })
+        })
+      }
     }
   }
 

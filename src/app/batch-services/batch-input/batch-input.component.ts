@@ -13,6 +13,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class BatchInputComponent implements OnInit {
 
   selectedLevel = '';
+  errorEndpoint: boolean = false;
   batchInputForm = new FormGroup({});
   dataCat: CategoryData[];
   requestBatch: BatchRequest;
@@ -106,16 +107,20 @@ export class BatchInputComponent implements OnInit {
       main_url: this.batchInputForm.controls['batch_url'].value,
       endpoint: this.batchInputForm.controls['batch_endPoint'].value,
     }
-    this.inputService.createNewBatch(this.requestBatch).toPromise().then((response) => {
-      if(response){
-        alert('Success create new batch!');
-        window.location.reload();
-      }else{
-        this.router.navigate(['/404']);
-      }
-    }).catch(err => {
-      window.scrollTo(0,0);
-    })
+    if(!this.batchInputForm.controls['batch_endPoint'].value.startsWith('/')){
+      this.errorEndpoint = true;
+    }else{
+      this.inputService.createNewBatch(this.requestBatch).toPromise().then((response) => {
+        if(response){
+          alert('Success create new batch!');
+          window.location.reload();
+        }else{
+          this.router.navigate(['/404']);
+        }
+      }).catch(err => {
+        window.scrollTo(0,0);
+      })
+    }
   }
 
 

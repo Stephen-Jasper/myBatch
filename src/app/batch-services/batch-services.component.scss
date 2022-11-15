@@ -22,19 +22,27 @@
 }
 
 .cat-exist{
-  font-size: 20px;
-  background-color: cornflowerblue;
+  min-width: 200px;
+  font-size: 18px;
+  background-color: #005CAA;
+  color: white;
   padding: 5px 20px;
   border-radius: 5px;
-  margin-right: 5px;
+  margin-right: 10px;
+}
 
-  mat-icon{
-    color: white;
-  }
-  mat-icon:hover{
-    color: green;
-    cursor: pointer;
-  }
+.cat-exist:hover{
+  text-shadow:
+          0 0 7px #fff,
+          0 0 10px #fff,
+          0 0 21px #4d67ce,
+          0 0 42px #4d67ce,
+          0 0 82px #005CAA,
+          0 0 92px #005CAA,
+          0 0 102px #005CAA,
+          0 0 151px #005CAA;
+
+  //background-image: linear-gradient(90deg, #5d87be, #5d87be, #057dc6, #5d87be, #5d87be);
 }
 
 .mat-expansion-panel-header{
