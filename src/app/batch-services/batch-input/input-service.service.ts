@@ -57,7 +57,7 @@ export class InputServiceService {
 
   // CREATE NEW BATCH
   createNewBatch(requestBody: BatchRequest): Observable<any>{
-      return this.http.post(`${environment.apiUrl}/batch/add-batch`, requestBody)
+      return this.http.post<ServiceResponse<any>>(`${environment.apiUrl}/batch/add-batch`, requestBody)
           .pipe(
               map(
                   response => {

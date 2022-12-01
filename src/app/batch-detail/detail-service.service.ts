@@ -30,7 +30,7 @@ export class DetailServiceService {
 
   // UPDATE BATCH
   updateSelectedBatch(BchId: string, requestUpdateBatch: BatchDataDetail): Observable<any>{
-      return this.http.put(`${environment.apiUrl}/batch/update-batch/${BchId}`, requestUpdateBatch)
+      return this.http.put<ServiceResponse<any>>(`${environment.apiUrl}/batch/update-batch/${BchId}`, requestUpdateBatch)
           .pipe(
               map((response) =>{
                   return response;

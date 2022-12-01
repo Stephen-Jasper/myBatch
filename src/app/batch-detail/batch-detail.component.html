@@ -34,24 +34,13 @@
                         <label for="BatchName">Batch Name (Optional)</label>
                         <input type="text" class="form-control" id="BatchName" formControlName="batch_Name"
                                [(ngModel)]="detailName">
+                        <div *ngIf="errorEditName" class="batch-error">{{errorEditName}}</div>
                     </div>
-
-<!--                    <div class="form-group">-->
-<!--                        <label for="BatchEnv">Environment (Optional)</label>-->
-<!--                        <select class="form-control" id="BatchEnv" formControlName="batch_Environment">-->
-<!--                            <option value="DEV">DEV</option>-->
-<!--                            <option value="UAT">UAT</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-
-<!--                    <div class="form-group">-->
-<!--                        <label for="mainUrl">Main Url (Optional)</label>-->
-<!--                        <input type="text" class="form-control" id="mainUrl" formControlName="batch_url" [(ngModel)]="detailUrl">-->
-<!--                    </div>-->
 
                     <div class="form-group">
                         <label for="endPoint">End Point (Optional)</label>
                         <input type="text" class="form-control" id="endPoint" formControlName="batch_endPoint" [(ngModel)]="detailEndPoint">
+                        <div *ngIf="errorEditEndpoint" class="batch-error">{{errorEditEndpoint}}</div>
                     </div>
 
                     <div class="form-group">

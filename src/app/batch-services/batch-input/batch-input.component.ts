@@ -14,6 +14,8 @@ export class BatchInputComponent implements OnInit {
 
   selectedLevel = '';
   errorEndpoint: boolean = false;
+  errorCreateName: string = '';
+  errorCreateEndpoin: string = '';
   batchInputForm = new FormGroup({});
   dataCat: CategoryData[];
   requestBatch: BatchRequest;
@@ -107,13 +109,26 @@ export class BatchInputComponent implements OnInit {
       main_url: this.batchInputForm.controls['batch_url'].value,
       endpoint: this.batchInputForm.controls['batch_endPoint'].value,
     }
-    if(!this.batchInputForm.controls['batch_endPoint'].value.startsWith('/')){
+    this.errorCreateName = '';
+    this.errorCreateEndpoin = '';
+    if(this.batchInputForm.controls['batch_Name'].value === '' || this.batchInputForm.controls['batch_endPoint'].value === '' || this.batchInputForm.controls['batch_Environment'].value === ''
+    || this.batchInputForm.controls['category_Name'].value === ''){
+      alert('Please fill all the field!');
+    }
+    else if(!this.batchInputForm.controls['batch_endPoint'].value.startsWith('/')){
       this.errorEndpoint = true;
     }else{
       this.inputService.createNewBatch(this.requestBatch).toPromise().then((response) => {
         if(response){
-          alert('Success create new batch!');
-          window.location.reload();
+          if(response.error_schema.error_code === 'FAILED_INVALID_NAME'){
+            this.errorCreateName = response.error_schema.error_message;
+          } else if(response.error_schema.error_code === 'FAILED_INVALID_ENDPOINT'){
+            this.errorCreateEndpoin = response.error_schema.error_message;
+          }
+          else{
+            alert('Success create new batch!');
+            window.location.reload();
+          }
         }else{
           this.router.navigate(['/404']);
         }

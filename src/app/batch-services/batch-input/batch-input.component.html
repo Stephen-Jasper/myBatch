@@ -2,6 +2,7 @@
     <div class="form-group">
         <label for="BatchName">Batch Name</label>
         <input type="text" class="form-control" id="BatchName" formControlName="batch_Name">
+        <div *ngIf="errorCreateName" class="batch-error">{{errorCreateName}}</div>
     </div>
 
     <div class="form-group">
@@ -30,7 +31,8 @@
     <div class="form-group">
         <label for="endPoint">End Point ( start with "/" )</label>
         <input type="text" class="form-control" id="endPoint" placeholder="/va-inquiry" formControlName="batch_endPoint">
-        <div *ngIf="errorEndpoint" style="color: red; font-size: 14px">Endpoint should start with '/'</div>
+        <div *ngIf="errorEndpoint" class="batch-error">Endpoint should start with '/'</div>
+        <div *ngIf="errorCreateEndpoin" class="batch-error">{{errorCreateEndpoin}}</div>
     </div>
 
     <div class="form-group">

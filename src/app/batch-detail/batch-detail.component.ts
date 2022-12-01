@@ -19,6 +19,8 @@ export class BatchDetailComponent implements OnInit {
   detailData:  BatchDataDetail;
   requestId: string;
   loadingLoad: boolean = true;
+  errorEditName: string = '';
+  errorEditEndpoint: string = '';
 
   detailName: string;
   detailUrl: string;
@@ -120,8 +122,15 @@ export class BatchDetailComponent implements OnInit {
     }
     this.detailService.updateSelectedBatch(this.requestId, this.detailData).toPromise().then((response) =>{
       if(response){
-        alert('Successfully update your batch!')
-        window.location.reload()
+        if(response.error_schema.error_code === 'FAILED_INVALID_NAME'){
+          this.errorEditName = response.error_schema.error_message;
+        } else if(response.error_schema.error_code === 'FAILED_INVALID_ENDPOINT'){
+          this.errorEditEndpoint = response.error_schema.error_message;
+        }
+        else{
+          alert('Success create new batch!');
+          window.location.reload();
+        }
       }else{
         alert('Failed to update your batch!');
         window.location.reload();
