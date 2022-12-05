@@ -39,7 +39,7 @@ export class BatchHitComponent implements OnInit {
   loadingHit:boolean = false;
   popUpHit:boolean = false;
   popUpEdit:boolean = false;
-  executeResponse: boolean;
+  executeResponse: string;
   popUpResponse: boolean = false;
   isNoData: boolean = false;
   loadData: boolean = true;
@@ -182,11 +182,12 @@ export class BatchHitComponent implements OnInit {
     console.log('kirim', batchId, batchName);
     this._batchService.executeBatch(batchId).toPromise().then((response) => {
       if(response) {
-        this.executeResponse = response;
-        console.log('resposne', response);
+        this.executeResponse = response.result;
+        console.log('resposne true', response);
         this.loadingHit = false;
-      }else{
-        this.executeResponse = response;
+      }else{ // kalau false
+        console.log('resposne false', response);
+        this.executeResponse = response.result;
         this.loadingHit = false;
       }
     }).catch(response => {

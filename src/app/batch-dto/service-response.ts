@@ -1,6 +1,7 @@
 export interface ServiceResponse<T> {
     error_schema: ErrorSchema;
     output_schema: T;
+    result?: string;
 }
 
 interface ErrorSchema {

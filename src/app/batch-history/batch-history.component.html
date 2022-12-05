@@ -27,7 +27,7 @@
                 <td>{{hist.environment}}</td>
                 <td>{{hist.batch_name}}</td>
                 <td>{{hist.result}}</td>
-                <td>{{hist.hit_date}}</td>
+                <td>{{hist.hit_date | date : "dd MMM YYYY HH:mm:ss"}}</td> <!--npm i dayjs-->
             </tr>
         </tbody>
     </table>
