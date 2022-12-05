@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "@ng-select/ng-select": "^9.0.2",
+    "dayjs": "^1.11.6",
     "mat-icon-import": "^0.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
