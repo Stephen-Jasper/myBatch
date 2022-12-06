@@ -128,7 +128,7 @@ export class BatchHitComponent implements OnInit {
     this.isNoData = false;
     this.inputSearchBatch = {
       batch_name: this.searchedBatch,
-      category_id: this.selectedCategory
+      category_id: this.selectedCategory === 'default' ? '' : this.selectedCategory
     }
     this._batchService.getSearchBatch(this.inputSearchBatch).toPromise().then((response) => {
       if(response){
@@ -140,7 +140,6 @@ export class BatchHitComponent implements OnInit {
         this.router.navigate(['/404']);
       }
     }).catch(response => {
-      window.scrollTo(0, 0);
       this.router.navigate(['/404']);
     })
   }
@@ -179,14 +178,11 @@ export class BatchHitComponent implements OnInit {
     this.loadingHit = true;
     this.popUpResponse = false;
     this.executeResponse = null;
-    console.log('kirim', batchId, batchName);
     this._batchService.executeBatch(batchId).toPromise().then((response) => {
       if(response) {
         this.executeResponse = response.result;
-        console.log('resposne true', response);
         this.loadingHit = false;
       }else{ // kalau false
-        console.log('resposne false', response);
         this.executeResponse = response.result;
         this.loadingHit = false;
       }
@@ -213,11 +209,11 @@ export class BatchHitComponent implements OnInit {
     }
     this._batchService.updatedFeature(this.selectedFitId, this.updateCategory).toPromise().then((response) =>{
       if(response){
-        alert('Update Success!');
+        alert('Success update your feature!');
         window.location.reload();
       }else{
-        alert('Upadate Failed!');
-        this.router.navigate(['/404']);
+        alert('Failed to update your feature!');
+        window.location.reload();
       }
     }).catch(err => {
       window.scrollTo(0,0);

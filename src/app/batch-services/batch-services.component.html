@@ -29,10 +29,9 @@
                             class="delete-icon">delete</mat-icon>
                     </div>
                 </mat-expansion-panel>
-
             </div>
-<!--            <mat-icon style="position: fixed; transform: scale(2); align-self: flex-end" (click)="goUp()">eject</mat-icon>-->
         </div>
+
         <div class="service-hit">
 <!--            COMPONENT CARD TO HIT SERVICES-->
                 <app-batch-hit [dataResponseCard]="dataResponse"
@@ -65,7 +64,7 @@
                                class="form-control" id="newUatUrl"
                                placeholder="https://your-feature-uat.apps">
 
-                        <div *ngIf="errorDomain" style="color: red; font-size: 14px">Domain UAT / DEV shouldn't end with '/'</div>
+                        <div *ngIf="errorDomain" style="color: red; font-size: 14px">Domain DEV or UAT shouldn't ends with '/'</div>
                     </div>
                 </div>
                 <div class="modal-footer">

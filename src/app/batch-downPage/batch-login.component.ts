@@ -31,11 +31,6 @@ export class BatchLoginComponent implements OnInit, DoCheck {
   }
 
   submit(){
-    // if(this.username !== 'MBBCORPTRF'){
-    //   this.errorAuth = true;
-    // }else{
-    //   this.router.navigate(['/myBatch']);
-    // }
     this.router.navigate(['/myBatch']);
   }
 }

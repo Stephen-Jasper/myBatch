@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
-import {interval} from "rxjs";
 import {DetailServiceService} from "./detail-service.service";
 import {BatchDataDetail} from "../batch-dto/batch-response";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-batch-detail',
@@ -55,18 +54,6 @@ export class BatchDetailComponent implements OnInit {
   get nameField(){
     return this.batchEditForm.get('batch_Name');
   }
-
-  // get environtmentField(){
-  //   return this.batchEditForm.get('batch_Environment');
-  // }
-  //
-  // get methodField(){
-  //   return this.batchEditForm.get('req_Method');
-  // }
-  //
-  // get featureField(){
-  //   return this.batchEditForm.get('category_Name');
-  // }
 
   get urlField(){
     return this.batchEditForm.get('batch_url');
@@ -120,10 +107,8 @@ export class BatchDetailComponent implements OnInit {
       main_url: this.batchEditForm.controls['batch_url'].value,
       endpoint: this.batchEditForm.controls['batch_endPoint'].value,
     }
-    console.log('request ', this.detailData);
     this.detailService.updateSelectedBatch(this.requestId, this.detailData).toPromise().then((response) =>{
       if(response){
-        console.log(response);
         if(response.error_schema.error_code === 'FAILED_INVALID_NAME'){
           this.errorEditName = response.error_schema.error_message;
         } else if(response.error_schema.error_code === 'FAILED_INVALID_ENDPOINT'){

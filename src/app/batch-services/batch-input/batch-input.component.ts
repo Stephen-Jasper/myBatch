@@ -130,10 +130,11 @@ export class BatchInputComponent implements OnInit {
             window.location.reload();
           }
         }else{
-          this.router.navigate(['/404']);
+          alert('Failed to create new batch!');
+          window.location.reload();
         }
       }).catch(err => {
-        window.scrollTo(0,0);
+        this.router.navigate(['/404']);
       })
     }
   }

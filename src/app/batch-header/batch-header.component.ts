@@ -21,8 +21,4 @@ export class BatchHeaderComponent implements OnInit {
     });
   }
 
-  logout(){
-    this.router.navigate(['/login']);
-  }
-
 }
