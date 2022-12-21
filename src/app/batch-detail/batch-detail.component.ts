@@ -11,8 +11,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class BatchDetailComponent implements OnInit {
 
-  date: Date | undefined;
-  loadingDate: boolean = true;
   showPopupEdit:boolean = false;
   batchEditForm = new FormGroup({});
   detailData:  BatchDataDetail;

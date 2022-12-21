@@ -24,7 +24,6 @@ export class BatchServicesComponent implements OnInit {
   dataGroupResponse: BatchGroupData;
   categoryList: CategoryData[];
   requestNewFeature: FeatureRequest;
-  data = [];
   constructor(private batchService: BatchServicesService,
               private inputService: InputServiceService,
               private router: Router) { }
@@ -43,20 +42,6 @@ export class BatchServicesComponent implements OnInit {
     this.batchService.getAllgroupData().toPromise().then((resp)=>{
       if(resp){
         this.dataGroupResponse = resp;
-      }else { // Failed
-        window.location.reload();
-        this.router.navigate(['/404']);
-      }
-    }).catch(response => {
-      window.scrollTo(0, 0);
-      this.router.navigate(['/404']);
-    });
-  }
-
-  expandBatch(id: string){
-    this.batchService.getBatchbyCategory(id).toPromise().then((resp)=>{
-      if(resp){
-        this.dataResponse = resp;
       }else { // Failed
         window.location.reload();
         this.router.navigate(['/404']);
@@ -91,21 +76,6 @@ export class BatchServicesComponent implements OnInit {
       }
     }).catch(response => {
       window.scrollTo(0, 0);
-      this.router.navigate(['/404']);
-    })
-  }
-
-  deleteFeature(id: string){
-    this.inputService.deleteFeature(id).toPromise().then((response) => {
-      if(response){
-        alert('Succesfully delete feature!');
-        window.location.reload();
-      }else{
-        alert('Failed to delete feature!');
-        this.router.navigate(['/404']);
-      }
-    }).catch(err => {
-      window.scrollTo(0,0);
       this.router.navigate(['/404']);
     })
   }
@@ -156,7 +126,7 @@ export class BatchServicesComponent implements OnInit {
     this.showPopupDelete = true;
   }
 
-  deleteService(DeletedId: string){
+  deleteBatch(DeletedId: string){
     this.batchService.deleteBatch(DeletedId).toPromise().then((response) => {
       if(response){
         alert("Succesfully delete batch!");

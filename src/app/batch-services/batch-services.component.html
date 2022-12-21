@@ -34,8 +34,7 @@
 
         <div class="service-hit">
 <!--            COMPONENT CARD TO HIT SERVICES-->
-                <app-batch-hit [dataResponseCard]="dataResponse"
-                               [categoryList]="categoryList"></app-batch-hit>
+                <app-batch-hit [categoryList]="categoryList"></app-batch-hit>
         </div>
     </div>
 
@@ -84,7 +83,7 @@
                 </div>
                 <div class="modal-footer">
                     <button (click)="cancelDel()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button (click)="deleteService(selected_Id)" type="button" class="btn btn-danger">Delete</button>
+                    <button (click)="deleteBatch(selected_Id)" type="button" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>

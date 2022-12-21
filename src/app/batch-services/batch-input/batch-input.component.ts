@@ -12,7 +12,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class BatchInputComponent implements OnInit {
 
-  selectedLevel = '';
   errorEndpoint: boolean = false;
   errorCreateName: string = '';
   errorCreateEndpoin: string = '';

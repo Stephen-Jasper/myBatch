@@ -14,9 +14,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class BatchHitComponent implements OnInit {
 
   @Input()
-  dataResponseCard: BatchData[];
-
-  @Input()
   categoryList: CategoryData[];
 
   dataFromService: BatchData[];
@@ -197,11 +194,12 @@ export class BatchHitComponent implements OnInit {
     this.popUpHit = false;
     this.popUpResponse = true;
   }
+
   closeResponse(){
     this.popUpResponse = false;
   }
 
-  updateCategoryName(){
+  updateCategoryData(){
     this.updateCategory = {
       category_name: this.categoryUpdateForm.controls['categoryNameUpdated'].value,
       main_url_dev: this.categoryUpdateForm.controls['devUrlUpdated'].value,
