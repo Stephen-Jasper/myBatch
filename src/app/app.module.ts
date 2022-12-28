@@ -22,6 +22,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {HttpRequestInterceptor} from "./utils/Interceptor/http-request-interceptor";
 import {HttpErrorInterceptor} from "./utils/Interceptor/http-error.interceptor";
 import {HttpTimeoutInterceptor} from "./utils/Interceptor/http-timeout.interceptor";
+import { NotesComponent } from './notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {HttpTimeoutInterceptor} from "./utils/Interceptor/http-timeout.intercept
     BatchInputComponent,
     NavbarComponent,
     DateTimeComponent,
-    BatchHistoryComponent
+    BatchHistoryComponent,
+    NotesComponent
   ],
     imports: [
         BrowserModule,

@@ -36,53 +36,7 @@ export class BatchInputComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.dataCat = [
-    //   {
-    //     categoryName: 'Transfer Payroll'
-    //   },
-    //   {
-    //     categoryName: 'Transfer VA'
-    //   },
-    //   {
-    //     categoryName: 'Transfer BCA'
-    //   },
-    //   {
-    //     categoryName: 'Transfer DOM'
-    //   }
-    // ]
    this.getFeatureData();
-  }
-
-  get logoField(){
-    return this.batchInputForm.get('batch_Logo');
-  }
-
-  get nameField(){
-    return this.batchInputForm.get('batch_Name');
-  }
-
-  get environtmentField(){
-    return this.batchInputForm.get('batch_Environment');
-  }
-
-  get methodField(){
-    return this.batchInputForm.get('req_Method');
-  }
-
-  get featureField(){
-    return this.batchInputForm.get('category_Name');
-  }
-
-  get urlField(){
-    return this.batchInputForm.get('batch_url');
-  }
-
-  get endPointField(){
-    return this.batchInputForm.get('batch_endPoint');
-  }
-
-  get descField(){
-    return this.batchInputForm.get('batch_Desc');
   }
 
   getFeatureData(){

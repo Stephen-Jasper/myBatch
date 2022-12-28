@@ -1,0 +1,55 @@
+a{
+  color: black;
+  text-decoration: none;
+}
+
+.notes-box{
+  margin: 40px 250px;
+  padding: 20px 20px;
+  background-color: white;
+  border-radius: 5px;
+  min-height: 700px;
+  filter: drop-shadow(0px 6px 20px rgba(24, 66, 102, 0.15));
+
+  .page-title{
+    font-size: 25px;
+    margin-left: 5px;
+    font-style: italic;
+    color: #005CAA;
+  }
+}
+
+.notes-list{
+  margin: 0 10px;
+}
+
+.notes-feature{
+  font-size: 25px;
+
+  .notes-notif{
+    margin-left: 5px;
+    float: right;
+    font-size: 15px;
+  }
+}
+
+.notes-content{
+  font-size: 20px;
+  margin-left: 30px;
+  display: flex;
+  justify-content: space-between;
+
+  .note-delete-icon{
+    margin-top: 2px;
+  }
+
+  .note-delete-icon:hover{
+    color: red;
+  }
+}
+
+.notes-content:hover{
+  background-color: lightyellow;
+  padding: 0 5px;
+  border-radius: 5px;
+}

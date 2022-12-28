@@ -45,26 +45,6 @@ export class BatchDetailComponent implements OnInit {
     this.getDataDetail();
   }
 
-  get logoField(){
-    return this.batchEditForm.get('batch_Logo');
-  }
-
-  get nameField(){
-    return this.batchEditForm.get('batch_Name');
-  }
-
-  get urlField(){
-    return this.batchEditForm.get('batch_url');
-  }
-
-  get endPointField(){
-    return this.batchEditForm.get('batch_endPoint');
-  }
-
-  get descField(){
-    return this.batchEditForm.get('batch_Desc');
-  }
-
   getDataDetail(){
     this.detailService.getSelectedBatch(this.requestId).toPromise().then((response) =>{
       if(response){

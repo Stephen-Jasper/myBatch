@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+
+<div class="notes-box">
+    <div style="display: flex; justify-content: space-between">
+        <div>
+            <p class="page-title">Transfer Notes</p>
+        </div>
+
+        <div>
+            <div>
+                <button class="btn btn-primary add-feature"
+                        data-toggle="modal" data-target="#createBatch">Add Notes</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="notes-list">
+        <div class="service-loop">
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="notes-feature">
+                            BCA Valas
+                            <span class="badge badge-primary badge-pill notes-notif">12</span>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="notes-content">
+                    <div>
+                        <a href="https://www.google.com" target="_blank" class="">Miro</a>
+                    </div>
+                    <div>
+                        <mat-icon data-toggle="modal" data-target="#deleteFeature"
+                                  class="note-delete-icon" (click)="deleteNote()">delete</mat-icon>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </div>
+    </div>
+</div>

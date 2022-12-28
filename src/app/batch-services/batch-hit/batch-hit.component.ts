@@ -61,28 +61,7 @@ export class BatchHitComponent implements OnInit {
     })
   }
 
-  get CategoryId(){
-    return this.categoryIdForm.get('categoryIdFiltered');
-  }
-
-  get SearchedBatch(){
-    return this.categoryIdForm.get('searchBatchFilterd');
-  }
-
-  get categoryNameUpdt(){
-    return this.categoryUpdateForm.get('categoryNameUpdated');
-  }
-
-  get categoryDevUpdated(){
-    return this.categoryUpdateForm.get('devUrlUpdated');
-  }
-
-  get categoryUatUpdated(){
-    return this.categoryUpdateForm.get('uatUrlUpdated');
-  }
-
   ngOnInit(): void {
-    // this.getCategoryFilter();
     this.getBatchData();
   }
 
