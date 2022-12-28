@@ -12,14 +12,9 @@ import {seachRequest, FeatureRequest} from "../batch-dto/batch-response";
 })
 
 export class BatchServicesService {
-  private url:string = "https://dog.ceo/api/breeds/image/random";
 
   constructor(private http: HttpClient,
               private router: Router) { }
-
-  // getServiceData(): Observable<DogData[]>{
-  //   return this.http.get<DogData[]>(this.url);
-  // }
 
   // GET ALL BATCH FROM DB
   getAllBatchData(): Observable<any>{
@@ -81,7 +76,7 @@ export class BatchServicesService {
           )
   }
 
-  // DELETE BATCH
+  // SEND BATCH to JUNK
   deleteBatch(batchId: string): Observable<any>{
       return this.http.delete<ServiceResponse<any>>(`${environment.apiUrl}/batch/delete-batch/${batchId}`)
           .pipe(
