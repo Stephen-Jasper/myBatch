@@ -100,6 +100,10 @@ export class BatchHitComponent implements OnInit {
     this.selectedUatUrl = uatUrl;
   }
 
+  toRestore(){
+    this.router.navigate(['/restore'])
+  }
+
   findBatch(){
     this.isNoData = false;
     this.inputSearchBatch = {

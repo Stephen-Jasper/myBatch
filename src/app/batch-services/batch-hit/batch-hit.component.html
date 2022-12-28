@@ -29,8 +29,14 @@
                     </div>
                 </div>
             </div>
-            <div class="total-batch">
-                Total batch : {{dataFromService?.length}}
+            <div style="display: flex; justify-content: space-between">
+                <div class="total-batch">
+                    Total batch : {{dataFromService?.length}}
+                </div>
+                <div>
+                    <mat-icon (click)="toRestore()" data-toggle="modal" data-target="#showRestore"
+                              class="delete-icon" style="color: green;transform: scale(1.5);">restore_from_trash</mat-icon>
+                </div>
             </div>
         </form>
 

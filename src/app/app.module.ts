@@ -23,6 +23,7 @@ import {HttpRequestInterceptor} from "./utils/Interceptor/http-request-intercept
 import {HttpErrorInterceptor} from "./utils/Interceptor/http-error.interceptor";
 import {HttpTimeoutInterceptor} from "./utils/Interceptor/http-timeout.interceptor";
 import { NotesComponent } from './notes/notes.component';
+import { BatchRestoreComponent } from './batch-restore/batch-restore.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NotesComponent } from './notes/notes.component';
     NavbarComponent,
     DateTimeComponent,
     BatchHistoryComponent,
-    NotesComponent
+    NotesComponent,
+    BatchRestoreComponent
   ],
     imports: [
         BrowserModule,

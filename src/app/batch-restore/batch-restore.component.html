@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div class="restore-box">
+    <div class="history-title">
+        <div class="history-subtitle">
+            <mat-icon (click)="toHome()">keyboard_backspace</mat-icon>
+            Restore Batch
+        </div>
+    </div>
+
+    <table class="table table-striped tbl-history">
+        <thead>
+        <tr class="history-header">
+            <th scope="col">Env.</th>
+            <th scope="col">Feature</th>
+            <th scope="col">Batch name</th>
+            <th scope="col">Action</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <div *ngIf="isNoDelteData" class="batch-history">
+            Empty!
+        </div>
+
+    <!--    <tr *ngFor="let hist of historyData" class="batch-history">-->
+    <!--        <td>{{hist.category_name}}</td>-->
+    <!--        <td>{{hist.environment}}</td>-->
+    <!--        <td>{{hist.batch_name}}</td>-->
+    <!--        <td>{{hist.result}}</td>-->
+    <!--        <td>{{hist.hit_date | date : "dd MMM YYYY HH:mm:ss"}}</td> &lt;!&ndash;npm i dayjs&ndash;&gt;-->
+    <!--    </tr>-->
+
+        <tr class="batch-history">
+            <td>name</td>
+            <td>environment</td>
+            <td>batch_name</td>
+            <td><button class="btn btn-success"
+                        data-toggle="modal" data-target="#popUpbatch">Restore</button></td>
+            <td><button class="btn btn-danger"
+                        data-toggle="modal" data-target="#popUpbatch">Delete Permanent</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

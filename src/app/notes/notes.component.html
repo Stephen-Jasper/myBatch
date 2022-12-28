@@ -9,7 +9,7 @@
         <div>
             <div>
                 <button class="btn btn-primary add-feature"
-                        data-toggle="modal" data-target="#createBatch">Add Notes</button>
+                        data-toggle="modal" data-target="#createNotes">Add Notes</button>
             </div>
         </div>
     </div>
@@ -36,6 +36,41 @@
                     </div>
                 </div>
             </mat-expansion-panel>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Create Notes-->
+<div class="modal fade" id="createNotes" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+<!--                <app-batch-input></app-batch-input>-->
+                <form (ngSubmit)="submit()" [formGroup]="batchInputNote" autocomplete="off" >
+                    <div class="form-group">
+                        <label for="BatchName">Notes Name</label>
+                        <input type="text" class="form-control" id="BatchName" formControlName="notes_name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BatchName">Link to (include http or https)</label>
+                        <input type="text" class="form-control" id="BatchLink" formControlName="notes_link">
+                    </div>
+
+                    <div class="batch-fitur">
+                        <label for="batchFitur">For Feature</label>
+                        <select  class="form-control" id="batchFitur" formControlName="notes_category">
+                            <option *ngFor="let cat of dataCat" value='{{cat.category_id}}'>
+                                {{cat.category_name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

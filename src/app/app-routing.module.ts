@@ -5,6 +5,7 @@ import {BatchHeaderComponent} from "./batch-header/batch-header.component";
 import {BatchDetailComponent} from "./batch-detail/batch-detail.component";
 import {BatchHistoryComponent} from "./batch-history/batch-history.component";
 import {NotesComponent} from "./notes/notes.component";
+import {BatchRestoreComponent} from "./batch-restore/batch-restore.component";
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
     path:'notes',
     component: NotesComponent
   },
+  {
+    path:'restore',
+    component: BatchRestoreComponent
+  }
 ];
 
 @NgModule({
