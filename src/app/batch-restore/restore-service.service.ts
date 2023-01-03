@@ -14,8 +14,8 @@ export class RestoreServiceService {
               private router: Router) { }
 
   // GET ALL DATA
-  getAllJunk(): Observable<any>{
-    return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/batch/get-list-batch`)
+  getAllDeletedBatch(): Observable<any>{
+    return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/bin/view-bin`)
         .pipe(
             map(response =>{
               return response;
@@ -27,7 +27,7 @@ export class RestoreServiceService {
 
   // RESTRORE BATCH
   restoreBatch(batchId: string): Observable<any>{
-    return this.http.get<ServiceResponse<any>>(`${environment.apiUrl}/batch/restore-batch/${batchId}`)
+    return this.http.get<ServiceResponse<any>>(`${environment.apiUrl}/bin/restore/${batchId}`)
         .pipe(
             map(response =>{
               return response;
@@ -39,7 +39,7 @@ export class RestoreServiceService {
 
   // DELETE BATCH
   permanentDeleteBatch(batchId: string): Observable<any>{
-    return this.http.delete<ServiceResponse<any>>(`${environment.apiUrl}/batch/delete-batch/${batchId}`)
+    return this.http.delete<ServiceResponse<any>>(`${environment.apiUrl}/bin/delete-permanent/${batchId}`)
         .pipe(
             map(response =>{
               return response;

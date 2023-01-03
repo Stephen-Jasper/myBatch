@@ -1,6 +1,22 @@
 export interface notesData{
     notes_id?: string;
-    notes_name?: string;
-    notes_category?: string;
-    notes_link?: string;
+    name?: string;
+    category_id?: string;
+    hyperlink?: string;
+}
+
+export interface inputNotesData{
+    name?: string;
+    category_id?: string;
+    hyperlink?: string;
+}
+
+export interface notesGroupData{
+    notes_per_category_list: notesGrouped[];
+}
+
+export interface notesGrouped{
+    category_id?: string;
+    category_name?: string;
+    list_notes: notesData[];
 }

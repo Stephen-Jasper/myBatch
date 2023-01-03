@@ -28,6 +28,20 @@ export class InputServiceService {
         )
   }
 
+  // GET ENVIRONMENT DATA FOR DROPDOWN
+  getEnvironment(): Observable<any>{
+      return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/category/get-environment`)
+          .pipe(
+              map(
+                  response => {
+                      return response;
+                  }, catchError((error) => {
+                      return this.errorMapping(error);
+                  })
+              )
+          )
+  }
+
   //   CREATE NEW FEATURE
   createNewFeature(requestFeature: FeatureRequest): Observable<any>{
       return this.http.post(`${environment.apiUrl}/category/add-category`, requestFeature)

@@ -26,6 +26,11 @@ export interface CategoryData{
     main_url_uat?: string;
 }
 
+export interface EnvData{
+    env_id?: string;
+    env_name?: string;
+}
+
 export interface FeatureRequest{
     category_name?: string;
     main_url_dev?: string;
@@ -49,6 +54,17 @@ export interface BatchDataDetail{
 }
 
 export interface BatchRequest{
+    category_id?: string; // Fiture name
+    batch_name?: string;
+    description?: string;
+    request_method?: string;
+    environment?: string;
+    main_url?: string;
+    endpoint?: string;
+}
+
+export interface BatchRestore{
+    deleted_batch_id?: string;
     category_id?: string; // Fiture name
     batch_name?: string;
     description?: string;

@@ -6,7 +6,7 @@
             Restore Batch
         </div>
     </div>
-
+    Total : {{deletedBatch.length}}
     <table class="table table-striped tbl-history">
         <thead>
         <tr class="history-header">
@@ -19,25 +19,17 @@
         </thead>
 
         <tbody>
-        <div *ngIf="isNoDelteData" class="batch-history">
+        <div *ngIf="isNoDeletedBatch" class="batch-history">
             Empty!
         </div>
 
-    <!--    <tr *ngFor="let hist of historyData" class="batch-history">-->
-    <!--        <td>{{hist.category_name}}</td>-->
-    <!--        <td>{{hist.environment}}</td>-->
-    <!--        <td>{{hist.batch_name}}</td>-->
-    <!--        <td>{{hist.result}}</td>-->
-    <!--        <td>{{hist.hit_date | date : "dd MMM YYYY HH:mm:ss"}}</td> &lt;!&ndash;npm i dayjs&ndash;&gt;-->
-    <!--    </tr>-->
-
-        <tr class="batch-history">
-            <td>name</td>
-            <td>environment</td>
-            <td>batch_name</td>
-            <td><button class="btn btn-success"
+        <tr *ngFor="let data of deletedBatch" class="batch-history">
+            <td>{{data.environment}}</td>
+            <td>{{data.category_id}}</td>
+            <td>{{data.batch_name}}</td>
+            <td><button class="btn btn-success" (click)="executeRestore(data.deleted_batch_id)"
                         data-toggle="modal" data-target="#popUpbatch">Restore</button></td>
-            <td><button class="btn btn-danger"
+            <td><button class="btn btn-danger" (click)="executePermanentDelete(data.deleted_batch_id)"
                         data-toggle="modal" data-target="#popUpbatch">Delete Permanent</button></td>
         </tr>
         </tbody>

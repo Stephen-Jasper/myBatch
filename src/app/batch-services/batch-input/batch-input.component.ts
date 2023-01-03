@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {BatchRequest, CategoryData} from "../../batch-dto/batch-response";
+import {BatchRequest, CategoryData, EnvData} from "../../batch-dto/batch-response";
 import {Route, Router} from "@angular/router";
 import {BatchServicesService} from "../batch-services.service";
 import {InputServiceService} from "./input-service.service";
@@ -17,6 +17,7 @@ export class BatchInputComponent implements OnInit {
   errorCreateEndpoin: string = '';
   batchInputForm = new FormGroup({});
   dataCat: CategoryData[];
+  envData: EnvData[];
   requestBatch: BatchRequest;
 
 
@@ -36,13 +37,36 @@ export class BatchInputComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.envData = [
+      {
+      env_id : '1',
+      env_name: 'DEV'
+      },
+      {
+        env_id: '2',
+        env_name: 'UAT'
+      }]
    this.getFeatureData();
+   this.getEnvData();
   }
 
   getFeatureData(){
     this.inputService.getFeature().toPromise().then((response) =>{
       if(response){
         this.dataCat = response;
+      }else { // Failed
+        window.location.reload();
+        this.router.navigate(['/404']);
+      }
+    }).catch(response => {
+      window.scrollTo(0, 0);
+    })
+  }
+
+  getEnvData(){
+    this.inputService.getEnvironment().toPromise().then((response) => {
+      if(response){
+        this.envData = response;
       }else { // Failed
         window.location.reload();
         this.router.navigate(['/404']);

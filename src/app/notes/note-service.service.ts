@@ -4,7 +4,7 @@ import {catchError, map, Observable, throwError} from "rxjs";
 import {ServiceResponse} from "../batch-dto/service-response";
 import {environment} from "../../environments/environment";
 import {Router} from "@angular/router";
-import {notesData} from "../batch-dto/notes-response";
+import {inputNotesData, notesData} from "../batch-dto/notes-response";
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,23 @@ export class NoteServiceService {
   constructor(private http: HttpClient,
               private router: Router) { }
 
+    // GET FEATURE LIST FOR DROPDOWN
+    getFeature(): Observable<any>{
+        return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/category/get-category`)
+            .pipe(
+                map(
+                    response => {
+                        return response;
+                    }, catchError((error) => {
+                        return this.errorMapping(error);
+                    })
+                )
+            )
+    }
+
   // VIEW ALL NOTES
   getAllNotes(): Observable<any>{
-    return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/note`)
+    return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/notes/view-notes`)
         .pipe(
             map(
                 response => {
@@ -29,8 +43,8 @@ export class NoteServiceService {
   }
 
   // CREATE NOTES
-  addNewNote(requestNewNote: notesData): Observable<any>{
-      return this.http.post<ServiceResponse<any>>(`${environment.apiUrl}/note`, requestNewNote)
+  addNewNote(requestNewNote: inputNotesData): Observable<any>{
+      return this.http.post<ServiceResponse<any>>(`${environment.apiUrl}/notes/add-notes`, requestNewNote)
           .pipe(
               map((response) =>{
                   return response
@@ -42,7 +56,7 @@ export class NoteServiceService {
 
   // DELETE NOTES
   deleteNote(noteId: string): Observable<any>{
-      return this.http.delete<ServiceResponse<any>>(`${environment.apiUrl}/note/delete-note/${noteId}`)
+      return this.http.delete<ServiceResponse<any>>(`${environment.apiUrl}/notes/delete-notes/${noteId}`)
           .pipe(
               map(response =>{
                   return response;

@@ -8,8 +8,10 @@
     <div class="form-group">
         <label for="BatchEnv">Environment</label>
         <select class="form-control" id="BatchEnv" formControlName="batch_Environment">
-            <option value="DEV">DEV</option>
-            <option value="UAT">UAT</option>
+<!--            <option value="DEV">DEV</option>-->
+<!--            <option value="UAT">UAT</option>-->
+            <option *ngFor="let cat of envData" value='{{cat.env_name}}'>
+                {{cat.env_name}}</option>
         </select>
     </div>
 

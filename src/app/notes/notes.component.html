@@ -16,23 +16,26 @@
 
     <div class="notes-list">
         <div class="service-loop">
+            <div *ngIf="emptyNote" class="batch-history">
+                Empty!
+            </div>
 
-            <mat-expansion-panel>
+            <mat-expansion-panel *ngFor="let cat of dataGroupResponse?.notes_per_category_list; index as i">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <div class="notes-feature">
-                            BCA Valas
-                            <span class="badge badge-primary badge-pill notes-notif">12</span>
+                            {{cat.category_name}}
+                            <span class="badge badge-primary badge-pill notes-notif">{{dataGroupResponse?.notes_per_category_list[i].list_notes.length}}</span>
                         </div>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <div class="notes-content">
+                <div *ngFor="let data of dataGroupResponse?.notes_per_category_list[i]?.list_notes" class="notes-content">
                     <div>
-                        <a href="https://www.google.com" target="_blank" class="">Miro</a>
+                        <a href="{{data.hyperlink}}" target="_blank" class="">{{data.name}}</a>
                     </div>
                     <div>
                         <mat-icon data-toggle="modal" data-target="#deleteFeature"
-                                  class="note-delete-icon" (click)="deleteNote()">delete</mat-icon>
+                                  class="note-delete-icon" (click)="executeDeleteNote(data.notes_id)">delete</mat-icon>
                     </div>
                 </div>
             </mat-expansion-panel>
@@ -46,20 +49,20 @@
         <div class="modal-content">
             <div class="modal-body">
 <!--                <app-batch-input></app-batch-input>-->
-                <form (ngSubmit)="submit()" [formGroup]="batchInputNote" autocomplete="off" >
+                <form (ngSubmit)="submit()" [formGroup]="formInputNote" autocomplete="off" >
                     <div class="form-group">
                         <label for="BatchName">Notes Name</label>
-                        <input type="text" class="form-control" id="BatchName" formControlName="notes_name">
+                        <input type="text" class="form-control" id="BatchName" formControlName="name">
                     </div>
 
                     <div class="form-group">
                         <label for="BatchName">Link to (include http or https)</label>
-                        <input type="text" class="form-control" id="BatchLink" formControlName="notes_link">
+                        <input type="text" class="form-control" id="BatchLink" formControlName="hyperlink">
                     </div>
 
                     <div class="batch-fitur">
                         <label for="batchFitur">For Feature</label>
-                        <select  class="form-control" id="batchFitur" formControlName="notes_category">
+                        <select  class="form-control" id="batchFitur" formControlName="category_id">
                             <option *ngFor="let cat of dataCat" value='{{cat.category_id}}'>
                                 {{cat.category_name}}</option>
                         </select>
