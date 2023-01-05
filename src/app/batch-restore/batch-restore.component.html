@@ -24,8 +24,8 @@
         </div>
 
         <tr *ngFor="let data of deletedBatch" class="batch-history">
-            <td>{{data.environment}}</td>
-            <td>{{data.category_id}}</td>
+            <td>{{convertEnv(data.environment_id)}}</td>
+            <td>{{convertBatchCategory(data.category_id)}}</td>
             <td>{{data.batch_name}}</td>
             <td><button class="btn btn-success" (click)="executeRestore(data.deleted_batch_id)"
                         data-toggle="modal" data-target="#popUpbatch">Restore</button></td>

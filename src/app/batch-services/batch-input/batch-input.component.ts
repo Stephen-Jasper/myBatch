@@ -82,7 +82,7 @@ export class BatchInputComponent implements OnInit {
       batch_name: this.batchInputForm.controls['batch_Name'].value,
       description: this.batchInputForm.controls['batch_Desc'].value,
       request_method: 'GET',
-      environment: this.batchInputForm.controls['batch_Environment'].value,
+      environment_id: this.batchInputForm.controls['batch_Environment'].value,
       main_url: this.batchInputForm.controls['batch_url'].value,
       endpoint: this.batchInputForm.controls['batch_endPoint'].value,
     }

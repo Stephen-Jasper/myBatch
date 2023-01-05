@@ -4,7 +4,7 @@ export interface BatchData{
     batch_name?: string;
     description?: string;
     request_method?: string;
-    environment?: string;
+    environment_id?: number;
     main_url?: string;
     endpoint?: string;
 }
@@ -58,7 +58,7 @@ export interface BatchRequest{
     batch_name?: string;
     description?: string;
     request_method?: string;
-    environment?: string;
+    environment_id?: number;
     main_url?: string;
     endpoint?: string;
 }
@@ -69,7 +69,7 @@ export interface BatchRestore{
     batch_name?: string;
     description?: string;
     request_method?: string;
-    environment?: string;
+    environment_id?: number;
     main_url?: string;
     endpoint?: string;
 }

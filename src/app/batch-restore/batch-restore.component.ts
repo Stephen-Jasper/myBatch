@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {BatchRestore} from "../batch-dto/batch-response";
+import {BatchRestore, CategoryData} from "../batch-dto/batch-response";
 import {RestoreServiceService} from "./restore-service.service";
+import {InputServiceService} from "../batch-services/batch-input/input-service.service";
 
 @Component({
   selector: 'app-batch-restore',
@@ -10,13 +11,44 @@ import {RestoreServiceService} from "./restore-service.service";
 })
 export class BatchRestoreComponent implements OnInit {
   isNoDeletedBatch: boolean = false;
+  errorRestoreMessage: string;
   deletedBatch: BatchRestore[];
+  categoryList: CategoryData[];
 
   constructor(private router: Router,
+              private inputService: InputServiceService,
               private restoreService: RestoreServiceService) { }
 
   ngOnInit(): void {
     this.getDeletedBatch();
+    this.getCategory()
+  }
+
+  convertEnv(batch: number){
+    return batch === 1 ? 'DEV' : 'UAT';
+  }
+
+  convertBatchCategory(batch: string){
+    for (let i=0; i<this.categoryList.length; ++i){
+      if(this.categoryList[i].category_id === batch){
+        return this.categoryList[i].category_name;
+      }
+    }
+    return batch;
+  }
+
+  getCategory(){
+    this.inputService.getFeature().toPromise().then((response) => {
+      if(response){
+        this.categoryList = response;
+      }else { // Failed
+        window.location.reload();
+        this.router.navigate(['/404']);
+      }
+    }).catch(response => {
+      window.scrollTo(0, 0);
+      this.router.navigate(['/404']);
+    })
   }
 
   getDeletedBatch(){
@@ -37,7 +69,13 @@ export class BatchRestoreComponent implements OnInit {
   executeRestore(id: string){
     this.restoreService.restoreBatch(id).toPromise().then((response) => {
       if(response){
-        alert('Batch successfully restored!')
+        if(response.error_schema.error_code === 'FAILED_INVALID_NAME'){
+          this.errorRestoreMessage = response.error_schema.error_message;
+        } else if(response.error_schema.error_code === 'FAILED_INVALID_ENDPOINT'){
+          this.errorRestoreMessage = response.error_schema.error_message;
+        }else{
+          alert('Batch successfully restored!')
+        }
       }else{
         this.router.navigate(['/404']);
       }

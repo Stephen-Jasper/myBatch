@@ -20,7 +20,7 @@ export class BatchServicesComponent implements OnInit {
   showPopupFeature:boolean = false;
   showPopupCreate:boolean = false;
   showPopupDelete:boolean = false;
-  dataResponse: BatchData[];
+  // dataResponse: BatchData[];
   dataGroupResponse: BatchGroupData;
   categoryList: CategoryData[];
   requestNewFeature: FeatureRequest;
@@ -30,12 +30,16 @@ export class BatchServicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGroupedData();
-    this.getDataBatch();
+    // this.getDataBatch();
     this.getCategoryFilter();
   }
 
   toDetail(BchId: string){
     this.router.navigate(['myBatch/data-detail/' + BchId]);
+  }
+
+  convertEnv(batch: number){
+    return batch === 1 ? 'DEV' : 'UAT';
   }
 
   getGroupedData(){
@@ -52,22 +56,8 @@ export class BatchServicesComponent implements OnInit {
     });
   }
 
-  getDataBatch(){
-    this.batchService.getAllBatchData().toPromise().then((response) => {
-      if (response) { // Success Get Data
-        this.dataResponse = response;
-      } else { // Failed
-        window.location.reload();
-        this.router.navigate(['/404']);
-      }
-    }).catch(response => {
-      window.scrollTo(0, 0);
-      this.router.navigate(['/404']);
-    });
-  }
-
   getCategoryFilter(){
-    this.inputService.getFeature().toPromise().then((response) => {
+    this.batchService.getFeature().toPromise().then((response) => {
       if(response){
         this.categoryList = response;
       }else { // Failed

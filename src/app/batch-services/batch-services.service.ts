@@ -52,6 +52,20 @@ export class BatchServicesService {
           )
   }
 
+  // getFeature
+    getFeature(): Observable<any>{
+        return this.http.get<ServiceResponse<any>[]>(`${environment.apiUrl}/category/get-category`)
+            .pipe(
+                map(
+                    response => {
+                        return response;
+                    }, catchError((error) => {
+                        return this.errorMapping(error);
+                    })
+                )
+            )
+    }
+
   // SEARCH BATCH
   getSearchBatch(requestSearch: seachRequest){
       return this.http.post<ServiceResponse<any>>(`${environment.apiUrl}/batch/search-batch`, requestSearch)

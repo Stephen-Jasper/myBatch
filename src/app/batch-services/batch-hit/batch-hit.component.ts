@@ -83,6 +83,11 @@ export class BatchHitComponent implements OnInit {
     });
   }
 
+  convertEnv(batch: number){
+    return batch === 1 ? 'DEV' : 'UAT';
+  }
+
+
   convertBatchCategory(batch: string){
     for (let i=0; i<this.categoryList.length; ++i){
       if(this.categoryList[i].category_id === batch){

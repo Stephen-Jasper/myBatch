@@ -59,7 +59,7 @@
                             Empty batch!
                         </div>
                         <tr *ngFor="let batch of dataFromService" class="selectedBatch">
-                            <td style="width: 17%;">{{batch.environment}}</td>
+                            <td style="width: 17%;">{{convertEnv(batch.environment_id)}}</td>
                             <td style="width: 35%">{{convertBatchCategory(batch.category_id)}}</td>
                             <td (click)="toDetail(batch.batch_id)" style="cursor: pointer;width: 39%;">{{batch.batch_name}}</td>
                             <td style="width: 10%;">

@@ -24,7 +24,7 @@
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     <div *ngFor="let data of dataGroupResponse?.batches_per_categories[i]?.list_batch" class="list-batch">
-                        <p (click)="toDetail(data.batch_id)" target="_blank" class="btch-feature">{{data.environment}} - {{data.batch_name}}</p>
+                        <p (click)="toDetail(data.batch_id)" target="_blank" class="btch-feature">{{convertEnv(data.environment_id)}} - {{data.batch_name}}</p>
                         <mat-icon (click)="activePopUp(data.batch_id, data.batch_name)" data-toggle="modal" data-target="#deleteFeature"
                             class="delete-icon">delete</mat-icon>
                     </div>
