@@ -17,7 +17,6 @@ export class BatchInputComponent implements OnInit {
   errorCreateEndpoin: string = '';
   batchInputForm = new FormGroup({});
   dataCat: CategoryData[];
-  envData: EnvData[];
   requestBatch: BatchRequest;
 
 
@@ -37,17 +36,8 @@ export class BatchInputComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.envData = [
-      {
-      env_id : '1',
-      env_name: 'DEV'
-      },
-      {
-        env_id: '2',
-        env_name: 'UAT'
-      }]
    this.getFeatureData();
-   this.getEnvData();
+   // this.getEnvData();
   }
 
   getFeatureData(){
@@ -63,18 +53,18 @@ export class BatchInputComponent implements OnInit {
     })
   }
 
-  getEnvData(){
-    this.inputService.getEnvironment().toPromise().then((response) => {
-      if(response){
-        this.envData = response;
-      }else { // Failed
-        window.location.reload();
-        this.router.navigate(['/404']);
-      }
-    }).catch(response => {
-      window.scrollTo(0, 0);
-    })
-  }
+  // getEnvData(){
+  //   this.inputService.getEnvironment().toPromise().then((response) => {
+  //     if(response){
+  //       this.envData = response;
+  //     }else { // Failed
+  //       window.location.reload();
+  //       this.router.navigate(['/404']);
+  //     }
+  //   }).catch(response => {
+  //     window.scrollTo(0, 0);
+  //   })
+  // }
 
   submit(){
     this.requestBatch = {

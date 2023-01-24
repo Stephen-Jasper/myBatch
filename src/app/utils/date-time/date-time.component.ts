@@ -10,6 +10,7 @@ import {interval} from "rxjs";
 export class DateTimeComponent implements OnInit {
   date: Date | undefined;
   loadingDate: boolean = true;
+  time: string;
 
   constructor() { }
 
@@ -18,6 +19,7 @@ export class DateTimeComponent implements OnInit {
     source.subscribe((res) => {
       this.date = new Date();
       this.loadingDate = false;
+      this.time = this.date.getHours() > 12 ? 'PM' : 'AM';
     });
   }
 
