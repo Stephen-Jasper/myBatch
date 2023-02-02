@@ -16,7 +16,25 @@ export class BatchHistoryComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.getHistory();
+    this.historyData = [
+      {
+        history_id: '1',
+        environment: 'DEV',
+        category_name: 'Transfer VA',
+        hit_date: '2023-01-04T10:07:27',
+        batch_name: 'VA Inquiry',
+        result: 'true',
+      },
+      {
+        history_id: '1',
+        environment: 'DEV',
+        category_name: 'Transfer DOM',
+        hit_date: '2023-01-12T15:07:27',
+        batch_name: 'DOM Inquiry',
+        result: 'true',
+      },
+    ]
+    // this.getHistory();
   }
 
   getHistory(){

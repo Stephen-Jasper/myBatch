@@ -20,8 +20,36 @@ export class BatchRestoreComponent implements OnInit {
               private restoreService: RestoreServiceService) { }
 
   ngOnInit(): void {
-    this.getDeletedBatch();
-    this.getCategory()
+    this.deletedBatch = [
+      {
+        deleted_batch_id: '1',
+        category_id: '1',
+        batch_name: 'VA Sync',
+        description: '',
+        request_method: 'GET',
+        environment_id: 1,
+        main_url: 'https://domainVA-DEV-Mock.co.id',
+        endpoint: '/endpoint',
+      }
+    ]
+
+    this.categoryList = [
+      {
+        category_id: '1',
+        category_name: "Transfer VA",
+        main_url_dev: "https://domainVA-DEV-Mock.co.id",
+        main_url_uat: "https://domainVA-UAT-Mock.co.id"
+      },
+      {
+        category_id: '2',
+        category_name: "Transfer DOM",
+        main_url_dev: "https://domainDOM-DEV-Mock.co.id",
+        main_url_uat: "https://domainDOM-UAT-Mock.co.id"
+      }
+    ]
+
+    // this.getDeletedBatch();
+    // this.getCategory()
   }
 
   convertEnv(batch: number){

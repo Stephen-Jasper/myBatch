@@ -29,9 +29,71 @@ export class BatchServicesComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.getGroupedData();
-    // this.getDataBatch();
-    this.getCategoryFilter();
+    this.dataGroupResponse = {
+      batches_per_categories: [
+        {
+          category_id: '1',
+          category_name: 'Transfer VA',
+          list_batch: [
+            {
+              batch_id: '35',
+              category_id: '1',
+              batch_name: "Inquiry VA",
+              description: "inquiry VA contoh deskripsi",
+              environment_id: 2,
+              endpoint: "/inquiry-va"
+            },
+            {
+              batch_id: '1',
+              category_id: '1',
+              batch_name: "VA Inquiry (off)",
+              description: "Inquiry data transfer virtual account\n\nJam : 12.00 PM sampai 16.00 PM\n          batch dijalankan setiap 15 menit\n\nJob  : Ambil data dari DB A ke DB B agar singkron \nTransaksi yang ditahan adalah transaksi yang dijalankan melebihi jam cut on.\n\nDibuat oleh KA",
+              environment_id: 1,
+              endpoint: "/inquiry-va"
+            }
+          ]
+        },
+        {
+          category_id: '2',
+          category_name: 'Transfer Domestik',
+          list_batch: [
+            {
+              batch_id: '24',
+              category_id: '2',
+              batch_name: "DOM Sync",
+              description: "Sync data domestik",
+              environment_id: 2,
+              endpoint: "/dom-sync"
+            },
+            {
+              batch_id: '48',
+              category_id: '2',
+              batch_name: "Send email DOM",
+              description: "Inquiry data transfer virtual account\n\nJam : 12.00 PM sampai 16.00 PM\n          batch dijalankan setiap 15 menit\n\nJob  : Ambil data dari DB A ke DB B agar singkron \nTransaksi yang ditahan adalah transaksi yang dijalankan melebihi jam cut on.\n\nDibuat oleh KA",
+              environment_id: 1,
+              endpoint: "/dom-email"
+            }
+          ]
+        }
+      ]
+    }
+
+    this.categoryList = [
+      {
+        category_id: '1',
+        category_name: "Transfer VA",
+        main_url_dev: "https://domainVA-DEV-Mock.co.id",
+        main_url_uat: "https://domainVA-UAT-Mock.co.id"
+      },
+      {
+        category_id: '2',
+        category_name: "Transfer DOM",
+        main_url_dev: "https://domainDOM-DEV-Mock.co.id",
+        main_url_uat: "https://domainDOM-UAT-Mock.co.id"
+      }
+    ]
+    // this.getGroupedData();
+    // this.getCategoryFilter();
   }
 
   toDetail(BchId: string){
@@ -130,4 +192,7 @@ export class BatchServicesComponent implements OnInit {
       this.router.navigate(['/404']);
     })
   }
+
+  // MOCK FUNCTION
+
 }

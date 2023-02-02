@@ -187,3 +187,13 @@ tbody {
     width: 70%;
   }
 }
+
+@media screen and (min-width: 2000px) {
+  .batch-list{
+    width: 60%;
+    align-self: center;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 10px 10px;
+  }
+}

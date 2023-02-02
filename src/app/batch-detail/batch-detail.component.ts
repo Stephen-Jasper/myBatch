@@ -15,7 +15,7 @@ export class BatchDetailComponent implements OnInit {
   batchEditForm = new FormGroup({});
   detailData:  BatchDataDetail;
   requestId: string;
-  loadingLoad: boolean = true;
+  loadingLoad: boolean;
   errorEditName: string = '';
   errorEditEndpoint: string = '';
 
@@ -42,10 +42,22 @@ export class BatchDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.requestId = (this.activeRoute.snapshot.params as any).BchId;
-    this.getDataDetail();
+    this.detailData = {
+      batch_id: '35',
+      category_id: '1',
+      batch_name: "Inquiry VA",
+      description: "Inquiry data transfer virtual account\n\nJam : 12.00 PM sampai 16.00 PM\n batch dijalankan setiap 15 menit\n\nJob  : Ambil data dari DB A ke DB B agar singkron \n" +
+          "Transaksi yang ditahan adalah transaksi yang dijalankan melebihi jam cut on.\n",
+      environment: 'DEV',
+      endpoint: "/inquiry-va",
+      request_method: 'GET',
+      main_url: 'https://domainVA-DEV-Mock.co.id'
+    }
+    // this.getDataDetail();
   }
 
   getDataDetail(){
+    this.loadingLoad = true;
     this.detailService.getSelectedBatch(this.requestId).toPromise().then((response) =>{
       if(response){
         this.detailData = response;

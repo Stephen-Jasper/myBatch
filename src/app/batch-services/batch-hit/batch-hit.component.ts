@@ -39,7 +39,7 @@ export class BatchHitComponent implements OnInit {
   executeResponse: string;
   popUpResponse: boolean = false;
   isNoData: boolean = false;
-  loadData: boolean = true;
+  loadData: boolean;
 
   newFeatureName: string;
 
@@ -62,11 +62,54 @@ export class BatchHitComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBatchData();
+    this.dataFromService = [
+      {
+        batch_id: '35',
+        category_id: '1',
+        batch_name: "Inquiry VA",
+        description: "inquiry VA contoh deskripsi",
+        environment_id: 2,
+        endpoint: "/inquiry-va",
+        request_method: 'GET',
+        main_url: 'https://domainVA-DEV-Mock.co.id'
+      },
+      {
+        batch_id: '1',
+        category_id: '1',
+        batch_name: "VA Inquiry (off)",
+        description: "Inquiry data transfer virtual account\n\nJam : 12.00 PM sampai 16.00 PM\n          batch dijalankan setiap 15 menit\n\nJob  : Ambil data dari DB A ke DB B agar singkron \nTransaksi yang ditahan adalah transaksi yang dijalankan melebihi jam cut on.\n\nDibuat oleh KA",
+        environment_id: 1,
+        endpoint: "/inquiry-va",
+        request_method: 'GET',
+        main_url: 'https://domainVA-DEV-Mock.co.id'
+      },
+      {
+        batch_id: '24',
+        category_id: '2',
+        batch_name: "DOM Sync",
+        description: "Sync data domestik",
+        environment_id: 2,
+        endpoint: "/dom-sync",
+        request_method: 'GET',
+        main_url: 'https://domainDOM-DEV-Mock.co.id'
+      },
+      {
+        batch_id: '48',
+        category_id: '2',
+        batch_name: "Send email DOM",
+        description: "Inquiry data transfer virtual account\n\nJam : 12.00 PM sampai 16.00 PM\n          batch dijalankan setiap 15 menit\n\nJob  : Ambil data dari DB A ke DB B agar singkron \nTransaksi yang ditahan adalah transaksi yang dijalankan melebihi jam cut on.\n\nDibuat oleh KA",
+        environment_id: 1,
+        endpoint: "/dom-email",
+        request_method: 'GET',
+        main_url: 'https://domainDOM-DEV-Mock.co.id'
+      }
+    ]
+    // this.getBatchData();
   }
 
   getBatchData(){
     this.isNoData = false;
+    this.loadData = true;
     this._batchService.getAllBatchData().toPromise().then((response) => {
       if (response) { // Success Get Data
         this.dataFromService = response;
